@@ -6,4 +6,8 @@ public class Scenario {
     public String toString() {
         return listeQuetes.size() + " " + listeQuetes;
     }
+
+    public void ajout(Quete parQuete) {
+        listeQuetes.add(parQuete);
+    }
 }
