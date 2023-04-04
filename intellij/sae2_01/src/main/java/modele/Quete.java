@@ -2,7 +2,7 @@ package modele;
 
 import java.util.Scanner;
 public class Quete {
-    int chNumero;
+    int numero;
     int[] pos = new int[2];
     int[] precond = new int[4];
     int duree;
@@ -12,8 +12,12 @@ public class Quete {
     public Quete(String ligne) {
         Scanner scanner = new Scanner(ligne).useDelimiter("\\|");
         while (scanner.hasNext()) {
-            this.chNumero = scanner.nextInt();
-
+            this.numero = scanner.nextInt();
+            String posTemp = scanner.next();
+            String precondTemp = scanner.next();
+            this.duree = scanner.nextInt();
+            this.experience = scanner.nextInt();
+            this.intitule = scanner.next();
         }
     }
 }
