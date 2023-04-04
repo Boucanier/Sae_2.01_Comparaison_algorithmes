@@ -1,8 +1,10 @@
 public class Quete {
     int chNumero;
-    int[2] pos;
-    int[4] precond;
+    int[] pos = new int[2];
+    int[] precond = new int[4];
     int duree;
     int experience;
     String intitule;
+
+
 }
