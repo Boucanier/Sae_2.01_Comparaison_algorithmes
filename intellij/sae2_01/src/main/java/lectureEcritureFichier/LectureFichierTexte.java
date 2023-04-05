@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import modele.Quete;
+import modele.Scenario;
 
 public class LectureFichierTexte {
     public static Scenario lecture (File fichier) {

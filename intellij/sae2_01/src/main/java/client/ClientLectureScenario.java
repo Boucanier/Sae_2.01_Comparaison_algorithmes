@@ -2,6 +2,7 @@ package client;
 import java.io.File;
 
 import lectureEcritureFichier.LectureFichierTexte;
+import modele.Scenario;
 
 public class ClientLectureScenario {
     public static void main (String[] args) {
