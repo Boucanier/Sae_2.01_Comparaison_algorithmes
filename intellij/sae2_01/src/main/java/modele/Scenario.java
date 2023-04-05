@@ -13,6 +13,9 @@ public class Scenario {
         return listeQuetes.size() + " " + listeQuetes;
     }
 
+    /*
+        Ajoute une quête à la suite de la liste de scénarios
+     */
     public void ajout(Quete parQuete) {
         listeQuetes.add(parQuete);
     }

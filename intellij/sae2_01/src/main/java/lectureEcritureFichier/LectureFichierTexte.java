@@ -1,6 +1,10 @@
+package lectureEcritureFichier;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import modele.Quete;
 
 public class LectureFichierTexte {
     public static Scenario lecture (File fichier) {
