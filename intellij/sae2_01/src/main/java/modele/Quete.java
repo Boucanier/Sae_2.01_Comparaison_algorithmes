@@ -60,4 +60,8 @@ public class Quete {
             i ++;
         }
     }
+
+    public String toString() {
+        return "num : " + numero + ", position : " + pos + ", precond : " + precond + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
+    }
 }
