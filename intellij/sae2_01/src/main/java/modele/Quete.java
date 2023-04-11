@@ -14,12 +14,8 @@ public class Quete {
         Scanner scanner = new Scanner(ligne).useDelimiter("\\|");
         while (scanner.hasNext()) {
             this.numero = scanner.nextInt();
-
-            stringToListPos(scanner.next());
-            System.out.println( pos[0] + " " +pos[1]);
-
-            stringToListPrecond(scanner.next());
-
+            stringToListPos(scanner.next()); // transformation de string en tableau
+            stringToListPrecond(scanner.next()); // idem
             this.duree = scanner.nextInt();
             this.experience = scanner.nextInt();
             this.intitule = scanner.next();
@@ -42,7 +38,8 @@ public class Quete {
         while (scanPrecondition.hasNext()) {
             String extrait = scanPrecondition.next();
             if (!extrait.equals("")) {
-                precond[i] = Integer.parseInt(extrait);
+                int entier = Integer.parseInt(extrait);
+                precond[i] = entier;
             }
             i++;
         }
@@ -56,12 +53,14 @@ public class Quete {
         int i = 0;
         while (scanPos.hasNext()) {
             String extrait = scanPos.next();
-            pos[i] = Integer.parseInt(extrait);
+            int entier = Integer.parseInt(extrait);
+            pos[i] = entier;
             i ++;
         }
     }
 
     public String toString() {
-        return "num : " + numero + ", position : " + pos + ", precond : " + precond + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
+        return " " + numero;
+        // return "num : " + numero + ", position : " + pos + ", precond : " + precond + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
     }
 }
