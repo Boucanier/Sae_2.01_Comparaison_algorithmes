@@ -15,12 +15,10 @@ public class Quete {
         while (scanner.hasNext()) {
             this.numero = scanner.nextInt();
 
-            String posTemp = scanner.next();
-            // System.out.println(posTemp);
+            stringToListPos(scanner.next());
+            System.out.println( pos[0] + " " +pos[1]);
 
-            String precondTemp = scanner.next();
-            stringToListPrecond(precondTemp);
-            // System.out.println(precond[0] + " " + precond[1] + " " + precond[2] + " " + precond[3]);
+            stringToListPrecond(scanner.next());
 
             this.duree = scanner.nextInt();
             this.experience = scanner.nextInt();
@@ -47,6 +45,19 @@ public class Quete {
                 precond[i] = Integer.parseInt(extrait);
             }
             i++;
+        }
+    }
+
+    private void stringToListPos(String position) {
+        position = position.replace("(", "");
+        position = position.replace(")", "");
+        position = position.replace(" ", "");
+        Scanner scanPos = new Scanner(position).useDelimiter(",");
+        int i = 0;
+        while (scanPos.hasNext()) {
+            String extrait = scanPos.next();
+            pos[i] = Integer.parseInt(extrait);
+            i ++;
         }
     }
 }
