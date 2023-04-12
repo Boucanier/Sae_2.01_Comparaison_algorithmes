@@ -3,7 +3,7 @@ package modele;
 import java.util.ArrayList;
 
 public class Scenario {
-    ArrayList<Quete> listeQuetes;
+    private ArrayList<Quete> listeQuetes;
 
     public Scenario() {
         listeQuetes = new ArrayList<Quete>();
