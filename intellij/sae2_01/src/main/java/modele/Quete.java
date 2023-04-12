@@ -1,6 +1,8 @@
 package modele;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 public class Quete {
     private int numero;
@@ -60,7 +62,6 @@ public class Quete {
     }
 
     public String toString() {
-        return " " + numero;
-        // return "num : " + numero + ", position : " + pos + ", precond : " + precond + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
+        return "num : " + numero + ", position : " + Arrays.toString(pos) + ", precond : " + Arrays.toString(precond) + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
     }
 }
