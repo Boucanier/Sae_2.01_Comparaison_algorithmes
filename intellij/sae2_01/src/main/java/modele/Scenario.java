@@ -10,7 +10,12 @@ public class Scenario {
     }
 
     public String toString() {
-        return listeQuetes.size() + " " + listeQuetes;
+        String msg = "";
+        msg = msg + listeQuetes.size() + "\n";
+        for (Quete quete : listeQuetes){
+            msg = msg + quete + "\n";
+        }
+        return msg;
     }
 
     /*
