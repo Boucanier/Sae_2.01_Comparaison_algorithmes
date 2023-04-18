@@ -1,6 +1,5 @@
 package client;
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 
 import lectureEcritureFichier.LectureFichierTexte;
 import modele.Scenario;
