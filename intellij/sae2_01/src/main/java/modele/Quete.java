@@ -64,4 +64,64 @@ public class Quete {
     public String toString() {
         return "num : " + numero + ", position : " + Arrays.toString(pos) + ", precond : " + Arrays.toString(precond) + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
     }
+
+
+    public int getNumero() {
+        return numero;
+    }
+
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+
+    public int[] getPos() {
+        return pos;
+    }
+
+
+    public void setPos(int[] pos) {
+        this.pos = pos;
+    }
+
+
+    public int[] getPrecond() {
+        return precond;
+    }
+
+
+    public void setPrecond(int[] precond) {
+        this.precond = precond;
+    }
+
+
+    public int getDuree() {
+        return duree;
+    }
+
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+
+    public int getExperience() {
+        return experience;
+    }
+
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+
+    public String getIntitule() {
+        return intitule;
+    }
+
+
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
+    }
 }
