@@ -18,6 +18,7 @@ public class LectureFichierTexte {
                 String line = scanner.nextLine();
                 scenario.ajout(new Quete(line));
             }
+            scanner.close();
         }
         catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
