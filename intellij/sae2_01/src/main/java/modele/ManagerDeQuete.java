@@ -33,7 +33,7 @@ public class ManagerDeQuete {
     }
 
 
-    private boolean peutCommencerQuete(ArrayList<Integer> parcours, int[] parPrecond){
+    protected boolean peutCommencerQuete(ArrayList<Integer> parcours, int[] parPrecond){
         /*
         renvoie true si le joueur à les préconditinos pour commencer une certaine quête, false sinon
 
