@@ -21,7 +21,7 @@ public class ManagerDeQuete {
     }
 
 
-    private int distanceEntrePos(int[] parPos1, int[] parPos2){
+    protected int distanceEntrePos(int[] parPos1, int[] parPos2){
         /*
         renvoie le nombre de déplacement nécessaire à la réalisation du déplacement d'un joueur d'une position 1 à une position 2
 
