@@ -9,6 +9,6 @@ public class CLientManagerDeQuete {
     public static void main (String[] args) {
         Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + "scenario_0.txt"));
         ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
-        System.out.println("Le parcours final : " + managerDeQuete.niveau1("gloutone"));
+        System.out.println("Le parcours final : " + managerDeQuete.niveau1("gloutonne"));
     }
 }

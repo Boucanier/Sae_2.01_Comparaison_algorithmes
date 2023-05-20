@@ -169,14 +169,14 @@ public class ManagerDeQuete {
             
             // on rajoute la quete choisie dans la liste des quetes parcourues
             joueur.ajoutQueteParcours(queteChoisie);
-            System.out.println("Le joueur choisi d'aller a la quete " + queteChoisie);
+            System.out.println("Le joueur choisi d'aller à la quête " + queteChoisie);
 
             Quete queteDansListe = listeQuetesRestantes.get(trouverIndiceListeQuete(listeQuetesRestantes, queteChoisie));
 
             // on met a jour la durée totale
             joueur.setDureeTotal(queteDansListe.getDuree());
             joueur.setDureeTotal(distanceEntrePos( joueur.getPos(), queteDansListe.getPos()) );
-            System.out.println("Le joueur augmente ca durée totale de : " + joueur.getDureeTotal());
+            System.out.println("Le joueur augmente sa durée totale de : " + joueur.getDureeTotal());
 
             // on met a jour la position du joueur sur la quête sur laquelle il est allé
             joueur.setPos(queteDansListe.getPos());
