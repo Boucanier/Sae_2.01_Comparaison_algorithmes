@@ -18,10 +18,19 @@ public class Scenario {
         return msg;
     }
 
-    /*
+    
+    public void ajout(Quete parQuete) {
+        /*
         Ajoute une quête à la suite de la liste de scénarios
      */
-    public void ajout(Quete parQuete) {
         listeQuetes.add(parQuete);
+    }
+
+
+    public ArrayList getListeQuetes(){
+        /*
+         * retourne la liste des quetes
+         */
+        return listeQuetes;
     }
 }
