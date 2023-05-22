@@ -150,7 +150,7 @@ public class ManagerDeQuete {
     }
 
 
-    public void gloutonSimple(Joueur joueur){
+    public void efficace(Joueur joueur){
         /*
          * exécute la solution gloutonne
          */
@@ -207,8 +207,8 @@ public class ManagerDeQuete {
          */
         Joueur joueur = new Joueur();
         if (choixSolution == "gloutone"){
-            System.out.println("Choix de solution : gloutonne");
-            gloutonSimple(joueur);
+            System.out.println("Choix de solution : efficace");
+            efficace(joueur);
             return joueur.getParcours();
         }
 
