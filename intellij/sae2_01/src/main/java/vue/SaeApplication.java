@@ -4,7 +4,6 @@ import java.io.File;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -17,7 +16,7 @@ public class SaeApplication extends Application {
      * Méthode start de la classe SaeApplication qui permet de lancer l'application
      */
     public void start(Stage stage) {
-        VBox root = new VBox();
+        VBoxRootMenu root = new VBoxRootMenu();
         Scene scene = new Scene(root, 1000, 500);
         File css = new File("css" + File.separator + "sae.css");
         scene.getStylesheets().add(css.toURI().toString());
