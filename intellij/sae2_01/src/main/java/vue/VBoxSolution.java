@@ -10,7 +10,7 @@ import modele.ConstantesSolutions;
  * Hérite de la classe VBox
  */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
-    StackPane stackPaneSolution = new StackPane();
+    private StackPane stackPaneSolution = new StackPane();
 
     /**
      * Constructeur de la classe VBoxSolution

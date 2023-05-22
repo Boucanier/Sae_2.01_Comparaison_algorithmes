@@ -26,7 +26,7 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static Menu menuScenario = new Menu("S_cénarios");
     public static Menu quitMenu = new Menu("_Quitter");
     public static Scenario [] scenarios;
-    VBoxSolution vBoxSolution = new VBoxSolution();
+    public static VBoxSolution vBoxSolution = new VBoxSolution();
 
     /**
      * Constructeur de la classe VBoxRootMenu
