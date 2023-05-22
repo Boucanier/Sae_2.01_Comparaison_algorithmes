@@ -5,9 +5,16 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 
+/**
+ * Contient le nom de la solution choisie ainsi qu'un StackPane contenant les solutions pour tous les scénarios pour cette solution
+ * Hérite de la classe VBox
+ */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
     StackPane stackPaneSolution = new StackPane();
 
+    /**
+     * Constructeur de la classe VBoxSolution
+     */
     public VBoxSolution() {
         for (String item : SOLUTIONS){
             Label labelSolution = new Label("Solution " + item);
@@ -17,7 +24,6 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         }
         this.getChildren().addAll(stackPaneSolution);
     }
-
     public StackPane getStackPaneSolution() {
         return stackPaneSolution;
     }

@@ -16,6 +16,10 @@ import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 import modele.Scenario;
 
+/**
+ * Contient le menu de sélection de la solution et du scénario
+ * Hérite de la classe VBox
+ */
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();
     public static Menu menu = new Menu("_Solutions");
@@ -24,6 +28,9 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static Scenario [] scenarios;
     VBoxSolution vBoxSolution = new VBoxSolution();
 
+    /**
+     * Constructeur de la classe VBoxRootMenu
+     */
     public VBoxRootMenu() {
         ToggleGroup groupSolutions = new ToggleGroup();
 
