@@ -13,7 +13,6 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
-import lectureEcritureFichier.LectureFichierTexte;
 import modele.ConstantesSolutions;
 import modele.Scenario;
 
@@ -73,7 +72,6 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
         
         ToggleGroup groupScenarios = new ToggleGroup();
         for (int i = 0; i < fichiers.length; i++) {
-            scenarios[i] = LectureFichierTexte.lecture(fichiers[i]);
             RadioMenuItem menuItemScenario = new RadioMenuItem(fichiers[i].getName());
             menuItemScenario.setUserData(fichiers[i].getName());
             menuScenario.getItems().add(menuItemScenario);
