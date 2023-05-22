@@ -69,6 +69,8 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             menuItemScenario.setId("menuItemScenario");
         }
 
+        ((RadioMenuItem)menu.getItems().get(0)).setSelected(true);
+        ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
 
         menuBar.getMenus().addAll(menu, menuScenario, quitMenu);
         this.getChildren().add(menuBar);
