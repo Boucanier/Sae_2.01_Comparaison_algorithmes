@@ -20,19 +20,31 @@ import modele.Scenario;
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();
     public static Menu menu = new Menu("_Solutions");
-    public static Menu menuScenario = new Menu("_Scénarios");
+    public static Menu menuScenario = new Menu("S_cénarios");
     public static Menu quitMenu = new Menu("_Quitter");
     public static Scenario [] scenarios;
+    VBoxSolution vBoxSolution = new VBoxSolution();
 
     public VBoxRootMenu() {
         ToggleGroup groupSolutions = new ToggleGroup();
 
         for (String item : SOLUTIONS){
-            RadioMenuItem menuItem = new RadioMenuItem(item);
+            RadioMenuItem menuItem = new RadioMenuItem("_"+item);
             menuItem.setUserData(item);
             menu.getItems().add(menuItem);
             menuItem.setToggleGroup(groupSolutions);
             menuItem.setId("menuItem");
+            menuItem.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent actionEvent){
+                    System.out.println(menuItem.getUserData());
+                    String annee = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
+
+                    if (!annee.equals(menuItem.getUserData()))
+                        vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
+                }
+            });
         }
         
         menu.setMnemonicParsing(true);
@@ -72,7 +84,11 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
         ((RadioMenuItem)menu.getItems().get(0)).setSelected(true);
         ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
 
+        String solution = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
+        if (!solution.equals(groupSolutions.getUserData()))
+            vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
+
         menuBar.getMenus().addAll(menu, menuScenario, quitMenu);
-        this.getChildren().add(menuBar);
+        this.getChildren().addAll(menuBar,vBoxSolution);
     }
 }
