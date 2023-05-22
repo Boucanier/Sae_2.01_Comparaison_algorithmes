@@ -1,5 +1,7 @@
 package vue;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -11,12 +13,16 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import lectureEcritureFichier.LectureFichierTexte;
 import modele.ConstantesSolutions;
+import modele.Scenario;
 
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();
     public static Menu menu = new Menu("_Solutions");
+    public static Menu menuScenario = new Menu("_Scénarios");
     public static Menu quitMenu = new Menu("_Quitter");
+    public static Scenario [] scenarios;
 
     public VBoxRootMenu() {
         ToggleGroup groupSolutions = new ToggleGroup();
@@ -49,7 +55,22 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             }
         });
 
-        menuBar.getMenus().addAll(menu, quitMenu);
+        File[] fichiers = new File("scenarios").listFiles();
+        scenarios = new Scenario[fichiers.length];
+        Arrays.sort(fichiers);
+        
+        ToggleGroup groupScenarios = new ToggleGroup();
+        for (int i = 0; i < fichiers.length; i++) {
+            scenarios[i] = LectureFichierTexte.lecture(fichiers[i]);
+            RadioMenuItem menuItemScenario = new RadioMenuItem(fichiers[i].getName());
+            menuItemScenario.setUserData(fichiers[i].getName());
+            menuScenario.getItems().add(menuItemScenario);
+            menuItemScenario.setToggleGroup(groupScenarios);
+            menuItemScenario.setId("menuItemScenario");
+        }
+
+
+        menuBar.getMenus().addAll(menu, menuScenario, quitMenu);
         this.getChildren().add(menuBar);
     }
 }
