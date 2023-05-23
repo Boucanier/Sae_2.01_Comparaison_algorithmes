@@ -1,9 +1,9 @@
 # Dossier de tests
 
-| Exploration algorithmique                  | Version : 0                   |
-|--------------------------------------------|-------------------------------|
-| Document : Dossier de tests                | Date : __...__/__...__/2023   |
-| Responsable de la rédaction : Jules CHIRON |                               |
+| Exploration algorithmique                  | Version : 0             |
+|--------------------------------------------|-------------------------|
+| Document : Dossier de tests                | Date : 23/05/2023       |
+| Responsable de la rédaction : Jules CHIRON |                         |
 
 ## 1. Introduction
 
@@ -26,7 +26,7 @@ Nous comparerons ensuite les résultats obtenus avec les résultats attendus.
 | Configuration logicielle : Java 18, IntelliJ, JUnit 5        |
 | Configuration matérielle : Ubuntu 22.04                      |
 | Date de début : 11/05/2023                                   |
-| Date de finalisation : __...__/__...__/2023                  |
+| Date de finalisation : 23/05/2023                            |
 | Tests à appliquer : _distanceEntrePos_, _peutCommencerQuete_ |
 | Responsable de la campagne de test : Jules CHIRON            |
 
@@ -91,49 +91,51 @@ __Cas de test__
 | Référence du test appliqué : 0                       |
 |------------------------------------------------------|
 | Responsable : Jules CHIRON                           |
-| Date de l'application du test : __...__/__...__/2023 |
-| Résultat du test : __...__                           |
-| Occurrence des résultats : __...__                   |
+| Date de l'application du test : 23/05/2023           |
+| Résultat du test : OK                                |
+| Occurrence des résultats : systématique              |
 
 __Données d'entrée__
 
-| Classe |    Donnée 1    |    Donnée 2    | Résultat attendu |  Résultat observé  |  Résultat test  |
-|:------:|:--------------:|:--------------:|:----------------:|:------------------:|:---------------:|
-|   P1   | x1 = 2, y1 = 3 | x2 = 2, y2 = 3 |        0         |                    |                 |
-|   P2   | x1 = 2, y1 = 3 | x2 = 5, y2 = 3 |        3         |                    |                 |
-|   P3   | x1 = 2, y1 = 3 | x2 = 5, y2 = 1 |        5         |                    |                 |
-|   P4   | x1 = 2, y1 = 3 | x2 = 5, y2 = 5 |        5         |                    |                 |
-|   P5   | x1 = 4, y1 = 3 | x2 = 2, y2 = 3 |        2         |                    |                 |
-|   P6   | x1 = 4, y1 = 5 | x2 = 2, y2 = 3 |        4         |                    |                 |
-|   P7   | x1 = 3, y1 = 4 | x2 = 0, y2 = 0 |        7         |                    |                 |
-|   P8   | x1 = 3, y1 = 4 | x2 = 3, y2 = 3 |        1         |                    |                 |
-|   P9   | x1 = 3, y1 = 4 | x2 = 3, y2 = 6 |        2         |                    |                 |
+| Classe |    Donnée 1    |    Donnée 2    | Résultat attendu | Résultat observé | Résultat test |
+|:------:|:--------------:|:--------------:|:----------------:|:----------------:|:-------------:|
+|   P1   | x1 = 2, y1 = 3 | x2 = 2, y2 = 3 |        0         |        0         |      OK       |
+|   P2   | x1 = 2, y1 = 3 | x2 = 5, y2 = 3 |        3         |        3         |      OK       |
+|   P3   | x1 = 2, y1 = 3 | x2 = 5, y2 = 1 |        5         |        5         |      OK       |
+|   P4   | x1 = 2, y1 = 3 | x2 = 5, y2 = 5 |        5         |        5         |      OK       |
+|   P5   | x1 = 4, y1 = 3 | x2 = 2, y2 = 3 |        2         |        2         |      OK       |
+|   P6   | x1 = 4, y1 = 5 | x2 = 2, y2 = 3 |        4         |        4         |      OK       |
+|   P7   | x1 = 3, y1 = 4 | x2 = 0, y2 = 0 |        7         |        7         |      OK       |
+|   P8   | x1 = 3, y1 = 4 | x2 = 3, y2 = 3 |        1         |        1         |      OK       |
+|   P9   | x1 = 3, y1 = 4 | x2 = 3, y2 = 6 |        2         |        2         |      OK       |
 
 ---
 
-| Référence du test appliqué : 1                       |
-|------------------------------------------------------|
-| Responsable : Jules CHIRON                           |
-| Date de l'application du test : __...__/__...__/2023 |
-| Résultat du test : __...__                           |
-| Occurrence des résultats : __...__                   |
+| Référence du test appliqué : 1             |
+|--------------------------------------------|
+| Responsable : Jules CHIRON                 |
+| Date de l'application du test : 23/05/2023 |
+| Résultat du test : OK                      |
+| Occurrence des résultats : systématique    |
 
 __Données d'entrée__
 
 | Classe |  Donnée 1  |   Donnée 2    | Résultat attendu | Résultat observé | Résultat test |
 |:------:|:----------:|:-------------:|:----------------:|:----------------:|:-------------:|
-|   P1   | 1, 2, 3, 4 |    ((),())    |       true       |                  |               |
-|   P2   | 1, 2, 3, 4 |   ((1,),())   |       true       |                  |               |
-|   P3   | 1, 2, 3, 4 |  ((1,3),())   |       true       |                  |               |
-|   P4   | 1, 2, 3, 4 |  ((1,),(2,))  |       true       |                  |               |
-|   P5   | 1, 2, 3, 4 | ((1,),(2,4))  |       true       |                  |               |
-|   P6   | 1, 2, 3, 4 | ((1,3),(2,))  |       true       |                  |               |
-|   P7   | 1, 2, 3, 4 | ((1,4),(2,3)) |       true       |                  |               |
-|   P8   | 1, 2, 3, 4 |  ((5,),(,))   |      false       |                  |               |
-|   P9   | 1, 2, 3, 4 |  ((6,5),())   |      false       |                  |               |
-|  P10   | 1, 2, 3, 4 | ((5,),(1,4))  |      false       |                  |               |
-|  P11   | 1, 2, 3, 4 | ((1,5),(6,))  |      false       |                  |               |
-|  P12   | 1, 2, 3, 4 |  ((5,),(6,))  |      false       |                  |               |
-|  P13   | 1, 2, 3, 4 | ((1,5),(7,6)) |      false       |                  |               |
+|   P1   | 1, 2, 3, 4 |    ((),())    |       true       |       true       |      OK       |
+|   P2   | 1, 2, 3, 4 |   ((1,),())   |       true       |       true       |      OK       |
+|   P3   | 1, 2, 3, 4 |  ((1,3),())   |       true       |       true       |      OK       |
+|   P4   | 1, 2, 3, 4 |  ((1,),(2,))  |       true       |       true       |      OK       |
+|   P5   | 1, 2, 3, 4 | ((1,),(2,4))  |       true       |       true       |      OK       |
+|   P6   | 1, 2, 3, 4 | ((1,3),(2,))  |       true       |       true       |      OK       |
+|   P7   | 1, 2, 3, 4 | ((1,4),(2,3)) |       true       |       true       |      OK       |
+|   P8   | 1, 2, 3, 4 |  ((5,),(,))   |      false       |      false       |      OK       |
+|   P9   | 1, 2, 3, 4 |  ((6,5),())   |      false       |      false       |      OK       |
+|  P10   | 1, 2, 3, 4 | ((5,),(1,4))  |      false       |      false       |      OK       |
+|  P11   | 1, 2, 3, 4 | ((1,5),(6,))  |      false       |      false       |      OK       |
+|  P12   | 1, 2, 3, 4 |  ((5,),(6,))  |      false       |      false       |      OK       |
+|  P13   | 1, 2, 3, 4 | ((1,5),(7,6)) |      false       |      false       |      OK       |
 
 ## 4. Conclusion
+
+Tous les tests que nous avons effectués pour la classe ___ManagerDeQuete___ sont OK, nos méthodes fonctionnent bien.
