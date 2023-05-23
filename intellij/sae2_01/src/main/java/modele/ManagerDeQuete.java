@@ -150,7 +150,7 @@ public class ManagerDeQuete {
     }
 
 
-    public void gloutonSimple(Joueur joueur){
+    public void efficace(Joueur joueur){
         /*
          * exécute la solution gloutonne
          */
