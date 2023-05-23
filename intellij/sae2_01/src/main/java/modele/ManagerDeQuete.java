@@ -2,8 +2,11 @@ package modele;
 
 import java.util.ArrayList;
 
+
 public class ManagerDeQuete {
-    ArrayList<Quete> listeQuetesRestantes;
+    private ArrayList<Quete> listeQuetesRestantes; // une liste qui va changer au fur et a mesure
+    private ArrayList<Quete> listeQuetes; // une liste qui nous permet de se souvenir des anciennes quêtes réalisées si celles-ci ont été complétées
+    final boolean affichageTerminal = true;
 
     public ManagerDeQuete(){
         /*
@@ -16,11 +19,18 @@ public class ManagerDeQuete {
         /*
         Constructeur de la classe ManagerDeQuete
          */
-        listeQuetesRestantes = parScenario.getListeQuetes();
+        ArrayList<Quete> listeQueteBis = parScenario.getListeQuetes();
+        ArrayList<Quete> listeQuetes = new ArrayList<>();
+        ArrayList<Quete> listeQuetesRestantes = new ArrayList<>();
+
+        for (Quete uneQuete : listeQueteBis){
+            listeQuetes.add(uneQuete);
+            listeQuetesRestantes.add(uneQuete);
+        }
     }
 
 
-    private int trouverIndiceListeQuete(ArrayList<modele.Quete> liste, int numQuete) {
+    private int trouverIndiceListeQuete(ArrayList<Quete> liste, int numQuete) {
         /*
          * Retourne l'indice de la quête dans la liste possédant le numéro de quête donné en paramètre
          */
@@ -30,7 +40,7 @@ public class ManagerDeQuete {
                 return i;
             }
         }
-    
+
         System.out.println("Quête non trouvée dans la liste des quêtes !");
         return -1;
     }
@@ -150,50 +160,83 @@ public class ManagerDeQuete {
     }
 
 
-    public void efficace(Joueur joueur){
+    private int choisirQueteDansQuetesProches(ArrayList queteProche, String typeSolution){
         /*
-         * exécute la solution gloutonne
+         * renvoie le numéro de la quete la plus proche en fonction de si l'on sohaite une solution efficace ou exhausistive
          */
-        while (! joueur.getParcours().contains(0)){
-            // on cherche la liste des quetes les plus proches realisables pour le joueur
-            ArrayList queteProche = trouverQueteProche(joueur);
-            
-            // si dans les quetes les plus proches il y a la quete finale, alors on l'a choisie, sinon on prend la premiere possible
-            int queteChoisie;
+        int queteChoisie;
+        if (typeSolution == "efficace"){
+            // si c'est une solution efficace alors :
             if (queteProche.contains(0)){
                 queteChoisie = 0;
             }
             else{
                 queteChoisie = (int)queteProche.get(0);
             }
+        } 
+        else if (typeSolution == "exhaustive"){
+            // si c'est une solution exhaustive alors :
+            System.out.println(queteProche);
+            if (listeQuetesRestantes.size() == 1){
+                queteChoisie = (int) queteProche.get(0);
+                listeQuetesRestantes.add(listeQuetes.get(trouverIndiceListeQuete(listeQuetes, 0)));
+            }
+            else
+                queteChoisie = (int) queteProche.get(0);
+        }
+        else
+            queteChoisie = 10000; System.out.println("on est pas sensé tombé ici !");
+
+        return queteChoisie;
+    }
+
+
+    public void efficaceOuExhaustif(Joueur joueur, String solution){
+        /*
+         * exécute la solution efficace
+         */
+        // affichage de la solution voulue
+        System.out.println("Choix de solution : " + solution);
+
+        while (! joueur.getParcours().contains(0)){
+            // on cherche la liste des quetes les plus proches realisables pour le joueur
+            ArrayList queteProche = trouverQueteProche(joueur);
+            
+            int queteChoisie = choisirQueteDansQuetesProches(queteProche, solution);
             
             // on rajoute la quete choisie dans la liste des quetes parcourues
             joueur.ajoutQueteParcours(queteChoisie);
-            System.out.println("Le joueur choisi d'aller à la quête " + queteChoisie);
+            if (affichageTerminal)
+                System.out.println("Le joueur choisi d'aller à la quête " + queteChoisie);
 
             Quete queteDansListe = listeQuetesRestantes.get(trouverIndiceListeQuete(listeQuetesRestantes, queteChoisie));
 
             // on met a jour la durée totale
             joueur.setDureeTotal(queteDansListe.getDuree());
             joueur.setDureeTotal(distanceEntrePos( joueur.getPos(), queteDansListe.getPos()) );
-            System.out.println("Le joueur augmente sa durée totale de : " + joueur.getDureeTotal());
+            if (affichageTerminal)
+                System.out.println("Le joueur augmente sa durée totale de : " + joueur.getDureeTotal());
 
             // on met a jour la position du joueur sur la quête sur laquelle il est allé
             joueur.setPos(queteDansListe.getPos());
-            System.out.println("Le joueur se rend donc en position " + "(" + queteDansListe.getPos()[0] + ", " +  queteDansListe.getPos()[1] + ")");
+            if (affichageTerminal)
+                System.out.println("Le joueur se rend donc en position " + "(" + queteDansListe.getPos()[0] + ", " +  queteDansListe.getPos()[1] + ")");
 
             // on met a jour son expérience
             joueur.setExperience(queteDansListe.getExperience());
-            System.out.println("Le joueur gagne " + queteDansListe.getExperience());
+            if (affichageTerminal)
+                System.out.println("Le joueur gagne " + queteDansListe.getExperience());
 
             // on retire la quete choisie des quetes restantes
             listeQuetesRestantes.remove(queteDansListe);
 
             // on montre le parcours du joueur en cours
-            System.out.println(joueur.getParcours());
+            if (affichageTerminal)
+                System.out.println(joueur.getParcours());
 
             //saut de ligne terminal
-            System.out.println();
+            if (affichageTerminal)    
+                System.out.println();
         }
     }
 
@@ -206,15 +249,12 @@ public class ManagerDeQuete {
             choixSolution : chaine de caractaire équivalant soit à "efficace" soit à "exhaustive"
          */
         Joueur joueur = new Joueur();
-        if (choixSolution == "efficace"){
-            System.out.println("Choix de solution : efficace");
-            efficace(joueur);
-            return joueur.getParcours();
+        System.out.println(listeQuetes);
+        System.out.println(listeQuetesRestantes);
+        if (choixSolution == "exhaustive"){
+            listeQuetesRestantes.remove(trouverIndiceListeQuete(listeQuetesRestantes, 0));
         }
-
-        else if (choixSolution == "exhaustive"){
-            System.out.println("Choix de solution : exhaustif utilisant la tactique gloutonne");
-        }
-        return new ArrayList<>();
+        efficaceOuExhaustif(joueur, choixSolution);
+        return joueur.getParcours();
     }
 }
