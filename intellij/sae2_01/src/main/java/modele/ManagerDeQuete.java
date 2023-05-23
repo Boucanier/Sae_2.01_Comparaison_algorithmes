@@ -206,8 +206,8 @@ public class ManagerDeQuete {
             choixSolution : chaine de caractaire équivalant soit à "efficace" soit à "exhaustive"
          */
         Joueur joueur = new Joueur();
-        if (choixSolution == "gloutonne"){
-            System.out.println("Choix de solution : gloutonne");
+        if (choixSolution == "efficace"){
+            System.out.println("Choix de solution : efficace");
             gloutonSimple(joueur);
             return joueur.getParcours();
         }
