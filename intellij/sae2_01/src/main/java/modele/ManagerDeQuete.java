@@ -208,7 +208,7 @@ public class ManagerDeQuete {
         Joueur joueur = new Joueur();
         if (choixSolution == "efficace"){
             System.out.println("Choix de solution : efficace");
-            gloutonSimple(joueur);
+            efficace(joueur);
             return joueur.getParcours();
         }
 
