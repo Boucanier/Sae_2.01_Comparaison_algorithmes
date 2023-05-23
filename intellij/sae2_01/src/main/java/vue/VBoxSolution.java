@@ -3,6 +3,7 @@ package vue;
 import java.io.File;
 import java.util.Arrays;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -24,11 +25,12 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         
         for (File item : fichiers){
             VBox vBox = new VBox();
-            Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4));
-            labelSolution.setId("solution");
+            Label labelSolution = new Label(" Scenario " + item.getName().substring(9, item.getName().length() - 4) + " ");
+            labelSolution.setId("titre");
             VBoxTable vBoxTable = new VBoxTable(item.getName());
             vBox.getChildren().addAll(labelSolution, vBoxTable);
             vBox.setUserData(item.getName());
+            vBox.setAlignment(Pos.CENTER);
             stackPaneSolution.getChildren().addAll(vBox);
         }
         this.getChildren().add(stackPaneSolution);

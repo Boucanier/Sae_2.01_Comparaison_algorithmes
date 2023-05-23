@@ -26,11 +26,9 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
         scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + parNomFichier));
         for (String solution : SOLUTIONS){
             Label labelSolution = new Label(solution);
-            labelSolution.setId("solution");
             ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
             ArrayList<Integer> arrayList = managerDeQuete.niveau1(solution);
             Label listeSolutions = new Label(arrayList.toString());
-            listeSolutions.setId("solution");
             this.setId("solution");
             this.getChildren().addAll(labelSolution, listeSolutions);
         }
