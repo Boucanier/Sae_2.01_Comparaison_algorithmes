@@ -20,6 +20,7 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
      */
     public VBoxSolution() {
         File[] fichiers = new File("scenarios").listFiles();
+        Arrays.sort(fichiers);
         
         for (File item : fichiers){
             Label labelSolution = new Label(item.getName());

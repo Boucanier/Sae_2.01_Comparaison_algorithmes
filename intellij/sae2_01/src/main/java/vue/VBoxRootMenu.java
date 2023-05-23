@@ -52,29 +52,36 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
         Arrays.sort(fichiers);
         
         ToggleGroup groupScenarios = new ToggleGroup();
-        for (int i = 0; i < fichiers.length; i++) {
-            RadioMenuItem menuItemScenario = new RadioMenuItem(fichiers[i].getName());
-            menuItemScenario.setUserData(fichiers[i].getName());
+        for (File item : fichiers) {
+            RadioMenuItem menuItemScenario = new RadioMenuItem(item.getName());
+            menuItemScenario.setUserData(item.getName());
             menuScenario.getItems().add(menuItemScenario);
             menuItemScenario.setToggleGroup(groupScenarios);
             menuItemScenario.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
                     System.out.println(menuItemScenario.getUserData());
-
-                    if (!scenario.equals(menuItemScenario.getUserData()))
-                        vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
-                        System.out.println(vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData());
+                    
+                    for (int i = 0; i<fichiers.length; i++){
+                        String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData();
+                        if (scenario.equals(menuItemScenario.getUserData())){
+                            vBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                            break;
+                        }
+                    }
                 }
             });
         }
         ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
 
-        String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
-        if (!scenario.equals(groupScenarios.getUserData()))
-            vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
+        for (int i = 0; i<fichiers.length; i++){
+            String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData();
+            if (scenario.equals(menuScenario.getItems().get(0).getUserData())){
+                vBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                break;
+            }
+        }
 
         menuBar.getMenus().addAll( menuScenario, quitMenu);
         this.getChildren().addAll(menuBar,vBoxSolution);
