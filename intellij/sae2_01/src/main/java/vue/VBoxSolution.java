@@ -23,10 +23,13 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         Arrays.sort(fichiers);
         
         for (File item : fichiers){
-            Label labelSolution = new Label(item.getName());
-            labelSolution.setUserData(item.getName());
+            VBox vBox = new VBox();
+            Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4));
             labelSolution.setId("solution");
-            stackPaneSolution.getChildren().add(labelSolution);
+            VBoxTable vBoxTable = new VBoxTable(item.getName());
+            vBox.getChildren().addAll(labelSolution, vBoxTable);
+            vBox.setUserData(item.getName());
+            stackPaneSolution.getChildren().addAll(vBox);
         }
         this.getChildren().add(stackPaneSolution);
     }
