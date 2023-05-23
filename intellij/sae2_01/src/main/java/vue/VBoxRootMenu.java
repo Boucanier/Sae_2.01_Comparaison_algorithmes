@@ -14,7 +14,6 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
-import modele.Scenario;
 
 /**
  * Contient le menu de sélection de la solution et du scénario
@@ -22,38 +21,14 @@ import modele.Scenario;
  */
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();
-    public static Menu menu = new Menu("_Solutions");
     public static Menu menuScenario = new Menu("S_cénarios");
     public static Menu quitMenu = new Menu("_Quitter");
-    public static Scenario [] scenarios;
     public static VBoxSolution vBoxSolution = new VBoxSolution();
 
     /**
      * Constructeur de la classe VBoxRootMenu
      */
     public VBoxRootMenu() {
-        ToggleGroup groupSolutions = new ToggleGroup();
-
-        for (String item : SOLUTIONS){
-            RadioMenuItem menuItem = new RadioMenuItem("_"+item);
-            menuItem.setUserData(item);
-            menu.getItems().add(menuItem);
-            menuItem.setToggleGroup(groupSolutions);
-            menuItem.setId("menuItem");
-            menuItem.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent actionEvent){
-                    System.out.println(menuItem.getUserData());
-                    String annee = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
-
-                    if (!annee.equals(menuItem.getUserData()))
-                        vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
-                }
-            });
-        }
-        
-        menu.setMnemonicParsing(true);
 
         RadioMenuItem menuItem = new RadioMenuItem("_Quitter");
         quitMenu.getItems().add(menuItem);
@@ -74,7 +49,6 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
         });
 
         File[] fichiers = new File("scenarios").listFiles();
-        scenarios = new Scenario[fichiers.length];
         Arrays.sort(fichiers);
         
         ToggleGroup groupScenarios = new ToggleGroup();
@@ -83,17 +57,26 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             menuItemScenario.setUserData(fichiers[i].getName());
             menuScenario.getItems().add(menuItemScenario);
             menuItemScenario.setToggleGroup(groupScenarios);
-            menuItemScenario.setId("menuItemScenario");
-        }
+            menuItemScenario.setOnAction(new EventHandler<ActionEvent>() {
 
-        ((RadioMenuItem)menu.getItems().get(0)).setSelected(true);
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
+                    System.out.println(menuItemScenario.getUserData());
+
+                    if (!scenario.equals(menuItemScenario.getUserData()))
+                        vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
+                        System.out.println(vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData());
+                }
+            });
+        }
         ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
 
-        String solution = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
-        if (!solution.equals(groupSolutions.getUserData()))
+        String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(1).getUserData();
+        if (!scenario.equals(groupScenarios.getUserData()))
             vBoxSolution.getStackPaneSolution().getChildren().get(1).toBack();
 
-        menuBar.getMenus().addAll(menu, menuScenario, quitMenu);
+        menuBar.getMenus().addAll( menuScenario, quitMenu);
         this.getChildren().addAll(menuBar,vBoxSolution);
     }
 }

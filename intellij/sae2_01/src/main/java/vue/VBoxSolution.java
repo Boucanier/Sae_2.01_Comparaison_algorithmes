@@ -1,12 +1,15 @@
 package vue;
 
+import java.io.File;
+import java.util.Arrays;
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 
 /**
- * Contient le nom de la solution choisie ainsi qu'un StackPane contenant les solutions pour tous les scénarios pour cette solution
+ * Contient un stackPane de scénarios
  * Hérite de la classe VBox
  */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
@@ -16,14 +19,17 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
      * Constructeur de la classe VBoxSolution
      */
     public VBoxSolution() {
-        for (String item : SOLUTIONS){
-            Label labelSolution = new Label("Solution " + item);
-            labelSolution.setUserData(item);
+        File[] fichiers = new File("scenarios").listFiles();
+        
+        for (File item : fichiers){
+            Label labelSolution = new Label(item.getName());
+            labelSolution.setUserData(item.getName());
             labelSolution.setId("solution");
             stackPaneSolution.getChildren().add(labelSolution);
         }
-        this.getChildren().addAll(stackPaneSolution);
+        this.getChildren().add(stackPaneSolution);
     }
+
     public StackPane getStackPaneSolution() {
         return stackPaneSolution;
     }
