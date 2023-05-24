@@ -1,6 +1,7 @@
 #solution {
     -fx-background-color: white;
         background-color: white;
+    -fx-pref-height: 1000px;
 }
 
 #titre {
@@ -9,5 +10,9 @@
     -fx-font-size: 20px;
         font-size: 20px;
     -fx-text-alignment: center;
-        text-align: center;
+    -fx-pref-width: 1000px;
+}
+
+#colonne {
+    -fx-alignment: CENTER;
 }

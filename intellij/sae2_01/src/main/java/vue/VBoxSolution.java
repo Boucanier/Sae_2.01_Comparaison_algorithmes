@@ -25,9 +25,10 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         
         for (File item : fichiers){
             VBox vBox = new VBox();
-            Label labelSolution = new Label(" Scenario " + item.getName().substring(9, item.getName().length() - 4) + " ");
+            Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4));
             labelSolution.setId("titre");
             VBoxTable vBoxTable = new VBoxTable(item.getName());
+            labelSolution.setAlignment(Pos.CENTER);
             vBox.getChildren().addAll(labelSolution, vBoxTable);
             vBox.setUserData(item.getName());
             vBox.setAlignment(Pos.CENTER);
