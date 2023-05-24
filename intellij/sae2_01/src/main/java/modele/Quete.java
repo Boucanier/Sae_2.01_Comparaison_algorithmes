@@ -23,6 +23,13 @@ public class Quete {
         scanner.close();
     }
 
+    public String getPrecondStr() {
+        return "(("+precond[0]+", "+precond[1]+"), ("+precond[2]+", "+precond[3]+"))";
+    }
+
+    public String getPosStr() {
+        return pos[0]+", "+pos[1];
+    }
 
     public String toString() {
         return "num : " + numero + ", position : " + Arrays.toString(pos) + ", precond : " + Arrays.toString(precond) + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
