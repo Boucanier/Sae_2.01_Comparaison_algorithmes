@@ -60,13 +60,14 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
             experienceCol.setReorderable(false);
             experienceCol.setSortable(false);
             experienceCol.setResizable(false);
-            TableColumn<Quete, Integer> precondCol = new TableColumn<Quete, Integer>("precond");
-            precondCol.setCellValueFactory(new PropertyValueFactory<>("precond"));
+            experienceCol.setPrefWidth(100);
+            TableColumn<Quete, String> precondCol = new TableColumn<Quete, String>("Préconditions");
+            precondCol.setCellValueFactory(new PropertyValueFactory<>("precondStr"));
             precondCol.setReorderable(false);
             precondCol.setSortable(false);
             precondCol.setResizable(false);
-            TableColumn<Quete, Integer> posCol = new TableColumn<Quete, Integer>("pos");
-            posCol.setCellValueFactory(new PropertyValueFactory<>("pos"));
+            TableColumn<Quete, String> posCol = new TableColumn<Quete, String>("Pos");
+            posCol.setCellValueFactory(new PropertyValueFactory<>("posStr"));
             posCol.setReorderable(false);
             posCol.setSortable(false);
             posCol.setResizable(false);
@@ -74,6 +75,8 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
             tableQuete.getColumns().addAll(numeroCol, nomCol, dureeCol, experienceCol, precondCol, posCol);
 
             tableQuete.getItems().addAll(arrayQuetes);
+            tableQuete.setFixedCellSize(25);
+            tableQuete.setPrefHeight((arrayQuetes.size()+1) * tableQuete.getFixedCellSize() + 3);
             vBox.getChildren().addAll(tableQuete);
 
             this.setId("solution");
