@@ -2,7 +2,6 @@
     -fx-background-color: white;
         background-color: white;
     -fx-pref-height: 1000px;
-        height: 1000px;
 }
 
 #titre {
@@ -12,4 +11,5 @@
         font-size: 20px;
     -fx-text-alignment: center;
         text-align: center;
+    -fx-pref-width: 1000px;
 }
