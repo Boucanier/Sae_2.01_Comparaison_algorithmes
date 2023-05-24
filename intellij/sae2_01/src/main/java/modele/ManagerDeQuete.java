@@ -236,6 +236,20 @@ public class ManagerDeQuete {
     }
 
 
+    public ArrayList transformeNumQueteEnQuetesReelles(ArrayList<Integer> listeNumQuete){
+        /*
+         * prend une liste d'entier corerpsond au num des quetes
+         * puis renvoie une liste avec les quetes complete a l'intérieur dans le meme ordre
+         */
+        ArrayList<Quete> listeQueteReelle = new ArrayList<>();
+        for (Integer uneQuete : listeNumQuete){
+            Quete laQueteRelle = listeQuetes.get(trouverIndiceListeQuete(listeQuetes, uneQuete));
+            listeQueteReelle.add(laQueteRelle);
+        } 
+        return listeQueteReelle;
+    }
+
+
     public ArrayList niveau1(String choixSolution){
         /*
         correspond à la réalisation du premier niveau en fonction de choixSolution
@@ -250,6 +264,6 @@ public class ManagerDeQuete {
         }
 
         efficaceOuExhaustif(joueur, choixSolution);
-        return joueur.getParcours();
+        return transformeNumQueteEnQuetesReelles(joueur.getParcours());
     }
 }
