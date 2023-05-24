@@ -10,6 +10,9 @@
     -fx-font-size: 20px;
         font-size: 20px;
     -fx-text-alignment: center;
-        text-align: center;
     -fx-pref-width: 1000px;
+}
+
+#colonne {
+    -fx-alignment: CENTER;
 }
