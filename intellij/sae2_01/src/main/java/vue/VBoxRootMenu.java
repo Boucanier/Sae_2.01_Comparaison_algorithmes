@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 
 /**
- * Contient le menu de sélection de la solution et du scénario
+ * Contient le menu de sélection du scénario
  * Hérite de la classe VBox
  */
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
