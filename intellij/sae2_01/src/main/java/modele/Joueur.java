@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Joueur {
     private static int dureeTotal;
-    private static ArrayList<Integer> parcours;
+    private static ArrayList<Integer> parcoursNum;
+    private static ArrayList<Quete> parcoursQuete;
     private static int experience;
     private static int[] pos = new int[2];
 
@@ -13,7 +14,8 @@ public class Joueur {
          * Constructeur de la classe joueur
          */
         dureeTotal = 0;
-        parcours = new ArrayList<>();
+        parcoursNum = new ArrayList<>();
+        parcoursQuete = new ArrayList<>();
         experience = 0; // il n'a aucune expérience dès sa création
 
         //le joueur est en (0, 0) dès qu'il apparait
@@ -29,8 +31,12 @@ public class Joueur {
         return pos;
     }
 
-    public static ArrayList getParcours(){
-        return parcours;
+    public static ArrayList getParcoursNum(){
+        return parcoursNum;
+    }
+
+    public static ArrayList getParcoursQuete(){
+        return parcoursQuete;
     }
 
     public static int getExperience(){
@@ -49,7 +55,12 @@ public class Joueur {
         experience += newExperience;
     }
 
-    public void ajoutQueteParcours(int numQuete){
-        parcours.add(numQuete);
+    public void ajoutQueteParcoursNum(int numQuete){
+        parcoursNum.add(numQuete);
+    }
+
+    public void ajoutQueteParcours(Quete queteAAjouter){
+        parcoursQuete.add(queteAAjouter);
+        ajoutQueteParcoursNum(queteAAjouter.getNumero());
     }
 }

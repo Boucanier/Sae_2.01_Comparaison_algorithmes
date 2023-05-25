@@ -55,7 +55,7 @@ public class ManagerDeQuete {
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
 
             // on regarde si la quete peut etre faite par rapport au quetes deja réalisé par le joueur
-            if ( peutCommencerQuete(joueur.getParcours(), listeQuetesRestantes.get(i).getPrecond()) ){
+            if ( peutCommencerQuete(joueur.getParcoursNum(), listeQuetesRestantes.get(i).getPrecond()) ){
 
                 // on regarde si la quete est plus proche, plus loin ou si elle est a meme distance
                 if ( distanceEntrePos(Joueur.getPos(), listeQuetesRestantes.get(i).getPos()) < distanceMin){
@@ -193,18 +193,19 @@ public class ManagerDeQuete {
         // affichage de la solution voulue
         System.out.println("Choix de solution : " + solution);
 
-        while (! joueur.getParcours().contains(0)){
+        while (! joueur.getParcoursNum().contains(0)){
             // on cherche la liste des quetes les plus proches realisables pour le joueur
             ArrayList<Integer> queteProche = trouverQueteProche(joueur);
             
-            int queteChoisie = choisirQueteDansQuetesProches(queteProche, solution);
+            int queteChoisie = choisirQueteDansQuetesProches(queteProche, solution); // on a le num de la quete
+            Quete queteDansListe = listeQuetesRestantes.get(trouverIndiceListeQuete(listeQuetesRestantes, queteChoisie)); // on a la quete
             
             // on rajoute la quete choisie dans la liste des quetes parcourues
-            joueur.ajoutQueteParcours(queteChoisie);
+            joueur.ajoutQueteParcours(queteDansListe);
             if (affichageTerminal)
                 System.out.println("Le joueur choisi d'aller à la quête " + queteChoisie);
 
-            Quete queteDansListe = listeQuetesRestantes.get(trouverIndiceListeQuete(listeQuetesRestantes, queteChoisie));
+
 
             // on met a jour la durée totale
             joueur.setDureeTotal(queteDansListe.getDuree());
@@ -227,7 +228,7 @@ public class ManagerDeQuete {
 
             // on montre le parcours du joueur en cours
             if (affichageTerminal)
-                System.out.println(joueur.getParcours());
+                System.out.println(joueur.getParcoursNum());
 
             //saut de ligne terminal
             if (affichageTerminal)    
@@ -235,22 +236,7 @@ public class ManagerDeQuete {
         }
     }
 
-
-    public ArrayList transformeNumQueteEnQuetesReelles(ArrayList<Integer> listeNumQuete){
-        /*
-         * prend une liste d'entier corerpsond au num des quetes
-         * puis renvoie une liste avec les quetes complete a l'intérieur dans le meme ordre
-         */
-        ArrayList<Quete> listeQueteReelle = new ArrayList<>();
-        for (Integer uneQuete : listeNumQuete){
-            Quete laQueteRelle = listeQuetes.get(trouverIndiceListeQuete(listeQuetes, uneQuete));
-            listeQueteReelle.add(laQueteRelle);
-        } 
-        return listeQueteReelle;
-    }
-
-
-    public ArrayList niveau1(String choixSolution){
+    public Joueur niveau1(String choixSolution){
         /*
         correspond à la réalisation du premier niveau en fonction de choixSolution
 
@@ -264,6 +250,6 @@ public class ManagerDeQuete {
         }
 
         efficaceOuExhaustif(joueur, choixSolution);
-        return transformeNumQueteEnQuetesReelles(joueur.getParcours());
+        return joueur;
     }
 }
