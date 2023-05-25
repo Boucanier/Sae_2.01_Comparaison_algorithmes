@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lectureEcritureFichier.LectureFichierTexte;
 import modele.ConstantesSolutions;
+import modele.Joueur;
 import modele.ManagerDeQuete;
 import modele.Quete;
 import modele.Scenario;
@@ -38,7 +39,8 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
             Label labelSolution = new Label(" Solution " + solution);
             vBox.getChildren().addAll(labelSolution);
             ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
-            ArrayList<Quete> arrayQuetes = managerDeQuete.niveau1(solution);
+            Joueur joueur = managerDeQuete.niveau1(solution);
+            ArrayList<Quete> arrayQuetes = joueur.getParcoursQuete();
 
             tableQuete = new TableView<Quete>();
             TableColumn<Quete, Integer> numeroCol = new TableColumn<Quete, Integer>("Numéro");
