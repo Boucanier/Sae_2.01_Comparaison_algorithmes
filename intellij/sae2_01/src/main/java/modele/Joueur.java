@@ -63,4 +63,8 @@ public class Joueur {
         parcoursQuete.add(queteAAjouter);
         ajoutQueteParcoursNum(queteAAjouter.getNumero());
     }
+
+    public String toString(){
+        return parcoursNum.toString();
+    }
 }

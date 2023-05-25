@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ManagerDeQuete {
     private ArrayList<Quete> listeQuetesRestantes; // une liste qui va changer au fur et a mesure
     private ArrayList<Quete> listeQuetes; // une liste qui nous permet de se souvenir des anciennes quêtes réalisées si celles-ci ont été complétées
-    final boolean affichageTerminal = true;
+    final boolean affichageTerminal = false;
 
     public ManagerDeQuete(){
         /*
@@ -50,8 +50,7 @@ public class ManagerDeQuete {
             joueur : venant de la classe Joueur
          */
         ArrayList<Integer> listeQueteProche = new ArrayList<>();
-        int distanceMin = 10000000; // TROUVER SOLUTIONS POUR RENDRE CA MIEUX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        System.out.println(listeQuetesRestantes);
+        int distanceMin = 10000000; // TROUVER SOLUTIONS POUR RENDRE CA MIEUX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
 
             // on regarde si la quete peut etre faite par rapport au quetes deja réalisé par le joueur
@@ -171,7 +170,6 @@ public class ManagerDeQuete {
         } 
         else if (typeSolution == "exhaustive"){
             // si c'est une solution exhaustive alors :
-            System.out.println(queteProche);
             if (listeQuetesRestantes.size() == 1){
                 queteChoisie = queteProche.get(0);
                 listeQuetesRestantes.add(listeQuetes.get(trouverIndiceListeQuete(listeQuetes, 0)));
@@ -180,7 +178,7 @@ public class ManagerDeQuete {
                 queteChoisie = queteProche.get(0);
         }
         else
-            queteChoisie = 10000; System.out.println("on est pas sensé tombé ici !");
+            queteChoisie = 10000;
 
         return queteChoisie;
     }
@@ -190,9 +188,6 @@ public class ManagerDeQuete {
         /*
          * exécute la solution efficace
          */
-        // affichage de la solution voulue
-        System.out.println("Choix de solution : " + solution);
-
         while (! joueur.getParcoursNum().contains(0)){
             // on cherche la liste des quetes les plus proches realisables pour le joueur
             ArrayList<Integer> queteProche = trouverQueteProche(joueur);
