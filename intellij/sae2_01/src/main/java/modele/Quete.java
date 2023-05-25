@@ -10,6 +10,10 @@ public class Quete {
     private int experience;
     private String intitule;
 
+    /**
+     * Constructeur de la classe Quete
+     * @param ligne
+     */
     public Quete(String ligne) {
         Scanner scanner = new Scanner(ligne).useDelimiter("\\|");
         while (scanner.hasNext()) {
@@ -23,11 +27,35 @@ public class Quete {
         scanner.close();
     }
 
+    /**
+     * Constructeur de la classe Quete avec tous les champs en paramètre
+     * @param numero
+     * @param pos
+     * @param precond
+     * @param duree
+     * @param experience
+     * @param intitule
+     */
+    public Quete(int numero, int[] pos, int[] precond, int duree, int experience, String intitule) {
+        this.numero = numero;
+        this.pos = pos;
+        this.precond = precond;
+        this.duree = duree;
+        this.experience = experience;
+        this.intitule = intitule;
+    }
+
     public String getPrecondStr() {
+        if (precond == null) {
+            return null;
+        }
         return "(("+precond[0]+", "+precond[1]+"), ("+precond[2]+", "+precond[3]+"))";
     }
 
     public String getPosStr() {
+        if (pos == null) {
+            return null;
+        }
         return pos[0]+", "+pos[1];
     }
 
