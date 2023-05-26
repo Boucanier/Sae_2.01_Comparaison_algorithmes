@@ -2,7 +2,9 @@ package modele;
 
 import java.util.ArrayList;
 
-
+/**
+ * Classe permettant de gérer les quêtes
+ */
 public class ManagerDeQuete {
     private ArrayList<Quete> listeQuetesRestantes; // une liste qui va changer au fur et a mesure
     private ArrayList<Quete> listeQuetes; // une liste qui nous permet de se souvenir des anciennes quêtes réalisées si celles-ci ont été complétées

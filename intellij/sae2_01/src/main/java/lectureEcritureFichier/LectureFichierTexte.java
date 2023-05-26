@@ -10,9 +10,15 @@ import modele.Quete;
 import modele.Scenario;
 
 /**
- * Classe permettant de lire un fichier texte
+ * Classe permettant de lire un fichier texte de scénario
  */
 public class LectureFichierTexte {
+
+    /**
+     * Lecture d'un fichier texte
+     * @param fichier le fichier à lire
+     * @return Scenario
+     */
     public static Scenario lecture (File fichier) {
         Scenario scenario = new Scenario();
         try {

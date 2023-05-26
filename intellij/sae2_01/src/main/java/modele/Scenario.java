@@ -2,6 +2,9 @@ package modele;
 
 import java.util.ArrayList;
 
+/**
+ * Classe représentant le scénario
+ */
 public class Scenario {
     private ArrayList<Quete> listeQuetes;
 

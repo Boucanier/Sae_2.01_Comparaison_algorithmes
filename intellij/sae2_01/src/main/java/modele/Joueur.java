@@ -2,6 +2,9 @@ package modele;
 
 import java.util.ArrayList;
 
+/**
+ * Classe représentant le joueur et ses caractéristiques
+ */
 public class Joueur {
     private static int dureeTotal;
     private static ArrayList<Integer> parcoursNum;

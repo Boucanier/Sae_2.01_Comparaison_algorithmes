@@ -2,6 +2,10 @@ package modele;
 
 import java.util.Arrays;
 import java.util.Scanner;
+
+/**
+ * Classe représentant une quête et ses caractéristiques
+ */
 public class Quete {
     private int numero;
     private int[] pos = new int[2];
