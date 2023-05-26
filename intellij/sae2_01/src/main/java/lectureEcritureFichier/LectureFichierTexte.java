@@ -9,6 +9,9 @@ import java.util.Scanner;
 import modele.Quete;
 import modele.Scenario;
 
+/**
+ * Classe permettant de lire un fichier texte
+ */
 public class LectureFichierTexte {
     public static Scenario lecture (File fichier) {
         Scenario scenario = new Scenario();
