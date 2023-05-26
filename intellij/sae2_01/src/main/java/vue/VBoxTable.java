@@ -2,7 +2,6 @@ package vue;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
