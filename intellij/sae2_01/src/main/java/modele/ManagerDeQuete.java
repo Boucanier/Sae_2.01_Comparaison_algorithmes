@@ -23,10 +23,11 @@ public class ManagerDeQuete {
      * @param parScenario
      */
     public ManagerDeQuete(Scenario parScenario){
+        listeQuetes = parScenario.getListeQuetes();
         this.listeQuetes = new ArrayList<>();
         this.listeQuetesRestantes = new ArrayList<>();
-        this.listeQuetes.addAll(parScenario.getListeQuetes());
-        this.listeQuetesRestantes.addAll(parScenario.getListeQuetes());
+        this.listeQuetes.addAll(listeQuetes);
+        this.listeQuetesRestantes.addAll(listeQuetes);
     }
 
 
