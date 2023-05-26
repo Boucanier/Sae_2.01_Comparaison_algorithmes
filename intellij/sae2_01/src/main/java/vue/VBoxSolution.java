@@ -37,10 +37,18 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         this.getChildren().add(stackPaneSolution);
     }
 
+    /**
+     * Permet de récupérer le stackPaneSolution
+     * @return stackPaneSolution
+     */
     public StackPane getStackPaneSolution() {
         return stackPaneSolution;
     }
 
+    /**
+     * Permet de modifier le stackPaneSolution
+     * @param parStackPaneSolution
+     */
     public void setStackPaneSolution(StackPane parStackPaneSolution) {
         stackPaneSolution = parStackPaneSolution;
     }

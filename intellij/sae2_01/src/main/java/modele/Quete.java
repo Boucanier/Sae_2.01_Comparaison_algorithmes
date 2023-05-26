@@ -49,6 +49,10 @@ public class Quete {
         this.intitule = intitule;
     }
 
+    /**
+     * Renvoie les préconditions de la quête sous forme de chaine de caractères
+     * @return String
+     */
     public String getPrecondStr() {
         if (precond == null) {
             return null;
@@ -56,6 +60,10 @@ public class Quete {
         return "(("+precond[0]+", "+precond[1]+"), ("+precond[2]+", "+precond[3]+"))";
     }
 
+    /**
+     * Renovie la position de la quête sous forme de chaine de caractères
+     * @return String
+     */
     public String getPosStr() {
         if (pos == null) {
             return null;
@@ -63,64 +71,106 @@ public class Quete {
         return pos[0]+", "+pos[1];
     }
 
+    /**
+     * Renvoie une chaîne de caractères représentant la quête
+     * @return String
+     */
     public String toString() {
         return "num : " + numero + ", position : " + Arrays.toString(pos) + ", precond : " + Arrays.toString(precond) + ", durée : " + duree + ", experience : " + experience + ", intitule : " + intitule;
     }
 
+    /**
+     * Retourne le numéro de la quête
+     * @return int
+     */
     public int getNumero() {
         return numero;
     }
 
+    /**
+     * Permets de modifier le numéro de la quête
+     * @param numero
+     */
     public void setNumero(int numero) {
         this.numero = numero;
     }
 
-
+    /**
+     * Retourne la position de la quête
+     * @return int[]
+     */
     public int[] getPos() {
         return pos;
     }
 
-
+    /**
+     * Permets de modifier la position de la quête
+     * @param pos
+     */
     public void setPos(int[] pos) {
         this.pos = pos;
     }
 
-
+    /**
+     * Retourne les préconditions de la quête
+     * @return int[]
+     */
     public int[] getPrecond() {
         return precond;
     }
 
-
+    /**
+     * Permets de modifier les préconditions de la quête
+     * @param precond
+     */
     public void setPrecond(int[] precond) {
         this.precond = precond;
     }
 
-
+    /**
+     * Retourne la durée de la quête
+     * @return int
+     */
     public int getDuree() {
         return duree;
     }
 
-
+    /**
+     * Permets de modifier la durée de la quête
+     * @param duree
+     */
     public void setDuree(int duree) {
         this.duree = duree;
     }
 
-
+    /**
+     * Retourne l'expérience de la quête
+     * @return int
+     */
     public int getExperience() {
         return experience;
     }
 
-
+    /**
+     * Permets de modifier l'expérience de la quête
+     * @param experience
+     */
     public void setExperience(int experience) {
         this.experience = experience;
     }
 
-
+    /**
+     * Retourne l'intitulé de la quête
+     * @return String
+     */
     public String getIntitule() {
         return intitule;
     }
 
-
+    /**
+     * Permets de modifier l'intitulé de la quête
+     * @param intitule
+     */
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
