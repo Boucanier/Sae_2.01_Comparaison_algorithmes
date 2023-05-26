@@ -42,7 +42,7 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
             Joueur joueur = managerDeQuete.niveau1(solution);
             ArrayList<Quete> arrayQuetes = joueur.getParcoursQuete();
 
-            arrayQuetes.add(new Quete(0, null, null, joueur.getDureeTotal(), joueur.getExperience(), "Total"));
+            arrayQuetes.add(new Quete(0, null, null, joueur.getDureeTotal(), joueur.getExperience(), "Total (quêtes + parcours)"));
 
             tableQuete = new TableView<Quete>();
             TableColumn<Quete, Integer> numeroCol = new TableColumn<Quete, Integer>("Numéro");
