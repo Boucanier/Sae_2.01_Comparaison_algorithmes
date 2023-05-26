@@ -41,7 +41,7 @@ public class Scenario {
      * Renvoie la liste des quetes
      * @return
      */
-    public ArrayList getListeQuetes(){
+    public ArrayList<Quete> getListeQuetes(){
         return listeQuetes;
     }
 }
