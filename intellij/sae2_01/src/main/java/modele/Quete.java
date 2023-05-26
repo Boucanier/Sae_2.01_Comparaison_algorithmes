@@ -122,13 +122,11 @@ public class Quete {
     }
 
 
+    /**
+     * Transforme un string en préconditions (tableau de 4 entiers)
+     * @param precondition
+     */
     private void stringToListPrecond(String precondition) {
-    /*
-        @Param :
-            precondition (String) :
-        @Returns :
-            precond[int] : la liste qui va devenir le champ contenant les preconditions nécessaire
-    */
         precondition = precondition.replace("(", "");
         precondition = precondition.replace(")", "");
         precondition = precondition.replace(" ", "");
@@ -148,6 +146,10 @@ public class Quete {
     }
 
 
+    /**
+     * Transforme un string en position (tableau de 2 entiers)
+     * @param position
+     */
     private void stringToListPos(String position) {
         position = position.replace("(", "");
         position = position.replace(")", "");

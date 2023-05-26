@@ -5,10 +5,17 @@ import java.util.ArrayList;
 public class Scenario {
     private ArrayList<Quete> listeQuetes;
 
+    /**
+     * Constructeur de la classe Scenario
+     */
     public Scenario() {
         listeQuetes = new ArrayList<Quete>();
     }
 
+    /**
+     * Renvoie une chaîne de caractères contenant les informations du scénario
+     * @param listeQuetes
+     */
     public String toString() {
         String msg = "";
         msg = msg + listeQuetes.size() + "\n";
@@ -18,19 +25,20 @@ public class Scenario {
         return msg;
     }
 
-    
-    public void ajout(Quete parQuete) {
-        /*
-        Ajoute une quête à la suite de la liste de scénarios
+    /**
+     * Ajoute une quete à la liste des quetes
+     * @param parQuete
      */
+    public void ajout(Quete parQuete) {
         listeQuetes.add(parQuete);
     }
 
 
+    /**
+     * Renvoie la liste des quetes
+     * @return
+     */
     public ArrayList getListeQuetes(){
-        /*
-         * retourne la liste des quetes
-         */
         return listeQuetes;
     }
 }
