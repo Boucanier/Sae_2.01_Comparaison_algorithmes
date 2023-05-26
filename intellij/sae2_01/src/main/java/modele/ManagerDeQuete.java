@@ -23,11 +23,11 @@ public class ManagerDeQuete {
      * @param parScenario
      */
     public ManagerDeQuete(Scenario parScenario){
-        listeQuetes = parScenario.getListeQuetes();
+        ArrayList<Quete> listeQuetesRecup = parScenario.getListeQuetes();
         this.listeQuetes = new ArrayList<>();
         this.listeQuetesRestantes = new ArrayList<>();
-        this.listeQuetes.addAll(listeQuetes);
-        this.listeQuetesRestantes.addAll(listeQuetes);
+        this.listeQuetes.addAll(listeQuetesRecup);
+        this.listeQuetesRestantes.addAll(listeQuetesRecup);
     }
 
 
@@ -60,7 +60,7 @@ public class ManagerDeQuete {
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
 
             // on regarde si la quete peut etre faite par rapport au quetes deja réalisé par le joueur
-            if ( peutCommencerQuete(joueur.getParcoursNum(), listeQuetesRestantes.get(i).getPrecond()) ){
+            if ( peutCommencerQuete(Joueur.getParcoursNum(), listeQuetesRestantes.get(i).getPrecond()) ){
 
                 // on regarde si la quete est plus proche, plus loin ou si elle est a meme distance
                 if ( distanceEntrePos(Joueur.getPos(), listeQuetesRestantes.get(i).getPos()) < distanceMin){
