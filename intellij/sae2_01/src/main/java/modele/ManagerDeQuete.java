@@ -60,16 +60,16 @@ public class ManagerDeQuete {
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
 
             // on regarde si la quete peut etre faite par rapport au quetes deja réalisé par le joueur
-            if ( peutCommencerQuete(Joueur.getParcoursNum(), listeQuetesRestantes.get(i).getPrecond()) ){
+            if ( peutCommencerQuete(joueur.getParcoursNum(), listeQuetesRestantes.get(i).getPrecond()) ){
 
                 // on regarde si la quete est plus proche, plus loin ou si elle est a meme distance
-                if ( distanceEntrePos(Joueur.getPos(), listeQuetesRestantes.get(i).getPos()) < distanceMin){
+                if ( distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos()) < distanceMin){
                     listeQueteProche.clear();
-                    distanceMin = distanceEntrePos(Joueur.getPos(), listeQuetesRestantes.get(i).getPos());
+                    distanceMin = distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos());
                     listeQueteProche.add(listeQuetesRestantes.get(i).getNumero());
                 }
 
-                else if (distanceEntrePos(Joueur.getPos(), listeQuetesRestantes.get(i).getPos()) == distanceMin){
+                else if (distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos()) == distanceMin){
                     listeQueteProche.add(listeQuetesRestantes.get(i).getNumero());
                 }
             }

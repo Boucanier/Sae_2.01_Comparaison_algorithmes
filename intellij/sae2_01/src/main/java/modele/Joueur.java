@@ -30,7 +30,7 @@ public class Joueur {
      * Méthode qui permet de récupérer la durée que le joueur a mis
      * @return int
      */
-    public static int getDureeTotal(){
+    public int getDureeTotal(){
         return dureeTotal;
     }
     
@@ -38,7 +38,7 @@ public class Joueur {
      * Méthode qui permet de récupérer la position du joueur
      * @return int[]
      */
-    public static int[] getPos(){
+    public int[] getPos(){
         return pos;
     }
 
@@ -46,7 +46,7 @@ public class Joueur {
      * Permet de récupérer les numéros des quêtes que le joueur a fait
      * @return ArrayList<Integer>
      */
-    public static ArrayList<Integer> getParcoursNum(){
+    public ArrayList<Integer> getParcoursNum(){
         return parcoursNum;
     }
 
@@ -54,7 +54,7 @@ public class Joueur {
      * Permet de récupérer les quêtes que le joueur a fait
      * @return ArrayList<Quete>
      */
-    public static ArrayList<Quete> getParcoursQuete(){
+    public ArrayList<Quete> getParcoursQuete(){
         return parcoursQuete;
     }
 
@@ -62,7 +62,7 @@ public class Joueur {
      * Permet de récupérer l'expérience du joueur
      * @return int
      */
-    public static int getExperience(){
+    public int getExperience(){
         return experience;
     }
 
