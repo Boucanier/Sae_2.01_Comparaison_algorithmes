@@ -9,10 +9,10 @@ public class Joueur {
     private static int experience;
     private static int[] pos = new int[2];
 
+    /**
+     * Constructeur de la classe Joueur
+     */
     public Joueur() {
-        /*
-         * Constructeur de la classe joueur
-         */
         dureeTotal = 0;
         parcoursNum = new ArrayList<>();
         parcoursQuete = new ArrayList<>();

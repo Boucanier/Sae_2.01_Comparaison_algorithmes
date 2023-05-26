@@ -8,16 +8,19 @@ public class ManagerDeQuete {
     private ArrayList<Quete> listeQuetes; // une liste qui nous permet de se souvenir des anciennes quêtes réalisées si celles-ci ont été complétées
     final boolean affichageTerminal = false;
 
+    /**
+     * Constructeur de la classe ManagerDeQuete
+     * Ne prend pas de paramètre
+     */
     public ManagerDeQuete(){
-        /*
-        Constructeur de la classe ManagerDeQuete
-         */
     }
 
+    /**
+     * Constructeur de la classe ManagerDeQuete
+     * Prend en paramètre un scénario
+     * @param parScenario
+     */
     public ManagerDeQuete(Scenario parScenario){
-        /*
-        Constructeur de la classe ManagerDeQuete
-         */
         this.listeQuetes = new ArrayList<>();
         this.listeQuetesRestantes = new ArrayList<>();
         this.listeQuetes.addAll(parScenario.getListeQuetes());
@@ -25,10 +28,13 @@ public class ManagerDeQuete {
     }
 
 
+    /**
+     * Retourne l'indice de la quête dans la liste possédant le numéro de quête donné en paramètre
+     * @param liste
+     * @param numQuete
+     * @return int
+     */
     private int trouverIndiceListeQuete(ArrayList<Quete> liste, int numQuete) {
-        /*
-         * Retourne l'indice de la quête dans la liste possédant le numéro de quête donné en paramètre
-         */
         for (int i = 0; i < liste.size(); i++) {
             modele.Quete quete = liste.get(i);
             if (quete.getNumero() == numQuete) {
@@ -40,15 +46,12 @@ public class ManagerDeQuete {
         return -1;
     }
     
-
-
+    /**
+     * Renvoie une liste d'entier contenant les numéro des quetes les plus proches possibles pour le joueur
+     * @param joueur
+     * @return ArrayList<Integer>
+     */
     public ArrayList<Integer> trouverQueteProche(Joueur joueur){
-        /*
-        renvoie une liste d'entier contenant les numéro des quetes les plus proches possibles pour le joueur
-
-        Params:
-            joueur : venant de la classe Joueur
-         */
         ArrayList<Integer> listeQueteProche = new ArrayList<>();
         int distanceMin = 10000000; // TROUVER SOLUTIONS POUR RENDRE CA MIEUX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
@@ -72,14 +75,13 @@ public class ManagerDeQuete {
     }
 
 
+    /**
+     * Renvoie le nombre de déplacement nécessaire à la réalisation du déplacement d'un joueur d'une position 1 à une position 2
+     * @param startPos : position de départ
+     * @param endPos : position d'arrivée
+     * @return int
+     */
     protected int distanceEntrePos(int[] startPos, int[] endPos){
-        /*
-        renvoie le nombre de déplacement nécessaire à la réalisation du déplacement d'un joueur d'une position 1 à une position 2
-
-        Params:
-        parPos1 : position de la quête 1
-        parPos2 : position de la quête 2
-         */
         int x = Math.abs(startPos[0] - endPos[0]);
         int y = Math.abs(startPos[1] - endPos[1]);
 
@@ -87,14 +89,13 @@ public class ManagerDeQuete {
     }
 
 
+    /**
+     * Renvoie true si le joueur à les préconditions pour commencer une certaine quête, false sinon
+     * @param parcoursDuJoueur
+     * @param parPrecond
+     * @return boolean
+     */
     protected boolean peutCommencerQuete(ArrayList<Integer> parcoursDuJoueur, int[] parPrecond){
-        /*
-        renvoie true si le joueur à les préconditinos pour commencer une certaine quête, false sinon
-
-        Params:
-            parcoursDuJoueur : le parcours que le joueur a réalisé
-            parPrecond : les préconditions nécessaires pour réaliser la quête
-         */
         int peutCommencer = 0;
         
         int precond0 = parPrecond[0];
@@ -154,10 +155,13 @@ public class ManagerDeQuete {
     }
 
 
+    /**
+     * Renvoie le numéro de la quete la plus proche en fonction de si l'on sohaite une solution efficace ou exhausistive
+     * @param queteProche
+     * @param typeSolution
+     * @return int
+     */
     private int choisirQueteDansQuetesProches(ArrayList<Integer> queteProche, String typeSolution){
-        /*
-         * renvoie le numéro de la quete la plus proche en fonction de si l'on sohaite une solution efficace ou exhausistive
-         */
         int queteChoisie;
         if (typeSolution == "efficace"){
             // si c'est une solution efficace alors :
@@ -184,10 +188,12 @@ public class ManagerDeQuete {
     }
 
 
+    /**
+     * Effectue la solution efficace ou exhaustive en fonction du type de solution donné en paramètre
+     * @param joueur
+     * @param solution
+     */
     public void efficaceOuExhaustif(Joueur joueur, String solution){
-        /*
-         * exécute la solution efficace
-         */
         while (! joueur.getParcoursNum().contains(0)){
             // on cherche la liste des quetes les plus proches realisables pour le joueur
             ArrayList<Integer> queteProche = trouverQueteProche(joueur);
@@ -231,13 +237,12 @@ public class ManagerDeQuete {
         }
     }
 
+    /**
+     * Renvoie le joueur avec la solution efficace ou exhaustive en fonction du type de solution donné en paramètre
+     * @param choixSolution
+     * @return Joueur
+     */
     public Joueur niveau1(String choixSolution){
-        /*
-        correspond à la réalisation du premier niveau en fonction de choixSolution
-
-        Params:
-            choixSolution : chaine de caractaire équivalant soit à "efficace" soit à "exhaustive"
-         */
         Joueur joueur = new Joueur();
 
         if (choixSolution == "exhaustive"){
