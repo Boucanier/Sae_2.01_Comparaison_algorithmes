@@ -19,11 +19,13 @@ public class CLientManagerDeQuete {
         
         ManagerDeQuete managerDeQuete1 = new ManagerDeQuete(scenario);
         Joueur joueur1 = managerDeQuete1.niveau1("efficace");
+        System.out.println(joueur1.getParcoursNum());
+        System.out.println(joueur1.getExperience());
         
 
         ManagerDeQuete managerDeQuete2 = new ManagerDeQuete(scenario);
         Joueur joueur2 = managerDeQuete2.niveau1("exhaustive");
-        System.out.println(joueur1.getParcoursNum());
         System.out.println(joueur2.getParcoursNum());
+        System.out.println(joueur1.getExperience());
     }
 }

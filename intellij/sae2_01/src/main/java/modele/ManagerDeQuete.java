@@ -96,6 +96,7 @@ public class ManagerDeQuete {
      * Renvoie true si le joueur à les préconditions pour commencer une certaine quête, false sinon
      * @param parcoursDuJoueur
      * @param parPrecond
+     * @param prec
      * @return boolean
      */
     protected boolean peutCommencerQuete(ArrayList<Integer> parcoursDuJoueur, int numQuete, int[] prec){
@@ -221,15 +222,14 @@ public class ManagerDeQuete {
             joueur.setPos(queteDansListe.getPos());
             if (affichageTerminal)
                 System.out.println("Le joueur se rend donc en position " + "(" + queteDansListe.getPos()[0] + ", " +  queteDansListe.getPos()[1] + ")");
+            
 
-            // on met a jour son expérience
             if (queteDansListe.getNumero() != 0)
                 joueur.setExperience(queteDansListe.getExperience());
-            else
-                joueur.setExperience(-1 * queteDansListe.getExperience());
             if (affichageTerminal)
                 System.out.println("Le joueur gagne " + queteDansListe.getExperience());
 
+                
             // on retire la quete choisie des quetes restantes
             listeQuetesRestantes.remove(queteDansListe);
 
