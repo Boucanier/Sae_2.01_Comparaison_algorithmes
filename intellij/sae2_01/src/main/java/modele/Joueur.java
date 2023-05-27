@@ -6,11 +6,13 @@ import java.util.ArrayList;
  * Classe représentant le joueur et ses caractéristiques
  */
 public class Joueur {
-    private static int dureeTotal;
-    private static ArrayList<Integer> parcoursNum;
-    private static ArrayList<Quete> parcoursQuete;
-    private static int experience;
-    private static int[] pos = new int[2];
+    private int dureeTotal;
+    private ArrayList<Integer> parcoursNum;
+    private ArrayList<Quete> parcoursQuete;
+    private ArrayList<int[]> arrayPos;
+    private ArrayList<Integer> arrayExperience;
+    private int experience;
+    private int[] pos = new int[2];
 
     /**
      * Constructeur de la classe Joueur
@@ -19,6 +21,8 @@ public class Joueur {
         dureeTotal = 0;
         parcoursNum = new ArrayList<>();
         parcoursQuete = new ArrayList<>();
+        arrayPos = new ArrayList<>();
+        arrayExperience = new ArrayList<>();
         experience = 0; // il n'a aucune expérience dès sa création
 
         //le joueur est en (0, 0) dès qu'il apparait
@@ -72,6 +76,7 @@ public class Joueur {
      */
     public void setPos(int[] newPos){
         pos = newPos;
+        arrayPos.add(newPos);
     }
 
     /**
@@ -88,6 +93,7 @@ public class Joueur {
      */
     public void setExperience(int newExperience){
         experience += newExperience;
+        arrayExperience.add(newExperience);
     }
 
     /**
@@ -113,5 +119,18 @@ public class Joueur {
      */
     public String toString(){
         return parcoursNum.toString();
+    }
+
+    /**
+     * Renvoie une chaine de caractaire contenant les positins sur lesquelles le joueur est allé
+     * 
+     * @return String
+     */
+    public String getArrayPos(){
+        String lesPos = "";
+        for (int[] position : arrayPos){
+            lesPos = lesPos + " (" + position[0] + ", " + position[1] + ")";
+        }
+        return lesPos;
     }
 }
