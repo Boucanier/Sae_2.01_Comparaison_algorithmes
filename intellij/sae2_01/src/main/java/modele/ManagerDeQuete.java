@@ -223,7 +223,10 @@ public class ManagerDeQuete {
                 System.out.println("Le joueur se rend donc en position " + "(" + queteDansListe.getPos()[0] + ", " +  queteDansListe.getPos()[1] + ")");
 
             // on met a jour son expérience
-            joueur.setExperience(queteDansListe.getExperience());
+            if (queteDansListe.getNumero() != 0)
+                joueur.setExperience(queteDansListe.getExperience());
+            else
+                joueur.setExperience(-1 * queteDansListe.getExperience());
             if (affichageTerminal)
                 System.out.println("Le joueur gagne " + queteDansListe.getExperience());
 
