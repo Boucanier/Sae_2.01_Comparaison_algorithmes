@@ -60,7 +60,7 @@ public class ManagerDeQuete {
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
 
             // on regarde si la quete peut etre faite par rapport au quetes deja réalisé par le joueur
-            if ( peutCommencerQuete(joueur.getParcoursNum(), listeQuetesRestantes.get(i)) ){
+            if ( peutCommencerQuete(joueur.getParcoursNum(), listeQuetesRestantes.get(i).getNumero(), listeQuetesRestantes.get(i).getPrecond()) ){
 
                 // on regarde si la quete est plus proche, plus loin ou si elle est a meme distance
                 if ( distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos()) < distanceMin){
@@ -98,13 +98,13 @@ public class ManagerDeQuete {
      * @param parPrecond
      * @return boolean
      */
-    protected boolean peutCommencerQuete(ArrayList<Integer> parcoursDuJoueur, Quete quete){
+    protected boolean peutCommencerQuete(ArrayList<Integer> parcoursDuJoueur, int numQuete, int[] prec){
         int peutCommencer = 0;
         
-        int precond0 = quete.getPrecond()[0];
-        int precond1 = quete.getPrecond()[1];
-        int precond2 = quete.getPrecond()[2];
-        int precond3 = quete.getPrecond()[3];
+        int precond0 = prec[0];
+        int precond1 = prec[1];
+        int precond2 = prec[2];
+        int precond3 = prec[3];
 
         if (precond0 == 0){
             return true;
