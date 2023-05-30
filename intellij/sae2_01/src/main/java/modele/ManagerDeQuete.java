@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Classe permettant de gérer les quêtes
@@ -48,32 +48,41 @@ public class ManagerDeQuete {
         System.out.println("Quête non trouvée dans la liste des quêtes !");
         return -1;
     }
-    
+
     /**
      * Renvoie une liste d'entier contenant les numéro des quetes les plus proches possibles pour le joueur
      * @param joueur
      * @return ArrayList<Integer>
      */
     public ArrayList<Integer> trouverQueteProche(Joueur joueur){
-        ArrayList<Integer> listeQueteProche = new ArrayList<>();
-        int distanceMin = 10000000; // TROUVER SOLUTIONS POUR RENDRE CA MIEUX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        TreeMap<Integer, Integer> dicoQueteProhe = new TreeMap<>(); // clé : une quete atteignable, valeur distance de la pos du joueur a la quete
+        ArrayList<Integer> listeQueteProche = new ArrayList<>(); //liste des num des quetes les plus proches possibles
+
+        //boucle qui enregistre toutes les quetes possibles dans le dico avec les distances réspectives par quetes
         for (int i = 0; i < listeQuetesRestantes.size(); i++){
 
-            // on regarde si la quete peut etre faite par rapport au quetes deja réalisé par le joueur
             if ( peutCommencerQuete(joueur.getParcoursNum(), listeQuetesRestantes.get(i).getPrecond()) ){
-
-                // on regarde si la quete est plus proche, plus loin ou si elle est a meme distance
-                if ( distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos()) < distanceMin){
-                    listeQueteProche.clear();
-                    distanceMin = distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos());
-                    listeQueteProche.add(listeQuetesRestantes.get(i).getNumero());
-                }
-
-                else if (distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos()) == distanceMin){
-                    listeQueteProche.add(listeQuetesRestantes.get(i).getNumero());
-                }
+                int distance = distanceEntrePos(joueur.getPos(), listeQuetesRestantes.get(i).getPos());
+                // si la quetes est possible
+                dicoQueteProhe.put(listeQuetesRestantes.get(i).getNumero(), distance);
             }
         }
+
+        // récupérer les entrées du TreeMap
+        Set<Map.Entry<Integer, Integer>> entries = dicoQueteProhe.entrySet();
+
+        // tri personnalisé basé sur les valeurs associées aux clés
+        Comparator<Map.Entry<Integer, Integer>> comparator = Map.Entry.comparingByValue();
+
+        // convertir les entrées en liste et trier
+        List<Map.Entry<Integer, Integer>> sortedEntries = new ArrayList<>(entries);
+        Collections.sort(sortedEntries, comparator);
+
+        // ajouter les clés triées dans la liste
+        for (Map.Entry<Integer, Integer> entry : sortedEntries) {
+            listeQueteProche.add(entry.getKey());
+        }
+
         return listeQueteProche;
     }
 
@@ -96,7 +105,6 @@ public class ManagerDeQuete {
      * Renvoie true si le joueur à les préconditions pour commencer une certaine quête, false sinon
      * @param parcoursDuJoueur
      * @param parPrecond
-     * @param prec
      * @return boolean
      */
     protected boolean peutCommencerQuete(ArrayList<Integer> parcoursDuJoueur, int[] parPrecond){
@@ -160,22 +168,31 @@ public class ManagerDeQuete {
 
 
     /**
-     * Renvoie le numéro de la quete la plus proche en fonction de si l'on sohaite une solution efficace ou exhausistive
+     * Renvoie le numéro de la quete la plus proche en fonction de si l'on souhaite une solution efficace ou exhausistive
      * @param queteProche
      * @param typeSolution
      * @return int
      */
-    private int choisirQueteDansQuetesProches(ArrayList<Integer> queteProche, String typeSolution){
+    private int choisirQueteDansQuetesProches(Joueur joueur, ArrayList<Integer> queteProche, String typeSolution){
         int queteChoisie;
         if (typeSolution == "efficace"){
             // si c'est une solution efficace alors :
             if (queteProche.contains(0)){
-                queteChoisie = 0;
+                Quete quete0 = listeQuetes.get(trouverIndiceListeQuete(listeQuetes, 0));
+                if (joueur.getExperience() >= quete0.getExperience())
+                    queteChoisie = 0;
+                else{
+                    int indiceQuete0 = queteProche.indexOf(0);
+                    if (indiceQuete0 == 0)
+                        queteChoisie = queteProche.get(1);
+                    else
+                        queteChoisie = queteProche.get(0);
+                }
             }
             else{
                 queteChoisie = queteProche.get(0);
             }
-        } 
+        }
         else if (typeSolution == "exhaustive"){
             // si c'est une solution exhaustive alors :
             if (listeQuetesRestantes.size() == 1){
@@ -202,7 +219,7 @@ public class ManagerDeQuete {
             // on cherche la liste des quetes les plus proches realisables pour le joueur
             ArrayList<Integer> queteProche = trouverQueteProche(joueur);
             
-            int queteChoisie = choisirQueteDansQuetesProches(queteProche, solution); // on a le num de la quete
+            int queteChoisie = choisirQueteDansQuetesProches(joueur, queteProche, solution); // on a le num de la quete
             Quete queteDansListe = listeQuetesRestantes.get(trouverIndiceListeQuete(listeQuetesRestantes, queteChoisie)); // on a la quete
             
             // on rajoute la quete choisie dans la liste des quetes parcourues
