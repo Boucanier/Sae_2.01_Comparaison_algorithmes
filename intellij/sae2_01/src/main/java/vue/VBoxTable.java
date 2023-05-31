@@ -32,7 +32,7 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
     public VBoxTable(String parNomFichier) {
         super(20);
         scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + parNomFichier));
-        for (String solution : SOLUTIONS){
+        for (String solution : NIVEAU_1){
             VBox vBox = new VBox();
             HBox hBox = new HBox(30);
             Label labelSolution = new Label(" Solution " + solution);
