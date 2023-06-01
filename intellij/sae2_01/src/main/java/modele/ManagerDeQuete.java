@@ -107,7 +107,7 @@ public class ManagerDeQuete {
      * @param parPrecond
      * @return boolean
      */
-    protected boolean peutCommencerQuete(ArrayList<Integer> parcoursDuJoueur, int[] parPrecond){
+    protected boolean peutCommencerQuete(List<Integer> parcoursDuJoueur, int[] parPrecond){
         int peutCommencer = 0;
         
         int precond0 = parPrecond[0];
