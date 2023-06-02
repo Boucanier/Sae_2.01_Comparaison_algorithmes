@@ -1,6 +1,7 @@
 package vue;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javafx.geometry.Pos;
@@ -15,6 +16,11 @@ import modele.ConstantesSolutions;
  */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
     public static StackPane stackPaneSolution = new StackPane();
+    public static ArrayList<String> listeScenario = new ArrayList<String>();
+
+    public static ArrayList<String> getListeScenario() {
+        return listeScenario;
+    }
 
     /**
      * Constructeur de la classe VBoxSolution
@@ -35,6 +41,7 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
                 vBox.setUserData(item.getName() + " " + solution);
                 vBox.setAlignment(Pos.CENTER);
                 stackPaneSolution.getChildren().addAll(vBox);
+                listeScenario.add(item.getName());
             }
         }
         this.getChildren().addAll(stackPaneSolution, gridPaneFormulaire);
