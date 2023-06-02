@@ -44,6 +44,9 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
                 listeScenario.add(item.getName());
             }
         }
+
+        stackPaneSolution.getChildren().get(0).toFront();
+
         this.getChildren().addAll(stackPaneSolution, gridPaneFormulaire);
     }
 
