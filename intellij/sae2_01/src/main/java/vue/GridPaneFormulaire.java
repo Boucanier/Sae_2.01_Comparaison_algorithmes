@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import modele.ConstantesSolutions;
 
 public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
-    public ComboBox<String> comboBoxSolution;
+    public static ComboBox<String> comboBoxSolution;
     
     public GridPaneFormulaire() {
         Controleur controleur = new Controleur();
@@ -46,11 +46,7 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         return comboBox;
     }
 
-    public ComboBox<String> getComboBoxSolution() {
-        return comboBoxSolution;
-    }
-
-    public void setComboBoxSolution(ComboBox<String> comboBoxSolution) {
-        this.comboBoxSolution = comboBoxSolution;
+    public static String getChoixSolution() {
+        return comboBoxSolution.getValue();
     }
 }

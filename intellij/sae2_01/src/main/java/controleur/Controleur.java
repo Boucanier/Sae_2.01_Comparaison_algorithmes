@@ -3,6 +3,7 @@ package controleur;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import vue.GridPaneFormulaire;
 
 public class Controleur implements EventHandler {
     @Override
@@ -10,7 +11,7 @@ public class Controleur implements EventHandler {
         if (event.getSource() instanceof Button){
             switch ((((Button) event.getSource()).getAccessibleText())){
                 case "valider":
-                    System.out.println("valider");
+                    System.out.println(GridPaneFormulaire.comboBoxSolution.getValue());
             }
         }
     }
