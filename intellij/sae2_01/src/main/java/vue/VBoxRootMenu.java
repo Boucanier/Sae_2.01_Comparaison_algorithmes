@@ -22,7 +22,6 @@ import modele.ConstantesSolutions;
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();
     public static Menu menuScenario = new Menu("S_cénarios");
-    public static Menu menuSolution = new Menu("_Solutions");
     public static Menu quitMenu = new Menu("_Quitter");
     public static VBoxSolution vBoxSolution = new VBoxSolution();
 
@@ -75,30 +74,6 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             });
         }
         ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
-        
-        ToggleGroup groupSolution = new ToggleGroup();
-        for (String item : SOLUTIONS) {
-            RadioMenuItem menuItemSolution = new RadioMenuItem(item);
-            menuItemSolution.setUserData(item);
-            menuSolution.getItems().add(menuItemSolution);
-            menuItemSolution.setToggleGroup(groupSolution);
-            menuItemSolution.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    System.out.println(menuItemSolution.getUserData());
-                    
-                    for (int i = 0; i<fichiers.length; i++){
-                        String solution = (String) vBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData();
-                        if (solution.equals(menuItemSolution.getUserData())){
-                            vBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
-                            break;
-                        }
-                    }
-                }
-            });
-        }
-        ((RadioMenuItem)menuSolution.getItems().get(0)).setSelected(true);
 
         for (int i = 0; i<fichiers.length; i++){
             String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData();
@@ -108,7 +83,7 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             }
         }
 
-        menuBar.getMenus().addAll(menuScenario, menuSolution, quitMenu);
+        menuBar.getMenus().addAll( menuScenario, quitMenu);
         this.getChildren().addAll(menuBar,vBoxSolution);
     }
 }
