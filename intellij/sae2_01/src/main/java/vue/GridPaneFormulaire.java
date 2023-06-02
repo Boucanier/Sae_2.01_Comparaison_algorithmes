@@ -23,6 +23,8 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
 
         Button boutonAnnuler = new Button("_Annuler");
         Button boutonValider = new Button("_Valider");
+        boutonValider.setAccessibleText("valider");
+        boutonValider.setOnAction(controleur);
         
         this.setPadding(new Insets(10));
         this.add(new Separator(), 0, 0, 2, 1);
