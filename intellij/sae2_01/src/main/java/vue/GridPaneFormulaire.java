@@ -44,7 +44,7 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
 
         this.setAlignment(Pos.CENTER);
         this.setId("titre");
-        this.setGridLinesVisible(true);
+        // this.setGridLinesVisible(true);
     }
 
     private ComboBox<String> peupleComboBoxSolution() {

@@ -88,6 +88,12 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
 
         this.setId("solution");
         this.getChildren().addAll(hBox);
+
+        ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
+        ArrayList<Quete> listeQuetes = managerDeQuete.niveau1(parSolution).getParcoursQuete();
+        for (Quete quete : listeQuetes){
+            tableQuete.getItems().add(quete);
+        }
     }
 
     public void update(ArrayList<Quete> listeQuetes){
