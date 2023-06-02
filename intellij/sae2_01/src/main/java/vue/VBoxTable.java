@@ -32,7 +32,6 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
     public VBoxTable(String parNomFichier) {
         super(20);
         scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + parNomFichier));
-        VBox vBox = new VBox();
         HBox hBox = new HBox(30);
 
         tableQuete = new TableView<Quete>();
@@ -86,9 +85,15 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
         hBox.setAlignment(Pos.CENTER);
 
         hBox.getChildren().addAll(tableQuete);
-        vBox.getChildren().addAll(hBox);
 
         this.setId("solution");
-        this.getChildren().addAll(vBox);
+        this.getChildren().addAll(hBox);
+    }
+
+    public void update(ArrayList<Quete> listeQuetes){
+        tableQuete.getItems().clear();
+        for (Quete quete : listeQuetes){
+            tableQuete.getItems().add(quete);
+        }
     }
 }
