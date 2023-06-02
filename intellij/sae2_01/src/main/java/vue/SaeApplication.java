@@ -17,7 +17,7 @@ public class SaeApplication extends Application {
      */
     public void start(Stage stage) {
         VBoxRootMenu root = new VBoxRootMenu();
-        Scene scene = new Scene(root, 920, 850);
+        Scene scene = new Scene(root, 920, 750);
         File css = new File("css" + File.separator + "sae.css");
         scene.getStylesheets().add(css.toURI().toString());
 
