@@ -1,7 +1,5 @@
 package vue;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -11,7 +9,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 
@@ -21,7 +18,7 @@ import modele.ConstantesSolutions;
  */
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();
-    public static Menu menuScenario = new Menu("S_cénarios");
+    // public static Menu menuScenario = new Menu("S_cénarios");
     public static Menu quitMenu = new Menu("_Quitter");
     public static VBoxSolution vBoxSolution = new VBoxSolution();
 
@@ -48,42 +45,7 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             }
         });
 
-        File[] fichiers = new File("scenarios").listFiles();
-        Arrays.sort(fichiers);
-        
-        ToggleGroup groupScenarios = new ToggleGroup();
-        for (File item : fichiers) {
-            RadioMenuItem menuItemScenario = new RadioMenuItem(item.getName());
-            menuItemScenario.setUserData(item.getName());
-            menuScenario.getItems().add(menuItemScenario);
-            menuItemScenario.setToggleGroup(groupScenarios);
-            menuItemScenario.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    System.out.println(menuItemScenario.getUserData());
-                    
-                    for (int i = 0; i<fichiers.length; i++){
-                        String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData();
-                        if (scenario.equals(menuItemScenario.getUserData())){
-                            vBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
-                            break;
-                        }
-                    }
-                }
-            });
-        }
-        ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
-
-        for (int i = 0; i<fichiers.length; i++){
-            String scenario = (String) vBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData();
-            if (scenario.equals(menuScenario.getItems().get(0).getUserData())){
-                vBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
-                break;
-            }
-        }
-
-        menuBar.getMenus().addAll( menuScenario, quitMenu);
+        menuBar.getMenus().addAll(quitMenu);
         this.getChildren().addAll(menuBar,vBoxSolution);
     }
 }
