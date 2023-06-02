@@ -14,11 +14,11 @@ public class Controleur implements EventHandler {
                 case "valider":
                     System.out.println(GridPaneFormulaire.getChoixScenario() + " " + GridPaneFormulaire.getChoixSolution());
 
-                    for (int i = 0; i < GridPaneFormulaire.getChoixScenario().length(); i++) {
+                    for (int i = 0; i < VBoxSolution.getListeScenario().size(); i++) {
                         String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
+                        System.out.println(VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString());
                         if (scenario.equals(GridPaneFormulaire.getChoixScenario() + " " + GridPaneFormulaire.getChoixSolution())) {
                             VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
-                            break;
                         }
                     }
             }
