@@ -16,7 +16,6 @@ public class Controleur implements EventHandler {
 
                     for (int i = 0; i < VBoxSolution.getListeScenario().size(); i++) {
                         String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
-                        System.out.println(VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString());
                         if (scenario.equals(GridPaneFormulaire.getChoixScenario() + " " + GridPaneFormulaire.getChoixSolution())) {
                             VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
                         }
