@@ -77,7 +77,7 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
         ((RadioMenuItem)menuScenario.getItems().get(0)).setSelected(true);
         
         ToggleGroup groupSolution = new ToggleGroup();
-        for (String item : NIVEAU_1) {
+        for (String item : SOLUTIONS) {
             RadioMenuItem menuItemSolution = new RadioMenuItem(item);
             menuItemSolution.setUserData(item);
             menuSolution.getItems().add(menuItemSolution);
