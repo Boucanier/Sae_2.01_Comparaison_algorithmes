@@ -1,14 +1,14 @@
 package controleur;
 
-import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import vue.GridPaneFormulaire;
 import vue.VBoxSolution;
 
-public class Controleur implements EventHandler {
+public class Controleur implements EventHandler<ActionEvent> {
     @Override
-    public void handle(Event event) {
+    public void handle(ActionEvent event) {
         if (event.getSource() instanceof Button){
             switch ((((Button) event.getSource()).getAccessibleText())){
                 case "valider":
