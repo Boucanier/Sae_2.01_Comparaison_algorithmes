@@ -29,7 +29,7 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
      * Constructeur de la classe VBoxTable
      * @param parNomFichier
      */
-    public VBoxTable(String parNomFichier) {
+    public VBoxTable(String parNomFichier, String parSolution) {
         super(20);
         scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + parNomFichier));
         HBox hBox = new HBox(30);

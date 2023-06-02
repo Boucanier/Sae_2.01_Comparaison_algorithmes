@@ -14,7 +14,7 @@ import modele.ConstantesSolutions;
  * Hérite de la classe VBox
  */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
-    private StackPane stackPaneSolution = new StackPane();
+    public static StackPane stackPaneSolution = new StackPane();
 
     /**
      * Constructeur de la classe VBoxSolution
@@ -22,27 +22,29 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
     public VBoxSolution() {
         File[] fichiers = new File("scenarios").listFiles();
         Arrays.sort(fichiers);
+        GridPaneFormulaire gridPaneFormulaire = new GridPaneFormulaire();
         
         for (File item : fichiers){
-            VBox vBox = new VBox();
-            GridPaneFormulaire gridPaneFormulaire = new GridPaneFormulaire();
-            Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4));
-            labelSolution.setId("titre");
-            VBoxTable vBoxTable = new VBoxTable(item.getName());
-            labelSolution.setAlignment(Pos.CENTER);
-            vBox.getChildren().addAll(labelSolution, gridPaneFormulaire, vBoxTable);
-            vBox.setUserData(item.getName());
-            vBox.setAlignment(Pos.CENTER);
-            stackPaneSolution.getChildren().addAll(vBox);
+            for (String solution : SOLUTIONS){
+                VBox vBox = new VBox();
+                Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4) + " - " + solution);
+                labelSolution.setId("titre");
+                VBoxTable vBoxTable = new VBoxTable(item.getName(), solution);
+                labelSolution.setAlignment(Pos.CENTER);
+                vBox.getChildren().addAll(labelSolution, vBoxTable);
+                vBox.setUserData(item.getName() + " " + solution);
+                vBox.setAlignment(Pos.CENTER);
+                stackPaneSolution.getChildren().addAll(vBox);
+            }
         }
-        this.getChildren().add(stackPaneSolution);
+        this.getChildren().addAll(stackPaneSolution, gridPaneFormulaire);
     }
 
     /**
      * Permet de récupérer le stackPaneSolution
      * @return stackPaneSolution
      */
-    public StackPane getStackPaneSolution() {
+    public static StackPane getStackPaneSolution() {
         return stackPaneSolution;
     }
 
@@ -50,7 +52,7 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
      * Permet de modifier le stackPaneSolution
      * @param parStackPaneSolution
      */
-    public void setStackPaneSolution(StackPane parStackPaneSolution) {
+    public static void setStackPaneSolution(StackPane parStackPaneSolution) {
         stackPaneSolution = parStackPaneSolution;
     }
 }
