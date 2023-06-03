@@ -1,14 +1,23 @@
 package controleur;
 
-import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import vue.GridPaneFormulaire;
 import vue.VBoxSolution;
 
-public class Controleur implements EventHandler {
+/**
+ * Controleur de l'application qui gère les événements
+ * Implémente l'interface EventHandler
+ */
+public class Controleur implements EventHandler<ActionEvent> {
+
+    /**
+     * Constructeur de la classe Controleur
+     * @param event
+     */
     @Override
-    public void handle(Event event) {
+    public void handle(ActionEvent event) {
         if (event.getSource() instanceof Button){
             switch ((((Button) event.getSource()).getAccessibleText())){
                 case "valider":
@@ -18,6 +27,7 @@ public class Controleur implements EventHandler {
                         String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
                         if (scenario.equals(GridPaneFormulaire.getChoixScenario() + " " + GridPaneFormulaire.getChoixSolution())) {
                             VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                            break;
                         }
                     }
             }
