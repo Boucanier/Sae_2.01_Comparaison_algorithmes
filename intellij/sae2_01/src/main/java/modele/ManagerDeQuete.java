@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-//import javax.swing.text.html.HTMLDocument.RunElement;
-
 /**
  * Classe permettant de gérer les quêtes
  */
