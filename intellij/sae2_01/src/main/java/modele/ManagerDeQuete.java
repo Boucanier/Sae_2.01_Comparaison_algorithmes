@@ -1,6 +1,9 @@
 package modele;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+
+//import javax.swing.text.html.HTMLDocument.RunElement;
 
 /**
  * Classe permettant de gérer les quêtes
@@ -274,5 +277,152 @@ public class ManagerDeQuete {
 
         efficaceOuExhaustif(joueur, choixSolution);
         return joueur;
+    }
+
+    // ##################################################
+    //partie sur le niv 2
+    // ##################################################
+
+
+    /**
+     * Met a jour les caractéristique essentielles d'une joueur en ajoutant la quete en parametre
+     * 
+     * @param joueur
+     * @param parQuete
+     */
+    private void ajoutCaracteristiqueQueteToJoueur(Joueur joueur, Quete parQuete){
+    }
+
+    /**
+     * Met a jour les caractéristique essentielles d'une joueur en supprimant sa derniere quete
+     * 
+     * @param joueur
+     */
+    private void retireCaracteristiqueQueteToJoueur(Joueur joueur){
+    }
+
+    /**
+     * Trouve la quete en fonction du numéro de celle-ci en parametre
+     * 
+     * @param numQuete
+     * @return Quete
+     */
+    private Quete trouverQueteParNumero(int numQuete){
+        return null;
+    }
+
+    /**
+     * Donne la liste de toutes les sources du scénario (les quetes qu'y n'ont pas de préconditions)
+     *
+     * @return ArrayList<Integer>
+     */
+    private ArrayList<Quete> trouverListeSource(){
+        return null;
+    }
+
+    /**
+     * Trouve toutes les solutions d'un scénario de façon récursive
+     * 
+     * @param solutions
+     * @param numQuete
+     * @param joueur
+     */
+    private void trouveSolutionsRecursivement(ArrayList<ArrayList<Quete>> solutions, int numQuete, Joueur joueur){
+    }
+
+    /**
+     * Pour toutes les sources on va chercher les solutions que l'on ajoute dans la liste de liste finale que l'on renvoie
+     * 
+     * @return ArrayList<ArrayList<Quete>>
+     */
+    public ArrayList<ArrayList<Quete>> trouverSolutions(){
+        return null;
+    }
+
+    /**
+     * Affichage propre des solutions en parametre dans le terminal
+     * 
+     * @param solutions
+     */
+    private void afficherSolutions(ArrayList<ArrayList<Quete>> solutions){
+    }
+
+    /**
+     * Mettre a jour les info du joueur info de connaitre les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
+     * 
+     * @param joueur
+     * @param uneListeDeQuetes
+     */
+    private void mettreInfoJoueur(Joueur joueur, ArrayList<Quete> uneListeDeQuetes){
+    }
+
+    /**
+     * permet de récupérer le champ d'un joueur
+     * 
+     * @param quete
+     * @param fieldName
+     * @return int
+     */
+    private static int getChamp(Joueur joueur, String nomDuCHamp) {
+        return 0;
+    }
+
+    /**
+     * Trie une liste de joueur en fonction de ses champs (experience, nombre de quetes réalisées, )
+     * 
+     * @param listeQuetes
+     * @param fieldName
+     */
+    public static void trierLesJoueurParDuree(List<Joueur> listeQuetes, final String nomDuChamp) {
+    }
+
+    /**
+     * Retourne les N premiers éléments d'une liste de joueur
+     * 
+     * @param listeJoueurs
+     * @param nbElement
+     * @param meilleurPire
+     * @return ArrayList<Joueur>
+     */
+    private ArrayList<Joueur> nPremierElementListeJoueur(ArrayList<Joueur> listeJoueurs, int nbElement, String meilleurPire){
+        return null;
+    }
+
+    /**
+     * Donne les N meilleurs solutions en fonction d'un des champs de la classe joueur (nbr Experience, nbr quetes réalisées, nbr de déplacements ...) 
+     * 
+     * @param solutions
+     * @param nbSolutions
+     * @param champATrier
+     * @param meilleurPire
+     * @return ArrayList<Joueur>
+     */
+    private ArrayList<Joueur> trierSolutionEnfonctionDe(ArrayList<ArrayList<Quete>> solutions, int nbSolutions, String champATrier, String meilleurPire){
+        return null;
+    }
+
+    /**
+     * Retourne les soltions efficace ou exhaustive uniquement, que l'on demande en parametre
+     * 
+     * @param listeJoueur
+     * @param typeSolution
+     * @return ArrayList<Joueur>
+     */
+    private ArrayList<Joueur> prendreSolutionEfficaceExhaustive(ArrayList<Joueur> listeJoueur, String typeSolution){
+        return null;
+    }
+
+
+    /**
+     * Renvoie une array list de joueur répondant au type de solution demandée, on peut donc travaillé avec afin de connaitre toutes les caractéristiques du joueur
+     * 
+     * @param nbrSolutions
+     * @param typeSolution
+     * @param objectifEtudiee
+     * @param meilleurPire
+     * @return ArrayList<Joueur>
+     */
+    public ArrayList<Joueur> niveau2(int nbrSolutions, String typeSolution, String objectifEtudiee, String meilleurPire){
+        return null;
     }
 }

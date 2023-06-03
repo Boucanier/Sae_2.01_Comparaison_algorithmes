@@ -1,12 +1,14 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Classe représentant le joueur et ses caractéristiques
  */
 public class Joueur {
     private int dureeTotal;
+    private int deplacement;
     private ArrayList<Integer> parcoursNum;
     private ArrayList<Quete> parcoursQuete;
     private ArrayList<int[]> arrayPos;
@@ -19,6 +21,7 @@ public class Joueur {
      */
     public Joueur() {
         dureeTotal = 0;
+        deplacement = 0;
         parcoursNum = new ArrayList<>();
         parcoursQuete = new ArrayList<>();
         arrayPos = new ArrayList<>();
@@ -37,7 +40,15 @@ public class Joueur {
     public int getDureeTotal(){
         return dureeTotal;
     }
-    
+
+    public int getDeplacement(){
+        return deplacement;
+    }
+
+    public void setDeplacement(int newDeplacement){
+        deplacement += newDeplacement;
+    }
+
     /**
      * Méthode qui permet de récupérer la position du joueur
      * @return int[]
@@ -121,16 +132,45 @@ public class Joueur {
         return parcoursNum.toString();
     }
 
+    public void removeExperience(int nbExp){
+        experience -= nbExp;
+    }
+
+    public void removeDerniereQuete(){
+        parcoursQuete.remove(parcoursQuete.size() - 1);
+        parcoursNum.remove(parcoursNum.size() - 1);
+    }
+
     /**
      * Renvoie une chaine de caractaire contenant les positins sur lesquelles le joueur est allé
      *
      * @return String
      */
-    public String getArrayPos(){
-        String lesPos = "";
-        for (int[] position : arrayPos){
-            lesPos = lesPos + " (" + position[0] + ", " + position[1] + ")";
+    public ArrayList<int[]> getArrayPos(){
+        return arrayPos;
+    }
+
+    public Joueur copy() {
+        Joueur copy = new Joueur();
+        copy.dureeTotal = this.dureeTotal;
+        copy.parcoursNum = new ArrayList<>(this.parcoursNum);
+        copy.parcoursQuete = new ArrayList<>(this.parcoursQuete);
+        copy.arrayPos = new ArrayList<>(this.arrayPos);
+        copy.arrayExperience = new ArrayList<>(this.arrayExperience);
+        copy.experience = this.experience;
+        copy.pos = Arrays.copyOf(this.pos, this.pos.length);
+        return copy;
+    }
+
+    public void parcourirQuete(Quete quete) {
+        parcoursNum.add(quete.getNumero());
+        parcoursQuete.add(quete);
+    }
+
+    public void annulerDerniereQuete() {
+        if (!parcoursNum.isEmpty()) {
+            parcoursNum.remove(parcoursNum.size() - 1);
+            parcoursQuete.remove(parcoursQuete.size() - 1);
         }
-        return lesPos;
     }
 }

@@ -1,9 +1,12 @@
 package client;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import lectureEcritureFichier.LectureFichierTexte;
 import modele.Joueur;
 import modele.ManagerDeQuete;
+import modele.Quete;
 import modele.Scenario;
 
 /**
@@ -17,12 +20,5 @@ public class CLientManagerDeQuete {
     public static void main (String[] args) {
         Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + "scenario_0.txt"));
         ManagerDeQuete managerDeQuete1 = new ManagerDeQuete(scenario);
-        Joueur joueur1 = managerDeQuete1.niveau1("efficace");
-        System.out.println(joueur1.getParcoursNum());
-        
-
-        ManagerDeQuete managerDeQuete2 = new ManagerDeQuete(scenario);
-        Joueur joueur2 = managerDeQuete2.niveau1("exhaustive");
-        System.out.println(joueur2.getParcoursNum());
     }
 }
