@@ -1,12 +1,8 @@
 package client;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import lectureEcritureFichier.LectureFichierTexte;
-import modele.Joueur;
 import modele.ManagerDeQuete;
-import modele.Quete;
 import modele.Scenario;
 
 /**

@@ -1,7 +1,12 @@
 package modele;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 //import javax.swing.text.html.HTMLDocument.RunElement;
 
