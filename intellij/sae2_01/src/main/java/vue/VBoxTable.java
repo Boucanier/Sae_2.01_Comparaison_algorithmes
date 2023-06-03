@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -12,14 +11,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lectureEcritureFichier.LectureFichierTexte;
 import modele.ConstantesSolutions;
-import modele.Joueur;
 import modele.ManagerDeQuete;
 import modele.Quete;
 import modele.Scenario;
 
 /**
- * Contient les tableaux des quêtes des solutions pour le niveau 1
+ * Tableau de solution qui contient des quêtes
  * Hérite de la classe VBox
+ * Implémente l'interface ConstantesSolutions
  */
 public class VBoxTable extends VBox implements ConstantesSolutions {
     private Scenario scenario;
@@ -28,6 +27,7 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
     /**
      * Constructeur de la classe VBoxTable
      * @param parNomFichier
+     * @param parSolution
      */
     public VBoxTable(String parNomFichier, String parSolution) {
         super(20);
@@ -96,6 +96,10 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
         }
     }
 
+    /**
+     * Met à jour le tableau de solution
+     * @param listeQuetes
+     */
     public void update(ArrayList<Quete> listeQuetes){
         tableQuete.getItems().clear();
         for (Quete quete : listeQuetes){

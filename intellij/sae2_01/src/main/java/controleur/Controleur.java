@@ -6,7 +6,16 @@ import javafx.scene.control.Button;
 import vue.GridPaneFormulaire;
 import vue.VBoxSolution;
 
+/**
+ * Controleur de l'application qui gère les événements
+ * Implémente l'interface EventHandler
+ */
 public class Controleur implements EventHandler<ActionEvent> {
+
+    /**
+     * Constructeur de la classe Controleur
+     * @param event
+     */
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() instanceof Button){

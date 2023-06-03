@@ -13,8 +13,9 @@ import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 
 /**
- * Contient le menu de sélection du scénario
+ * Contient le menu qui permet de quitter l'application et une VBoxSolution
  * Hérite de la classe VBox
+ * Implémente l'interface ConstantesSolutions
  */
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();

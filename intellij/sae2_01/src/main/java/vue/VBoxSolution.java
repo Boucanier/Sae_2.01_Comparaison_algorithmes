@@ -11,8 +11,9 @@ import javafx.scene.layout.VBox;
 import modele.ConstantesSolutions;
 
 /**
- * Contient un stackPane de scénarios
+ * Contient un stackPane de solution pour chaque scénario
  * Hérite de la classe VBox
+ * Implémente l'interface ConstantesSolutions
  */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
     public static StackPane stackPaneSolution = new StackPane();

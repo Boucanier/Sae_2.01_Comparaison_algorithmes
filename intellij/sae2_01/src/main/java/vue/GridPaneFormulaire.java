@@ -13,10 +13,18 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
 import modele.ConstantesSolutions;
 
+/**
+ * Contient le formulaire de choix du scénario et de la solution
+ * Hérite de la classe GridPane
+ * Implémente l'interface ConstantesSolutions
+ */
 public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
     public static ComboBox<String> comboBoxSolution;
     public static ComboBox<String> comboBoxScenario;
     
+    /**
+     * Constructeur de la classe GridPaneFormulaire
+     */
     public GridPaneFormulaire() {
         Controleur controleur = new Controleur();
 
@@ -47,6 +55,10 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         // this.setGridLinesVisible(true);
     }
 
+    /**
+     * Permet de peupler la comboBoxSolution
+     * @return ComboBox
+     */
     private ComboBox<String> peupleComboBoxSolution() {
         ComboBox<String> comboBox = new ComboBox<String>();
         for (String item : SOLUTIONS) {
@@ -55,10 +67,18 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         return comboBox;
     }
 
+    /**
+     * Permet de récupérer le choix de la solution
+     * @return String
+     */
     public static String getChoixSolution() {
         return comboBoxSolution.getValue();
     }
 
+    /**
+     * Permet de peupler la comboBoxScenario
+     * @return ComboBox
+     */
     private ComboBox<String> peupleComboBoxScenario() {
         ComboBox<String> comboBox = new ComboBox<String>();
 
@@ -71,6 +91,10 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         return comboBox;
     }
 
+    /**
+     * Permet de récupérer le choix du scénario
+     * @return String
+     */
     public static String getChoixScenario() {
         return comboBoxScenario.getValue();
     }
