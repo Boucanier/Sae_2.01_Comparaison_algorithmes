@@ -30,6 +30,9 @@ public class Controleur implements EventHandler<ActionEvent> {
                             break;
                         }
                     }
+                
+                case "annuler" :
+                    GridPaneFormulaire.resetFormulaire();
             }
         }
     }

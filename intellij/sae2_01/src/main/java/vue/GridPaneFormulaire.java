@@ -37,6 +37,8 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         comboBoxSolution.setValue(comboBoxSolution.getItems().get(0));
 
         Button boutonAnnuler = new Button("_Annuler");
+        boutonAnnuler.setAccessibleText("annuler");
+        boutonAnnuler.setOnAction(controleur);
         Button boutonValider = new Button("_Valider");
         boutonValider.setAccessibleText("valider");
         boutonValider.setOnAction(controleur);
@@ -97,5 +99,10 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
      */
     public static String getChoixScenario() {
         return comboBoxScenario.getValue();
+    }
+
+    public static void resetFormulaire() {
+        comboBoxScenario.setValue(comboBoxScenario.getItems().get(0));
+        comboBoxSolution.setValue(comboBoxSolution.getItems().get(0));
     }
 }
