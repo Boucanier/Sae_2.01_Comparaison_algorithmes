@@ -288,7 +288,7 @@ public class ManagerDeQuete {
 
 
     /**
-     * Met a jour les caractéristique essentielles d'une joueur en ajoutant la quete en parametre
+     * Met a jour les caractéristiques essentielles d'un joueur en ajoutant la quete en parametre
      * 
      * @param joueur
      * @param parQuete
@@ -297,7 +297,7 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Met a jour les caractéristique essentielles d'une joueur en supprimant sa derniere quete
+     * Met a jour les caractéristiques essentielles d'un joueur en supprimant sa derniere quete
      * 
      * @param joueur
      */
@@ -305,7 +305,7 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Trouve la quete en fonction du numéro de celle-ci en parametre
+     * Trouve la quete en fonction du numéro de celle-ci en paramètre
      * 
      * @param numQuete
      * @return Quete
@@ -351,7 +351,7 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Mettre a jour les info du joueur info de connaitre les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
+     * Mettre a jour les infos du joueur info de connaitre les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
      * 
      * @param joueur
      * @param uneListeDeQuetes
@@ -362,8 +362,8 @@ public class ManagerDeQuete {
     /**
      * permet de récupérer le champ d'un joueur
      * 
-     * @param quete
-     * @param fieldName
+     * @param joueur
+     * @param nomDuCHamp
      * @return int
      */
     private static int getChamp(Joueur joueur, String nomDuCHamp) {
@@ -373,10 +373,10 @@ public class ManagerDeQuete {
     /**
      * Trie une liste de joueur en fonction de ses champs (experience, nombre de quetes réalisées, )
      * 
-     * @param listeQuetes
-     * @param fieldName
+     * @param listeJoueurs
+     * @param nomDuChamp
      */
-    public static void trierLesJoueurParDuree(List<Joueur> listeQuetes, final String nomDuChamp) {
+    public static void trierLesJoueurParDuree(List<Joueur> listeJoueurs, final String nomDuChamp) {
     }
 
     /**
