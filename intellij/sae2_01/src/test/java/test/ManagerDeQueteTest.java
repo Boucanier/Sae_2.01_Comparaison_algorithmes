@@ -12,8 +12,16 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Classe de test de la classe ManagerDeQuete
+ * @see ManagerDeQuete
+ */
 class ManagerDeQueteTest extends ManagerDeQuete {
 
+    /**
+     * Méthode qui permet de tester la méthode distanceEntrePos
+     * @see ManagerDeQuete#distanceEntrePos(int[], int[])
+     */
     @Test
     void distanceEntrePosTest(){
         int[] posTab1 = {2,3};
@@ -44,6 +52,10 @@ class ManagerDeQueteTest extends ManagerDeQuete {
         assertEquals(2, distanceEntrePos(posTab1,posTab2));
     }
 
+    /**
+     * Méthode qui permet de tester la méthode peutCommencerQuete
+     * @see ManagerDeQuete#peutCommencerQuete(ArrayList, int[])
+     */
     @Test
     void peutCommencerQuete(){
         ArrayList<Integer> posTab = new ArrayList<>();
@@ -94,6 +106,10 @@ class ManagerDeQueteTest extends ManagerDeQuete {
         assertFalse(peutCommencerQuete(posTab,preTab));
     }
 
+    /**
+     * Méthode qui permet de tester la méthode niveau1
+     * @see ManagerDeQuete#niveau2(int, String, String, String)
+     */
     @Test
     void niveau2Test(){
         Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + "scenario_0.txt"));
