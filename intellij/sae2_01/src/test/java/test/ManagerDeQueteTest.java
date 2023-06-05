@@ -1,8 +1,13 @@
 package test;
 
 import modele.ManagerDeQuete;
+import modele.Scenario;
+
 import org.junit.jupiter.api.Test;
 
+import lectureEcritureFichier.LectureFichierTexte;
+
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,5 +92,31 @@ class ManagerDeQueteTest extends ManagerDeQuete {
         preTab[2] = 7;
         preTab[3] = 6;
         assertFalse(peutCommencerQuete(posTab,preTab));
+    }
+
+    @Test
+    void niveau2Test(){
+        Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + "scenario0.txt"));
+        ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
+
+        assertEquals(27, managerDeQuete.niveau2(1, "efficace", "dureeTotal", "meilleur").get(0).getDureeTotal());
+        assertEquals(30, managerDeQuete.niveau2(1, "efficace", "dureeTotal", "pire").get(0).getDureeTotal());
+        assertEquals(36, managerDeQuete.niveau2(1, "exhaustive", "dureeTotal", "meilleur").get(0).getDureeTotal());
+        assertEquals(40, managerDeQuete.niveau2(1, "exhaustive", "dureeTotal", "pire").get(0).getDureeTotal());
+
+        assertEquals(350, managerDeQuete.niveau2(1, "efficace", "experience", "meilleur").get(0).getExperience());
+        assertEquals(450, managerDeQuete.niveau2(1, "efficace", "experience", "pire").get(0).getExperience());
+        assertEquals(550, managerDeQuete.niveau2(1, "exhaustive", "experience", "meilleur").get(0).getExperience());
+        assertEquals(550, managerDeQuete.niveau2(1, "exhaustive", "experience", "pire").get(0).getExperience());
+
+        assertEquals(14, managerDeQuete.niveau2(1, "efficace", "deplacement", "meilleur").get(0).getDeplacement());
+        assertEquals(20, managerDeQuete.niveau2(1, "efficace", "deplacement", "pire").get(0).getDeplacement());
+        assertEquals(20, managerDeQuete.niveau2(1, "exhaustive", "deplacement", "meilleur").get(0).getDeplacement());
+        assertEquals(24, managerDeQuete.niveau2(1, "exhaustive", "deplacement", "pire").get(0).getDeplacement());
+
+        assertEquals(4, managerDeQuete.niveau2(1, "efficace", "parcoursNum", "meilleur").get(0).getParcoursNum().size());
+        assertEquals(4, managerDeQuete.niveau2(1, "efficace", "parcoursNum", "pire").get(0).getParcoursNum().size());
+        assertEquals(5, managerDeQuete.niveau2(1, "exhaustive", "parcoursNum", "meilleur").get(0).getParcoursNum().size());
+        assertEquals(5, managerDeQuete.niveau2(1, "exhaustive", "parcoursNum", "pire").get(0).getParcoursNum().size());
     }
 }
