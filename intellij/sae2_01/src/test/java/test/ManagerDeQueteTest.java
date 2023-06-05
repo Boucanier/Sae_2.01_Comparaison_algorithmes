@@ -107,7 +107,7 @@ class ManagerDeQueteTest extends ManagerDeQuete {
     }
 
     /**
-     * Méthode qui permet de tester la méthode niveau1
+     * Méthode qui permet de tester la méthode niveau2
      * @see ManagerDeQuete#niveau2(int, String, String, String)
      */
     @Test
