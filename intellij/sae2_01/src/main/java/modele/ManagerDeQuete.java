@@ -1,12 +1,6 @@
 package modele;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Classe permettant de gérer les quêtes
@@ -286,31 +280,72 @@ public class ManagerDeQuete {
     //partie sur le niv 2
     // ##################################################
 
+    /**
+     * Mettre a jour les info du joueur info de connaitre les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
+     * 
+     * @param joueur
+     * @param uneListeDeQuetes
+     */
+    private void mettreInfoJoueur(Joueur joueur, ArrayList<Quete> uneListeDeQuetes){
+        for (Quete uneQuete : uneListeDeQuetes){
+            int[] poseQuete = uneQuete.getPos();
+            int distanceJouerQuete = distanceEntrePos(joueur.getPos(), poseQuete);
+            // mis a jour de la durée total
+            joueur.setDureeTotal(distanceJouerQuete);
+            //mis a jour du nombre de déplacement
+            joueur.setDeplacement(distanceJouerQuete);
+            joueur.setDureeTotal(uneQuete.getDuree());
+            if (uneQuete.getNumero() != 0){
+                joueur.setExperience(uneQuete.getExperience());
+            }
+            //mis a jour de la position
+            joueur.setPos(uneQuete.getPos());
+            joueur.ajoutQueteParcours(uneQuete);
+        }
+    }
 
     /**
-     * Met a jour les caractéristiques essentielles d'un joueur en ajoutant la quete en parametre
+     * Met a jour les caractéristiques essentielles d'une joueur en ajoutant la quete en parametre
      * 
      * @param joueur
      * @param parQuete
      */
     private void ajoutCaracteristiqueQueteToJoueur(Joueur joueur, Quete parQuete){
+        if (parQuete.getNumero() != 0){
+            joueur.setExperience(parQuete.getExperience());
+        }
+        joueur.setPos(parQuete.getPos());
+        joueur.ajoutQueteParcours(parQuete);
+        listeQuetesRestantes.remove(parQuete);
     }
 
     /**
-     * Met a jour les caractéristiques essentielles d'un joueur en supprimant sa derniere quete
+     * Met a jour les caractéristique essentielles d'une joueur en supprimant sa derniere quete
      * 
      * @param joueur
      */
     private void retireCaracteristiqueQueteToJoueur(Joueur joueur){
+        ArrayList<Quete> listeQueteRealisee = joueur.getParcoursQuete();
+        Quete queteEnlevee = listeQueteRealisee.get(listeQueteRealisee.size() - 1);
+        if (queteEnlevee.getNumero() != 0){
+            joueur.removeExperience(queteEnlevee.getExperience());
+        }
+        joueur.removeDerniereQuete();
+        joueur.setPos(queteEnlevee.getPos());
+        listeQuetesRestantes.add(queteEnlevee);
     }
 
     /**
-     * Trouve la quete en fonction du numéro de celle-ci en paramètre
+     * Trouve la quete en fonction du numéro de celle-ci en parametre
      * 
      * @param numQuete
      * @return Quete
      */
     private Quete trouverQueteParNumero(int numQuete){
+        for (Quete quete : listeQuetes){
+            if (quete.getNumero() == numQuete)
+                return quete;
+        }
         return null;
     }
 
@@ -320,7 +355,83 @@ public class ManagerDeQuete {
      * @return ArrayList<Integer>
      */
     private ArrayList<Quete> trouverListeSource(){
-        return null;
+        ArrayList<Quete> listeSource = new ArrayList<>();
+        for (Quete quete : listeQuetes){
+            if (quete.getPrecond()[0] == 0)
+                listeSource.add(quete);
+        }
+        return listeSource;
+    }
+
+    private int indiceTrouverMeilleur(Joueur[] solutions, String objectEtudiee){
+        int meilleurSolution = getChamp(solutions[0], objectEtudiee);
+        int indiceMeilleurSolution = 0;
+        for (int i = 1; i < solutions.length; i++){
+            int champActuel = getChamp(solutions[i], objectEtudiee);
+            if (champActuel < meilleurSolution){
+                meilleurSolution = champActuel;
+                indiceMeilleurSolution = i;
+            }
+        }
+        return indiceMeilleurSolution;
+    }
+
+
+    private int indiceTrouverPire(Joueur[] solutions, String objectEtudiee){
+        int pireSolution = getChamp(solutions[0], objectEtudiee);
+        int indicePireSolution = 0;
+        for (int i = 1; i < solutions.length; i++){
+            int champActuel = getChamp(solutions[i], objectEtudiee);
+            if (champActuel < pireSolution){
+                pireSolution = champActuel;
+                indicePireSolution = i;
+            }
+        }
+        return indicePireSolution;
+    }
+
+
+    private void metSolutionDansListe(Joueur[] solutions, Joueur joueur, String objectEtudiee, String typeSolution, String meilleurPire){
+        int longeurListe = solutions.length;
+        Joueur joueur2 = joueur.copy();
+        
+        
+        for (int i = 0; i < longeurListe; i++){
+            if (solutions[i].getParcoursNum().size() == 0){
+                solutions[i] = joueur2;
+                return; //on sort de la méthode puisqu'on a insérer la valeur dans les solutions
+            }
+        }
+
+        // si on est la c'est qu'il n'y a plus de place dans la liste
+        // on cherche donc la valeur min ou max
+        if (meilleurPire.equals("meilleur")){
+            // on cherche donc la pire des solutions dans la liste des meilleurs
+            int indicePireSolutionDansListe = indiceTrouverPire(solutions, objectEtudiee);
+            if (getChamp(joueur2, objectEtudiee) < getChamp(solutions[indicePireSolutionDansListe], objectEtudiee)){
+                solutions[indicePireSolutionDansListe] = joueur2;
+            }
+        }
+
+        else if (meilleurPire.equals("pire")){
+            // on cherche donc la meilleur des solutions dans la liste des pires
+            int indiceMeilleurSolutionDansListe = indiceTrouverMeilleur(solutions, objectEtudiee);
+            if (getChamp(joueur2, objectEtudiee) > getChamp(solutions[indiceMeilleurSolutionDansListe], objectEtudiee)){
+                solutions[indiceMeilleurSolutionDansListe] = joueur2;
+            }
+        }
+    }
+
+    private boolean solutionCherchee(Joueur joueur, String typeSolution){
+        if (typeSolution.equals("efficace")){
+            if (joueur.getParcoursNum().size() != listeQuetes.size())
+                return true;
+        }
+        else if (typeSolution.equals("exhaustif")){
+            if (joueur.getParcoursNum().size() == listeQuetes.size())
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -330,7 +441,27 @@ public class ManagerDeQuete {
      * @param numQuete
      * @param joueur
      */
-    private void trouveSolutionsRecursivement(ArrayList<ArrayList<Quete>> solutions, int numQuete, Joueur joueur){
+    private void trouveSolutionsRecursivement(Joueur[] solutions, int numQuete, Joueur joueur, int nbSolutions, String objectEtudiee, String typeSolution, String meilleurPire){
+        ajoutCaracteristiqueQueteToJoueur(joueur, trouverQueteParNumero(numQuete));
+
+        if (numQuete == 0){
+            if (joueur.getExperience() >= trouverQueteParNumero(0).getExperience()){
+                // on ajoute la solution trouvée
+                if (solutionCherchee(joueur, typeSolution)){
+                    Joueur joueurBis = new Joueur();
+                    mettreInfoJoueur(joueurBis, joueur.getParcoursQuete());
+                    metSolutionDansListe(solutions, joueurBis, objectEtudiee, typeSolution, meilleurPire);
+                }
+            }
+        }
+
+        else{
+            ArrayList<Integer> listeQueteProche = trouverQueteProche(joueur);
+            for (int numQueteBis : listeQueteProche){
+                trouveSolutionsRecursivement(solutions, numQueteBis, joueur, nbSolutions, objectEtudiee, typeSolution, meilleurPire);
+                retireCaracteristiqueQueteToJoueur(joueur);
+            }
+        }
     }
 
     /**
@@ -338,94 +469,108 @@ public class ManagerDeQuete {
      * 
      * @return ArrayList<ArrayList<Quete>>
      */
-    public ArrayList<ArrayList<Quete>> trouverSolutions(){
-        return null;
-    }
+    public void trouverSolutions(Joueur[] solutionsReellees, int nbSolutions, String objectEtudiee, String typeSolution, String meilleurPire){
+        //on cherche toutes les sources possibles
+        ArrayList<Quete> sources = trouverListeSource();
 
-    /**
-     * Affichage propre des solutions en parametre dans le terminal
-     * 
-     * @param solutions
-     */
-    private void afficherSolutions(ArrayList<ArrayList<Quete>> solutions){
-    }
-
-    /**
-     * Mettre a jour les infos du joueur info de connaitre les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
-     * 
-     * @param joueur
-     * @param uneListeDeQuetes
-     */
-    private void mettreInfoJoueur(Joueur joueur, ArrayList<Quete> uneListeDeQuetes){
+        Joueur joueur = new Joueur();
+        for (Quete nSource : sources){
+            trouveSolutionsRecursivement(solutionsReellees, nSource.getNumero(), joueur, nbSolutions, objectEtudiee, typeSolution, meilleurPire);
+            retireCaracteristiqueQueteToJoueur(joueur);
+        }
     }
 
     /**
      * permet de récupérer le champ d'un joueur
      * 
-     * @param joueur
-     * @param nomDuCHamp
+     * @param quete
+     * @param fieldName
      * @return int
      */
     private static int getChamp(Joueur joueur, String nomDuCHamp) {
-        return 0;
+        if (nomDuCHamp.equals("deplacement")) {
+            // on retourne le nombre de déplacement du joueur (distance cumulé entre chaque quetes)
+            return joueur.getDeplacement();
+        }
+        else if (nomDuCHamp.equals("dureeTotal")){
+            // on prend la taille du nombre de quetes parcourues
+            return joueur.getDureeTotal();
+        }
+        else if (nomDuCHamp.equals("parcoursNum")){
+            // on prend la taille du nombre de quetes parcourues
+            return joueur.getParcoursNum().size();
+        }
+        else if (nomDuCHamp.equals("experience")){
+            // on prend le nombre total d'experience
+            return joueur.getExperience();
+        }
+
+        throw new IllegalArgumentException("Nom du champ invalide !!");
     }
 
     /**
      * Trie une liste de joueur en fonction de ses champs (experience, nombre de quetes réalisées, )
      * 
-     * @param listeJoueurs
-     * @param nomDuChamp
+     * @param listeQuetes
+     * @param fieldName
      */
-    public static void trierLesJoueurParDuree(List<Joueur> listeJoueurs, final String nomDuChamp) {
+    public static void trierLesJoueurs(ArrayList<Joueur> listeJoueurs, final String nomDuChamp, String meilleurPire) {
+        Collections.sort(listeJoueurs, new Comparator<Joueur>() {
+            @Override
+            public int compare(Joueur joueur1, Joueur joueur2) {
+                Object fieldValue1 = getChamp(joueur1, nomDuChamp);
+                Object fieldValue2 = getChamp(joueur2, nomDuChamp);
+                if (fieldValue1 instanceof Comparable && fieldValue2 instanceof Comparable) {
+                    // Utilise la méthode compareTo pour comparer les valeurs
+                    return ((Comparable) fieldValue1).compareTo(fieldValue2);
+                } else {
+                    // Les champs ne sont pas comparables, renvoie 0 pour conserver l'ordre d'origine
+                    return 0;
+                }
+            }
+        });
+        if (meilleurPire.equals("pire")){
+            Collections.reverse(listeJoueurs);
+        }
     }
 
-    /**
-     * Retourne les N premiers éléments d'une liste de joueur
-     * 
-     * @param listeJoueurs
-     * @param nbElement
-     * @param meilleurPire
-     * @return ArrayList<Joueur>
-     */
-    private ArrayList<Joueur> nPremierElementListeJoueur(ArrayList<Joueur> listeJoueurs, int nbElement, String meilleurPire){
-        return null;
+    private ArrayList<Joueur> redimentionnerListeSolution(Joueur[] listeDeJoueurs){
+        ArrayList<Joueur> newListe = new ArrayList<>();
+        for (int i = 0; i < listeDeJoueurs.length; i++){
+            if (listeDeJoueurs[i].getParcoursNum().size() == 0)
+                break;
+            Joueur joueur = listeDeJoueurs[i];
+            newListe.add(joueur);
+        }
+        return newListe;
     }
-
-    /**
-     * Donne les N meilleurs solutions en fonction d'un des champs de la classe joueur (nbr Experience, nbr quetes réalisées, nbr de déplacements ...) 
-     * 
-     * @param solutions
-     * @param nbSolutions
-     * @param champATrier
-     * @param meilleurPire
-     * @return ArrayList<Joueur>
-     */
-    private ArrayList<Joueur> trierSolutionEnfonctionDe(ArrayList<ArrayList<Quete>> solutions, int nbSolutions, String champATrier, String meilleurPire){
-        return null;
-    }
-
-    /**
-     * Retourne les soltions efficace ou exhaustive uniquement, que l'on demande en parametre
-     * 
-     * @param listeJoueur
-     * @param typeSolution
-     * @return ArrayList<Joueur>
-     */
-    private ArrayList<Joueur> prendreSolutionEfficaceExhaustive(ArrayList<Joueur> listeJoueur, String typeSolution){
-        return null;
-    }
-
 
     /**
      * Renvoie une array list de joueur répondant au type de solution demandée, on peut donc travaillé avec afin de connaitre toutes les caractéristiques du joueur
      * 
-     * @param nbrSolutions
-     * @param typeSolution
-     * @param objectifEtudiee
-     * @param meilleurPire
-     * @return ArrayList<Joueur>
+     * @return ArrayList<ArrayList<Quete>>
      */
-    public ArrayList<Joueur> niveau2(int nbrSolutions, String typeSolution, String objectifEtudiee, String meilleurPire){
-        return null;
+    public ArrayList<Joueur> niveau2(int nbSolutions, String typeSolution, String objectEtudiee, String meilleurPire){
+        // toutes les solutions
+        Joueur[] solutions = new Joueur[nbSolutions];
+        for (int i = 0; i < solutions.length; i++){
+            solutions[i] = new Joueur();
+        }
+        
+        trouverSolutions(solutions, nbSolutions, objectEtudiee, typeSolution, meilleurPire);
+
+        ArrayList<Joueur> listeJoueur = redimentionnerListeSolution(solutions);
+
+        trierLesJoueurs(listeJoueur, objectEtudiee, meilleurPire);
+        
+
+        // la solution demandée
+        //ArrayList<Joueur> solutionTrier = trierSolutionEnfonctionDe(solutions, nbSolutions, objectifEtudiee, meilleurPire);
+
+        // prendre les solution efficace ou exhaustive uniquement (voir tout si on veut)
+        //ArrayList<Joueur> solutionDemandeeFinale = prendreSolutionEfficaceExhaustive(solutions, typeSolution);
+
+        //return solutionDemandeeFinale;
+        return listeJoueur;
     }
 }

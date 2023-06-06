@@ -41,18 +41,10 @@ public class Joueur {
         return dureeTotal;
     }
 
-    /**
-     * Méthode qui permet de récupérer le nombre de déplacement que le joueur a fait
-     * @return int
-     */
     public int getDeplacement(){
         return deplacement;
     }
 
-    /**
-     * Méthode qui permet de modifier le nombre de déplacement que le joueur a fait
-     * @param newDeplacement
-     */
     public void setDeplacement(int newDeplacement){
         deplacement += newDeplacement;
     }
@@ -140,17 +132,10 @@ public class Joueur {
         return parcoursNum.toString();
     }
 
-    /**
-     * Enlève de l'expérience au joueur
-     * @param nbExp
-     */
     public void removeExperience(int nbExp){
         experience -= nbExp;
     }
 
-    /**
-     * Enlève la dernière quête du parcours du joueur
-     */
     public void removeDerniereQuete(){
         parcoursQuete.remove(parcoursQuete.size() - 1);
         parcoursNum.remove(parcoursNum.size() - 1);
@@ -165,10 +150,6 @@ public class Joueur {
         return arrayPos;
     }
 
-    /**
-     * Retourne une copie du joueur
-     * @return Joueur
-     */
     public Joueur copy() {
         Joueur copy = new Joueur();
         copy.dureeTotal = this.dureeTotal;
@@ -178,25 +159,27 @@ public class Joueur {
         copy.arrayExperience = new ArrayList<>(this.arrayExperience);
         copy.experience = this.experience;
         copy.pos = Arrays.copyOf(this.pos, this.pos.length);
+        copy.deplacement = this.deplacement;
         return copy;
     }
 
-    /**
-     * Ajoute les informations de la quête passée en paramètre aux listes de parcours
-     * @param quete
-     */
     public void parcourirQuete(Quete quete) {
         parcoursNum.add(quete.getNumero());
         parcoursQuete.add(quete);
     }
 
-    /**
-     * Retire la dernière quête des listes de parcours
-     */
     public void annulerDerniereQuete() {
         if (!parcoursNum.isEmpty()) {
             parcoursNum.remove(parcoursNum.size() - 1);
             parcoursQuete.remove(parcoursQuete.size() - 1);
         }
+    }
+
+    public void removeDeplacement(int distanceJouerQuete){
+        deplacement -= distanceJouerQuete;
+    }
+
+    public void removeDureeTotal(int dureeAEnlever) {
+        dureeTotal -= dureeAEnlever;
     }
 }
