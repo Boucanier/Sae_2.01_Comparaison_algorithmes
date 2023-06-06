@@ -1,10 +1,6 @@
 package modele;
 
-import java.net.PasswordAuthentication;
-import java.text.BreakIterator;
 import java.util.*;
-
-import javafx.scene.paint.Stop;
 
 /**
  * Classe permettant de gérer les quêtes
