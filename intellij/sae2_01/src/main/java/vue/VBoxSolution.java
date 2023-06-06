@@ -4,11 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import lectureEcritureFichier.LectureFichierTexte;
 import modele.ConstantesSolutions;
+import modele.ManagerDeQuete;
+import modele.Scenario;
 
 /**
  * Contient un stackPane de solution pour chaque scénario
@@ -32,18 +34,14 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         GridPaneFormulaire gridPaneFormulaire = new GridPaneFormulaire();
         
         for (File item : fichiers){
-            for (String solution : SOLUTIONS){
-                VBox vBox = new VBox();
-                Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4) + " - " + solution);
-                labelSolution.setId("titre");
-                VBoxTable vBoxTable = new VBoxTable(item.getName(), solution);
-                labelSolution.setAlignment(Pos.CENTER);
-                vBox.getChildren().addAll(labelSolution, vBoxTable);
-                vBox.setUserData(item.getName() + " " + solution);
-                vBox.setAlignment(Pos.CENTER);
-                stackPaneSolution.getChildren().addAll(vBox);
-                listeScenario.add(item.getName());
-            }
+            Scenario scenario = LectureFichierTexte.lecture(item);
+            ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
+            Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4));
+            labelSolution.setId("titre");
+            VBoxTable vBoxTable = new VBoxTable(managerDeQuete.niveau1("efficace"), item.getName().substring(9, item.getName().length() - 4));
+            vBoxTable.setUserData(item.getName());
+            stackPaneSolution.getChildren().addAll(vBoxTable);
+            listeScenario.add(item.getName());
         }
 
         stackPaneSolution.getChildren().get(0).toFront();
