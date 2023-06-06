@@ -5,9 +5,10 @@ SAÉ 2.01.02 : Développement d’une application, Exploration algorithmique d'u
 ## Lancement du programme
 
 Version graphique :
-    Pour lancer la version graphique, il faut lancer la classe _vue.SaeApplication.java_.
+    Pour lancer la version graphique, il faut lancer la classe _vue.SaeApplication.java_
+    
 Clients en lignes de commandes :
-    Les classes clients du projet se trouvent dans le package _client_.
+    Les classes clients du projet se trouvent dans le package _client_
 
 
 ## Présentation du programme
