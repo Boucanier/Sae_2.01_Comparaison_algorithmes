@@ -18,12 +18,14 @@ import vue.VBoxTable;
 /**
  * Controleur de l'application qui gère les événements
  * Implémente l'interface EventHandler
+ * 
+ * @see EventHandler
  */
 public class Controleur implements EventHandler<ActionEvent> {
     public static ArrayList<String> listeScenario = VBoxSolution.getListeScenario();
 
     /**
-     * Constructeur de la classe Controleur
+     * Méthode handle de la classe Controleur qui gère les événements
      * @param event
      */
     @Override
