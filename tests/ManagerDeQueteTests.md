@@ -24,7 +24,7 @@ Nous comparerons ensuite les résultats obtenus avec les résultats attendus.
 | Produit testé : classe _ManagerDeQuete_                      |
 |--------------------------------------------------------------|
 | Configuration logicielle : Java 18, IntelliJ, JUnit 5        |
-| Configuration matérielle : Ubuntu 22.04                      |
+| Configuration matérielle : Ubuntu 22.04, Windows 11          |
 | Date de début : 11/05/2023                                   |
 | Date de finalisation : 23/05/2023                            |
 | Tests à appliquer : _distanceEntrePos_, _peutCommencerQuete_ |
