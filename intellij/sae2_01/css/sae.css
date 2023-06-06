@@ -1,7 +1,7 @@
 #solution {
     -fx-background-color: white;
         background-color: white;
-    -fx-pref-height: 450px;
+    -fx-pref-height: 500px;
 }
 
 #titre {
@@ -15,4 +15,14 @@
 
 #colonne {
     -fx-alignment: CENTER;
+}
+
+#formulaire {
+    -fx-background-color: white;
+        background-color: white;
+    -fx-font-size: 15px;
+        font-size: 15px;
+    -fx-text-alignment: center;
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 250px;
 }
