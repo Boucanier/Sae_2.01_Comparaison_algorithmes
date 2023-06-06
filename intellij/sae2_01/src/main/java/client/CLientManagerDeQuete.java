@@ -16,16 +16,16 @@ public class CLientManagerDeQuete {
      * @param args
      */
     public static void main (String[] args) {
-        Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + "scenario_0.txt"));
+        Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + "scenario_2.txt"));
         ManagerDeQuete managerDeQuete1 = new ManagerDeQuete(scenario);
 
-        int nbSolutions = 4;
-        String typeSolution = "exhaustif"; // efficace / exhaustif
-        String objectEtudie = "dureeTotal"; // dureeTotal / experience / deplacement / parcoursNum
+        int nbSolutions = 5;
+        String typeSolution = "efficace"; // efficace / exhaustif
+        String objectEtudie = "parcoursNum"; // dureeTotal / experience / deplacement / parcoursNum
         String meilleurPire = "meilleur"; // meilleur / pire 
         ArrayList<Joueur> solutions = managerDeQuete1.niveau2(nbSolutions, typeSolution , objectEtudie, meilleurPire);
         
-
+        System.out.println("#########");
         System.out.println(objectEtudie);
         for (Joueur joueur : solutions){
             System.out.println(joueur);

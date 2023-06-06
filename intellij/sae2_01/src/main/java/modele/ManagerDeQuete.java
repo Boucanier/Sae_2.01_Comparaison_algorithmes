@@ -1,6 +1,10 @@
 package modele;
 
+import java.net.PasswordAuthentication;
+import java.text.BreakIterator;
 import java.util.*;
+
+import javafx.scene.paint.Stop;
 
 /**
  * Classe permettant de gérer les quêtes
@@ -422,17 +426,14 @@ public class ManagerDeQuete {
         }
     }
 
-    private boolean solutionCherchee(Joueur joueur, String typeSolution){
-        if (typeSolution.equals("efficace")){
-            if (joueur.getParcoursNum().size() != listeQuetes.size())
-                return true;
-        }
-        else if (typeSolution.equals("exhaustif")){
-            if (joueur.getParcoursNum().size() == listeQuetes.size())
-                return true;
-        }
-        return false;
+    private boolean solutionIsEfficace(String typeSolution){
+        return typeSolution.equals("efficace");
     }
+
+    private boolean solutionIsExhaustif(String typeSolution){
+        return typeSolution.equals("exhaustif");
+    }
+
 
     /**
      * Trouve toutes les solutions d'un scénario de façon récursive
@@ -441,25 +442,47 @@ public class ManagerDeQuete {
      * @param numQuete
      * @param joueur
      */
-    private void trouveSolutionsRecursivement(Joueur[] solutions, int numQuete, Joueur joueur, int nbSolutions, String objectEtudiee, String typeSolution, String meilleurPire){
+    private void trouveSolutionsRecursivement(Joueur[] solutions, int numQuete, Joueur joueur, String objectEtudiee, String typeSolution, String meilleurPire){
         ajoutCaracteristiqueQueteToJoueur(joueur, trouverQueteParNumero(numQuete));
-
+        
         if (numQuete == 0){
             if (joueur.getExperience() >= trouverQueteParNumero(0).getExperience()){
                 // on ajoute la solution trouvée
-                if (solutionCherchee(joueur, typeSolution)){
-                    Joueur joueurBis = new Joueur();
-                    mettreInfoJoueur(joueurBis, joueur.getParcoursQuete());
-                    metSolutionDansListe(solutions, joueurBis, objectEtudiee, typeSolution, meilleurPire);
-                }
+                Joueur joueurBis = new Joueur();
+                mettreInfoJoueur(joueurBis, joueur.getParcoursQuete());
+                metSolutionDansListe(solutions, joueurBis, objectEtudiee, typeSolution, meilleurPire);
             }
         }
 
         else{
             ArrayList<Integer> listeQueteProche = trouverQueteProche(joueur);
-            for (int numQueteBis : listeQueteProche){
-                trouveSolutionsRecursivement(solutions, numQueteBis, joueur, nbSolutions, objectEtudiee, typeSolution, meilleurPire);
-                retireCaracteristiqueQueteToJoueur(joueur);
+            if ( solutionIsEfficace(typeSolution)){
+                if (listeQueteProche.contains(0) && (joueur.getExperience() >= trouverQueteParNumero(0).getExperience())){
+                    trouveSolutionsRecursivement(solutions, 0, joueur, objectEtudiee, typeSolution, meilleurPire);
+                    retireCaracteristiqueQueteToJoueur(joueur);
+                }
+                else {
+                    for (int numQueteBis : listeQueteProche){
+                        if (numQueteBis != 0){
+                            trouveSolutionsRecursivement(solutions, numQueteBis, joueur, objectEtudiee, typeSolution, meilleurPire);
+                            retireCaracteristiqueQueteToJoueur(joueur);
+                        }
+                    }
+                }
+            }
+            else if (solutionIsExhaustif(typeSolution)){
+                if (listeQuetesRestantes.size() == 1){
+                    trouveSolutionsRecursivement(solutions, 0, joueur, objectEtudiee, typeSolution, meilleurPire);
+                    retireCaracteristiqueQueteToJoueur(joueur);
+                }
+                else {
+                    for (int numQueteBis : listeQueteProche){
+                        if (numQueteBis != 0){
+                            trouveSolutionsRecursivement(solutions, numQueteBis, joueur, objectEtudiee, typeSolution, meilleurPire);
+                            retireCaracteristiqueQueteToJoueur(joueur);
+                        }
+                    }
+                }
             }
         }
     }
@@ -475,7 +498,7 @@ public class ManagerDeQuete {
 
         Joueur joueur = new Joueur();
         for (Quete nSource : sources){
-            trouveSolutionsRecursivement(solutionsReellees, nSource.getNumero(), joueur, nbSolutions, objectEtudiee, typeSolution, meilleurPire);
+            trouveSolutionsRecursivement(solutionsReellees, nSource.getNumero(), joueur, objectEtudiee, typeSolution, meilleurPire);
             retireCaracteristiqueQueteToJoueur(joueur);
         }
     }
