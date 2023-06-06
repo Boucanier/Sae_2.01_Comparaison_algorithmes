@@ -367,6 +367,13 @@ public class ManagerDeQuete {
         return listeSource;
     }
 
+    /**
+     * Trouve la meilleur solution en fonction du parametre étudié "objectEtudiee"
+     * 
+     * @param solutions
+     * @param objectEtudiee
+     * @return int
+     */
     private int indiceTrouverMeilleur(Joueur[] solutions, String objectEtudiee){
         int meilleurSolution = getChamp(solutions[0], objectEtudiee);
         int indiceMeilleurSolution = 0;
@@ -380,7 +387,13 @@ public class ManagerDeQuete {
         return indiceMeilleurSolution;
     }
 
-
+    /**
+     * Renvoie l'indice du pire élément d'une liste de solutions contenant directment les joueurs
+     * 
+     * @param solutions
+     * @param objectEtudiee
+     * @return
+     */
     private int indiceTrouverPire(Joueur[] solutions, String objectEtudiee){
         int pireSolution = getChamp(solutions[0], objectEtudiee);
         int indicePireSolution = 0;
@@ -394,7 +407,15 @@ public class ManagerDeQuete {
         return indicePireSolution;
     }
 
-
+    /**
+     * Met la solutions dans la liste, en fonction du parametre étudié et si on cherche la pire ou la meilleur solution
+     * 
+     * @param solutions
+     * @param joueur
+     * @param objectEtudiee
+     * @param typeSolution
+     * @param meilleurPire
+     */
     private void metSolutionDansListe(Joueur[] solutions, Joueur joueur, String objectEtudiee, String typeSolution, String meilleurPire){
         int longeurListe = solutions.length;
         Joueur joueur2 = joueur.copy();
@@ -426,14 +447,27 @@ public class ManagerDeQuete {
         }
     }
 
+    /**
+     * 
+     * Renvoie true si c'est une solutions efficace qui est demandée
+     * 
+     * @param typeSolution
+     * @return
+     */
     private boolean solutionIsEfficace(String typeSolution){
         return typeSolution.equals("efficace");
     }
 
+    /**
+     * 
+     * Renvoie true si c'est une solutions exhaustive qui est demandée
+     * 
+     * @param typeSolution
+     * @return
+     */
     private boolean solutionIsExhaustif(String typeSolution){
         return typeSolution.equals("exhaustif");
     }
-
 
     /**
      * Trouve toutes les solutions d'un scénario de façon récursive
@@ -458,10 +492,12 @@ public class ManagerDeQuete {
             ArrayList<Integer> listeQueteProche = trouverQueteProche(joueur);
             if ( solutionIsEfficace(typeSolution)){
                 if (listeQueteProche.contains(0) && (joueur.getExperience() >= trouverQueteParNumero(0).getExperience())){
+                    // si on peut prendre la quete 0, on l'a prend instant
                     trouveSolutionsRecursivement(solutions, 0, joueur, objectEtudiee, typeSolution, meilleurPire);
                     retireCaracteristiqueQueteToJoueur(joueur);
                 }
                 else {
+                    // sinon on parcours les autres quetes
                     for (int numQueteBis : listeQueteProche){
                         if (numQueteBis != 0){
                             trouveSolutionsRecursivement(solutions, numQueteBis, joueur, objectEtudiee, typeSolution, meilleurPire);
@@ -472,10 +508,12 @@ public class ManagerDeQuete {
             }
             else if (solutionIsExhaustif(typeSolution)){
                 if (listeQuetesRestantes.size() == 1){
+                    // on ne prend la quete 0 seulement et seulement si la liste des quetes restantes a une taille de 0, auterment dit s'il ne reste que la quete 0 a choisir
                     trouveSolutionsRecursivement(solutions, 0, joueur, objectEtudiee, typeSolution, meilleurPire);
                     retireCaracteristiqueQueteToJoueur(joueur);
                 }
                 else {
+                    // dans tous les autres cas, on prend les autres quetes disponibles
                     for (int numQueteBis : listeQueteProche){
                         if (numQueteBis != 0){
                             trouveSolutionsRecursivement(solutions, numQueteBis, joueur, objectEtudiee, typeSolution, meilleurPire);
@@ -504,7 +542,7 @@ public class ManagerDeQuete {
     }
 
     /**
-     * permet de récupérer le champ d'un joueur
+     * Permet de récupérer le champ d'un joueur
      * 
      * @param quete
      * @param fieldName
@@ -532,7 +570,7 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Trie une liste de joueur en fonction de ses champs (experience, nombre de quetes réalisées, )
+     * Trie une liste de joueur en fonction de ses champs (experience, nombre de quetes réalisées ...)
      * 
      * @param listeQuetes
      * @param fieldName
@@ -557,6 +595,13 @@ public class ManagerDeQuete {
         }
     }
 
+    /**
+     * Redimentionne une liste de joueur, la liste peut contenir des joueur qui n'ont pas fait de parcours 
+     * (si le user choise un nombre de solutions trop important par rapport au nombre possible)
+     * 
+     * @param listeDeJoueurs
+     * @return
+     */
     private ArrayList<Joueur> redimentionnerListeSolution(Joueur[] listeDeJoueurs){
         ArrayList<Joueur> newListe = new ArrayList<>();
         for (int i = 0; i < listeDeJoueurs.length; i++){
@@ -580,20 +625,15 @@ public class ManagerDeQuete {
             solutions[i] = new Joueur();
         }
         
+        // cherche toutes les solutions de manieres récursive que l'on stock dans une liste avec une taille prédéfini par l'utilisateur
         trouverSolutions(solutions, nbSolutions, objectEtudiee, typeSolution, meilleurPire);
 
+        // redimentionnage de la liste des solutions au bon format ArrayList<Joueur>
         ArrayList<Joueur> listeJoueur = redimentionnerListeSolution(solutions);
 
+        // on trie la liste de joueur redimentionné a la bonne taille afin que le trie soit plus facile
         trierLesJoueurs(listeJoueur, objectEtudiee, meilleurPire);
-        
 
-        // la solution demandée
-        //ArrayList<Joueur> solutionTrier = trierSolutionEnfonctionDe(solutions, nbSolutions, objectifEtudiee, meilleurPire);
-
-        // prendre les solution efficace ou exhaustive uniquement (voir tout si on veut)
-        //ArrayList<Joueur> solutionDemandeeFinale = prendreSolutionEfficaceExhaustive(solutions, typeSolution);
-
-        //return solutionDemandeeFinale;
         return listeJoueur;
     }
 }
