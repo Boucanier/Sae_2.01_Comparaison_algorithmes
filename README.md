@@ -13,12 +13,12 @@ Clients en lignes de commandes :
 
 ## Présentation du programme
 
-Le but de ce projet est de réaliser une application en java pour évaluer la durée de vie d'un ju de type RPG.
+Le but de ce projet est de réaliser une application en java pour évaluer la durée de vie d'un jeu de type RPG.
 Le jeu comporte différents scénarios qui sont écrits dans des fichiers _.txt_ dans le répertoire _scenarios_. Chaque fichier de scénario contient des quêtes. Chaque quête contient un numéro de quête, une position, des préconditions, une durée, de l’expérience délivrée et un intitulé. La quête avec le numéro 0 est la quête finale. Pour cette quête, l'expérience écrite dans le fichier de scénario correspond au niveau d'expérience à avoir pour jouer la quête et non le niveau d'expérience qu'elle délivre.
 
-Notre objectif était de fournir des solutions pour réaliser ces scénarios selon différents critères. Il existe deux types de solutions possibles : les solutions efficace et les solutions exhaustive. Les solutions efficaces réalisent les quêtes possibles jusqu'à ce que la quête finale puisse être exécutée (elle peut être plus longues en fonction de différents critères). Les solutions exhaustives prcourent toutes les quêtes afin de finir les scénarios à 100%.
+Notre objectif était de fournir des solutions pour réaliser ces scénarios selon différents critères. Il existe deux types de solutions possibles : les solutions efficaces et les solutions exhaustives. Les solutions efficaces réalisent les quêtes possibles jusqu'à ce que la quête finale puisse être exécutée (elle peut être plus longue en fonction de différents critères). Les solutions exhaustives parcourent toutes les quêtes afin de finir les scénarios à 100%.
 
-Nous avons atteint le niveau 3 de ce projet. Ainsi, l'utilisateur doit choisir un critère pour les solutions (meilleure durée ...) et un nombre maximum de solutions à afficher. L'interface graphique contient un formulaire détaillé afin de fournir des solutions personnlisées.
+Nous avons atteint le niveau 3 de ce projet. Ainsi, l'utilisateur doit choisir un critère pour les solutions (meilleure durée ...) et un nombre maximum de solutions à afficher. L'interface graphique contient un formulaire détaillé afin de fournir des solutions personnalisées.
 
 ## Problèmes rencontrés
 
