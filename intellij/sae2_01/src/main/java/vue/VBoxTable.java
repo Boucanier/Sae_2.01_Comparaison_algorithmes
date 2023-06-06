@@ -13,7 +13,7 @@ import modele.ConstantesSolutions;
 import modele.Joueur;
 
 /**
- * Tableau de solution qui contient des quêtes
+ * Tableau de solution qui contient des Joueur
  * Hérite de la classe VBox
  * Implémente l'interface ConstantesSolutions
  */

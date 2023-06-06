@@ -16,8 +16,9 @@ import modele.ConstantesSolutions;
 import controleur.Controleur;
 
 /**
- * Contient le menu de sélection du scénario
+ * Contient le menu de sélection du scénario et le bouton pour quitter l'application
  * Hérite de la classe VBox
+ * Implémente l'interface ConstantesSolutions
  */
 public class VBoxRootMenu extends VBox implements ConstantesSolutions {
     public static MenuBar menuBar = new MenuBar();

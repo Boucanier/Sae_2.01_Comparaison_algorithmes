@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import modele.ConstantesSolutions;
 
 /**
- * Contient le formulaire de choix du scénario et de la solution
+ * Contient le formulaire pour le choix des critères de la solution
  * Hérite de la classe GridPane
  * Implémente l'interface ConstantesSolutions
  */

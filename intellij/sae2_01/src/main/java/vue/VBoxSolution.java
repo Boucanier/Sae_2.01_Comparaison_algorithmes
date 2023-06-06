@@ -13,7 +13,7 @@ import modele.ManagerDeQuete;
 import modele.Scenario;
 
 /**
- * Contient un stackPane de solution pour chaque scénario
+ * Contient un stackPane de solution pour chaque scénario et un GridPaneFormulaire
  * Hérite de la classe VBox
  * Implémente l'interface ConstantesSolutions
  */
@@ -21,6 +21,10 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
     public static StackPane stackPaneSolution = new StackPane();
     public static ArrayList<String> listeScenario = new ArrayList<String>();
 
+    /**
+     * Permet de récupérer la liste des noms de scénarios
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> getListeScenario() {
         return listeScenario;
     }
