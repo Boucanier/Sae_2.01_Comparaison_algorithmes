@@ -49,6 +49,15 @@ public class Controleur implements EventHandler<ActionEvent> {
                 
                 case "annuler" :
                     GridPaneFormulaire.resetFormulaire();
+                
+                case "simuler" :
+                    for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
+                        String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
+                        if (userData.equals("canvas")) {
+                            VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                            break;
+                        }
+                    }
             }
         }
         if (event.getSource() instanceof RadioMenuItem){
