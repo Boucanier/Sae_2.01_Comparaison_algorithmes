@@ -25,14 +25,26 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
     public static Button boutonValider;
     public static Button boutonSimuler;
     
+    /**
+     * Permet de récupérer le bouton simuler
+     * @return Button
+     */
     public static Button getBoutonSimuler() {
         return boutonSimuler;
     }
 
+    /**
+     * Permet de récupérer le bouton valider
+     * @return Button
+     */
     public static Button getBoutonValider() {
         return boutonValider;
     }
 
+    /**
+     * Permet de récupérer le controleur
+     * @return Controleur
+     */
     public static Controleur getControleur() {
         return controleur;
     }
@@ -182,6 +194,9 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         return comboBoxTri.getValue();
     }
 
+    /**
+     * Permet de réinitialiser le formulaire
+     */
     public static void resetFormulaire() {
         comboBoxCritere.setValue(comboBoxCritere.getItems().get(0));
         comboBoxSolution.setValue(comboBoxSolution.getItems().get(0));

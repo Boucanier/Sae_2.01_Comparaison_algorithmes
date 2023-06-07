@@ -132,6 +132,11 @@ public class Controleur implements EventHandler<ActionEvent> {
         }
     }
 
+    /**
+     * Méthode qui permet de stocker un Joueur dans l'attribut joueurSelect
+     * Débloque le bouton simuler
+     * @param parJoueur
+     */
     public void setJoueur(Joueur parJoueur) {
         joueurSelect = parJoueur;
         GridPaneFormulaire.getBoutonSimuler().setDisable(false);
