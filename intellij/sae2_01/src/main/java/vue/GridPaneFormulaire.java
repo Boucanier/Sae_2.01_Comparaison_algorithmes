@@ -25,6 +25,10 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
     public static Button boutonValider;
     public static Button boutonSimuler;
     
+    public static Button getBoutonSimuler() {
+        return boutonSimuler;
+    }
+
     public static Button getBoutonValider() {
         return boutonValider;
     }
@@ -75,6 +79,7 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         boutonSimuler = new Button("_Simuler");
         boutonSimuler.setAccessibleText("simuler");
         boutonSimuler.setOnAction(controleur);
+        boutonSimuler.setDisable(true);
         
         this.setPadding(new Insets(10));
         this.add(choixCritere, 0, 1, 2, 1);

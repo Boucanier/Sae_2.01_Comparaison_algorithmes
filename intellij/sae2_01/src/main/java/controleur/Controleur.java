@@ -86,6 +86,7 @@ public class Controleur implements EventHandler<ActionEvent> {
                     VBoxTable vBoxTable = (VBoxTable) VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size());
                     vBoxTable.update(listeJoueur);
                     joueurSelect = null;
+                    GridPaneFormulaire.getBoutonSimuler().setDisable(true);
                     break;
                 
                 case "annuler" :
@@ -104,6 +105,7 @@ public class Controleur implements EventHandler<ActionEvent> {
                         }
                     }
                     joueurSelect = null;
+                    GridPaneFormulaire.getBoutonSimuler().setDisable(true);
                     break;
             }
         }
@@ -111,6 +113,7 @@ public class Controleur implements EventHandler<ActionEvent> {
             RadioMenuItem radioMenuItem = (RadioMenuItem) event.getSource();
             String choix = radioMenuItem.getUserData().toString();
             joueurSelect = null;
+            GridPaneFormulaire.getBoutonSimuler().setDisable(true);
 
             for (int i = 0; i < listeScenario.size(); i++) {
                 String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
@@ -131,5 +134,6 @@ public class Controleur implements EventHandler<ActionEvent> {
 
     public void setJoueur(Joueur parJoueur) {
         joueurSelect = parJoueur;
+        GridPaneFormulaire.getBoutonSimuler().setDisable(false);
     }
 }
