@@ -22,8 +22,13 @@ Nous avons atteint le niveau 3 de ce projet. Ainsi, l'utilisateur doit choisir u
 
 ## Problèmes rencontrés
 
-Dans les scénarios présents sur ce dépôt, le scénario 10 possède trop de solutions. Ce scénario ne fonctionne donc pas pour l'instant.
+Dans les scénarios présents sur ce dépôt, le scénario 10 possède trop de solutions. Ce scénario ne fonctionne donc pas pour l'instant. Nous avons bloquer la possibilité de lancer l'algorithme afin de ne pas avoir d'erreur.
 
 ## Remarque
 
-Les classe de tests se trouvent dans le dossier _intellij/sae2_01/src/test/java/test_. Les dossiers de test se trouvent dans le dossier _tests_.
+Les classes de tests se trouvent dans le dossier _intellij/sae2_01/src/test/java/test_. Les dossiers de test se trouvent dans le dossier _tests_.
+
+## BONUS
+
+La fonctionnalité _simuler_ permet de visualiser une solution.
+![Screenshot from 2023-06-07 18-24-52](https://github.com/Boucanier/Sae_2.01_Comparaison_algorithmes/assets/118428520/dbb58070-4c82-4488-92a5-af6c14ac9dd3)
