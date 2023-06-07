@@ -7,7 +7,6 @@ import modele.Quete;
 import modele.Scenario;
 
 public class CanvasSolution extends Canvas {
-    Scenario scenario;
     
     public CanvasSolution(int parHeight, int parWidth, Scenario parScenario) {
         super(parWidth, parHeight);
@@ -16,6 +15,9 @@ public class CanvasSolution extends Canvas {
 
     private void draw(Scenario parScenario) {
         GraphicsContext gc = getGraphicsContext2D();
+
+        gc.clearRect(0, 0, this.getWidth(), this.getHeight());
+
         gc.setFill(Color.BLACK);
         gc.fillRect(20, 0, 880, 490);
 
