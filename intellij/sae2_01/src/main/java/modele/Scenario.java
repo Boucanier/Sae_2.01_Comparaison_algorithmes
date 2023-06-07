@@ -44,4 +44,17 @@ public class Scenario {
     public ArrayList<Quete> getListeQuetes(){
         return listeQuetes;
     }
+
+    public int[] dimensionsMax() {
+        int[] dimensionsMax = {0, 0};
+        for (Quete quete : listeQuetes){
+            if (quete.getPos()[0] > dimensionsMax[0]){
+                dimensionsMax[0] = quete.getPos()[0];
+            }
+            if (quete.getPos()[1] > dimensionsMax[1]){
+                dimensionsMax[1] = quete.getPos()[1];
+            }
+        }
+        return dimensionsMax;
+    }
 }
