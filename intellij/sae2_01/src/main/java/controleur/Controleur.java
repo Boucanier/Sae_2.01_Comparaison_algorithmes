@@ -56,7 +56,6 @@ public class Controleur implements EventHandler<ActionEvent> {
                             }
                         }
                     }
-                    joueurSelect = null;
                     break;
 
                 case "valider" :
