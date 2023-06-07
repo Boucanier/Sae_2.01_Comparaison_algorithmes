@@ -61,7 +61,7 @@ public class CanvasSolution extends Canvas {
             gc.setFill(Color.BLUE);
             gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
             gc.setStroke(Color.BLACK);
-            if ((origine[1] + (pos[1] * echelleY)) < 10)
+            if ((origine[1] + (pos[1] * echelleY)) < 20)
                 gc.strokeText(String.valueOf(quete.getNumero()), origine[0] + (pos[0] * echelleX) + 1, (pos[1] * echelleY + 30));
             else
                 gc.strokeText(String.valueOf(quete.getNumero()), origine[0] + (pos[0] * echelleX) + 1, (pos[1] * echelleY));
