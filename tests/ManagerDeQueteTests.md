@@ -8,7 +8,7 @@
 ## 1. Introduction
 
 Ce dossier contient les tests pour les différentes méthodes de la classe ___ManagerDeQuete___.
-Les méthodes testées sont _distanceEntrePos_, _peutCommencerQuete_. Nous commencons par tester 
+Les méthodes testées sont _distanceEntrePos_, _peutCommencerQuete_ et _niveau2_. Nous commencons par tester 
 la méthode _distanceEntrePos_ car elle est utilisée dans la méthode _peutCommencerQuete_.
 
 ## 2. Description de la procédure de test
