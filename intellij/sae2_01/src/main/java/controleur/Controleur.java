@@ -11,6 +11,7 @@ import lectureEcritureFichier.LectureFichierTexte;
 import modele.Joueur;
 import modele.ManagerDeQuete;
 import modele.Scenario;
+import vue.CanvasSolution;
 import vue.GridPaneFormulaire;
 import vue.VBoxSolution;
 import vue.VBoxTable;
@@ -32,8 +33,38 @@ public class Controleur implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         if (event.getSource() instanceof Button){
             switch ((((Button) event.getSource()).getAccessibleText())){
-                case "valider":
-                    String nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
+                
+                case "simuler" :
+                    String nomScenario2 = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
+                    if (nomScenario2.equals("canvas")) {
+                        nomScenario2 = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
+                    }
+                    Scenario scenario2 = LectureFichierTexte.lecture(new File("scenarios" + File.separator + nomScenario2));
+                    for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
+                        String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
+                        if (userData.equals("canvas")) {
+                            ((CanvasSolution) VBoxSolution.getStackPaneSolution().getChildren().get(i)).draw(scenario2);
+                            VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                            break;
+                        }
+                    }
+                    break;
+
+                case "valider" :
+                    String nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
+
+                    if (nomScenario.equals("canvas")) {
+                        nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
+                        
+                        for (int i = 0; i < listeScenario.size(); i++) {
+                            String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
+                            if (scenario.equals(nomScenario)) {
+                                VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                                break;
+                            }
+                        }
+                    }
+
                     String solution = GridPaneFormulaire.getChoixSolution();
                     String critere = GridPaneFormulaire.getChoixCritere();
                     String ordre = GridPaneFormulaire.getChoixTri();
@@ -44,20 +75,13 @@ public class Controleur implements EventHandler<ActionEvent> {
                     Scenario scenario = LectureFichierTexte.lecture(new File("scenarios" + File.separator + nomScenario));
                     ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
                     ArrayList<Joueur> listeJoueur = managerDeQuete.niveau2(nombre, solution, critere, ordre);
-                    VBoxTable vBoxTable = (VBoxTable) VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1);
+                    VBoxTable vBoxTable = (VBoxTable) VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size());
                     vBoxTable.update(listeJoueur);
+                    break;
                 
                 case "annuler" :
                     GridPaneFormulaire.resetFormulaire();
-                
-                case "simuler" :
-                    for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
-                        String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
-                        if (userData.equals("canvas")) {
-                            VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
-                            break;
-                        }
-                    }
+                    break;
             }
         }
         if (event.getSource() instanceof RadioMenuItem){

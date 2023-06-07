@@ -47,9 +47,9 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
             stackPaneSolution.getChildren().addAll(vBoxTable);
             listeScenario.add(item.getName());
         }
-        CanvasSolution canvasSolution = new CanvasSolution(430,920, LectureFichierTexte.lecture(fichiers[0]));
+        CanvasSolution canvasSolution = new CanvasSolution(430,920);
+        canvasSolution.setUserData("canvas");
         stackPaneSolution.getChildren().add(canvasSolution);
-        stackPaneSolution.getChildren().get(stackPaneSolution.getChildren().size() - 1).setUserData("canvas");
 
         this.getChildren().addAll(stackPaneSolution, gridPaneFormulaire);
     }

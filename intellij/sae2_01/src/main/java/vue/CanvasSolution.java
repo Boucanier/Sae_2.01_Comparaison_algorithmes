@@ -8,12 +8,11 @@ import modele.Scenario;
 
 public class CanvasSolution extends Canvas {
     
-    public CanvasSolution(int parHeight, int parWidth, Scenario parScenario) {
+    public CanvasSolution(int parHeight, int parWidth) {
         super(parWidth, parHeight);
-        draw(parScenario);
     }
 
-    private void draw(Scenario parScenario) {
+    public void draw(Scenario parScenario) {
         GraphicsContext gc = getGraphicsContext2D();
 
         gc.clearRect(0, 0, this.getWidth(), this.getHeight());
@@ -30,6 +29,8 @@ public class CanvasSolution extends Canvas {
         gc.fillOval(origine[0], origine[1], 12, 12);
         
         int[] dimensionsMax = parScenario.dimensionsMax();
+
+        System.out.println(dimensionsMax[0] + " " + dimensionsMax[1]);
 
         double echelleX = 858 / dimensionsMax[0];
         double echelleY = 408 / dimensionsMax[1];
