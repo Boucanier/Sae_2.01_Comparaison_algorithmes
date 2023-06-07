@@ -3,15 +3,18 @@ package vue;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import modele.Quete;
+import modele.Scenario;
 
 public class CanvasSolution extends Canvas {
+    Scenario scenario;
     
-    public CanvasSolution(int parHeight, int parWidth) {
+    public CanvasSolution(int parHeight, int parWidth, Scenario parScenario) {
         super(parWidth, parHeight);
-        draw();
+        draw(parScenario);
     }
 
-    private void draw() {
+    private void draw(Scenario parScenario) {
         GraphicsContext gc = getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(20, 0, 880, 490);
@@ -19,12 +22,20 @@ public class CanvasSolution extends Canvas {
         gc.setFill(Color.WHITE);
         gc.fillRect(25, 5, 870, 420);
 
-        int [] origine = {19, 419};
+        int [] origine = {19, 0};
 
         gc.setFill(Color.RED);
         gc.fillOval(origine[0], origine[1], 12, 12);
+        
+        int[] dimensionsMax = parScenario.dimensionsMax();
 
-        // gc.setFill(Color.GREEN);
-        // gc.fillOval(50, 50, 100, 100);
+        double echelleX = 870 / dimensionsMax[0];
+        double echelleY = 420 / dimensionsMax[1];
+
+        for (Quete quete : parScenario.getListeQuetes()){
+            int[] pos = quete.getPos();
+            gc.setFill(Color.BLUE);
+            gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
+        }
     }
 }
