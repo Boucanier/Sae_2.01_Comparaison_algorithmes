@@ -20,6 +20,9 @@ import modele.Joueur;
  * Tableau de solution qui contient des Joueur
  * Hérite de la classe VBox
  * Implémente l'interface ConstantesSolutions
+ * 
+ * @see VBox
+ * @see ConstantesSolutions
  */
 public class VBoxTable extends VBox implements ConstantesSolutions {
     private TableView<Joueur> tableJoueur;
@@ -28,6 +31,8 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
      * Constructeur de la classe VBoxTable
      * @param parNomFichier
      * @param parSolution
+     * 
+     * @see Joueur
      */
     public VBoxTable(Joueur joueur, String parScenario) {
         super(20);
@@ -103,6 +108,9 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
     /**
      * Met à jour le tableau de solution
      * @param listeQuetes
+     * 
+     * @see ArrayList
+     * @see Joueur
      */
     public void update(ArrayList<Joueur> listeJoueurs){
         tableJoueur.getItems().clear();

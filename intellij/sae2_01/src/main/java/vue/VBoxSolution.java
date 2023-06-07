@@ -16,6 +16,9 @@ import modele.Scenario;
  * Contient un stackPane de solution pour chaque scénario et un GridPaneFormulaire
  * Hérite de la classe VBox
  * Implémente l'interface ConstantesSolutions
+ * 
+ * @see VBox
+ * @see ConstantesSolutions
  */
 public class VBoxSolution extends VBox implements ConstantesSolutions {
     public static StackPane stackPaneSolution = new StackPane();
@@ -24,6 +27,8 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
     /**
      * Permet de récupérer la liste des noms de scénarios
      * @return ArrayList<String>
+     * 
+     * @see ArrayList
      */
     public static ArrayList<String> getListeScenario() {
         return listeScenario;
@@ -47,6 +52,7 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
             stackPaneSolution.getChildren().addAll(vBoxTable);
             listeScenario.add(item.getName());
         }
+
         CanvasSolution canvasSolution = new CanvasSolution(430,920);
         canvasSolution.setUserData("canvas");
         stackPaneSolution.getChildren().add(canvasSolution);
@@ -65,6 +71,8 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
     /**
      * Permet de modifier le stackPaneSolution
      * @param parStackPaneSolution
+     * 
+     * @see StackPane
      */
     public static void setStackPaneSolution(StackPane parStackPaneSolution) {
         stackPaneSolution = parStackPaneSolution;

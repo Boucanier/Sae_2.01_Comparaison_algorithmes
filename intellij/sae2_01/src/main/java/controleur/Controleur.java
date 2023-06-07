@@ -30,6 +30,8 @@ public class Controleur implements EventHandler<ActionEvent> {
     /**
      * Méthode handle de la classe Controleur qui gère les événements
      * @param event
+     * 
+     * @see ActionEvent
      */
     @Override
     public void handle(ActionEvent event) {
@@ -134,8 +136,10 @@ public class Controleur implements EventHandler<ActionEvent> {
 
     /**
      * Méthode qui permet de stocker un Joueur dans l'attribut joueurSelect
-     * Débloque le bouton simuler
+     * Débloque le bouton simuler du formulaire
      * @param parJoueur
+     * 
+     * @see Joueur
      */
     public void setJoueur(Joueur parJoueur) {
         joueurSelect = parJoueur;

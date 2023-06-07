@@ -50,7 +50,7 @@ public class Quete {
     }
 
     /**
-     * Renvoie les préconditions de la quête sous forme de chaine de caractères
+     * Renvoie les préconditions de la quête sous forme de chaîne de caractères
      * @return String
      */
     public String getPrecondStr() {
@@ -61,7 +61,7 @@ public class Quete {
     }
 
     /**
-     * Renovie la position de la quête sous forme de chaine de caractères
+     * Renvoie la position de la quête sous forme de chaîne de caractères
      * @return String
      */
     public String getPosStr() {
@@ -88,7 +88,7 @@ public class Quete {
     }
 
     /**
-     * Permets de modifier le numéro de la quête
+     * Permet de modifier le numéro de la quête
      * @param numero
      */
     public void setNumero(int numero) {
@@ -104,7 +104,7 @@ public class Quete {
     }
 
     /**
-     * Permets de modifier la position de la quête
+     * Permet de modifier la position de la quête
      * @param pos
      */
     public void setPos(int[] pos) {
@@ -120,7 +120,7 @@ public class Quete {
     }
 
     /**
-     * Permets de modifier les préconditions de la quête
+     * Permet de modifier les préconditions de la quête
      * @param precond
      */
     public void setPrecond(int[] precond) {
@@ -136,7 +136,7 @@ public class Quete {
     }
 
     /**
-     * Permets de modifier la durée de la quête
+     * Permet de modifier la durée de la quête
      * @param duree
      */
     public void setDuree(int duree) {
@@ -152,7 +152,7 @@ public class Quete {
     }
 
     /**
-     * Permets de modifier l'expérience de la quête
+     * Permet de modifier l'expérience de la quête
      * @param experience
      */
     public void setExperience(int experience) {
@@ -168,7 +168,7 @@ public class Quete {
     }
 
     /**
-     * Permets de modifier l'intitulé de la quête
+     * Permet de modifier l'intitulé de la quête
      * @param intitule
      */
     public void setIntitule(String intitule) {

@@ -9,11 +9,16 @@ import javafx.stage.Stage;
 /**
  * Classe SaeApplication qui permet de lancer l'application
  * Hérite de la classe Application
+ * 
+ * @see Application
  */
 public class SaeApplication extends Application {
     
     /**
      * Méthode start de la classe SaeApplication qui permet de lancer l'application
+     * @param stage
+     * 
+     * @see Stage
      */
     public void start(Stage stage) {
         VBoxRootMenu root = new VBoxRootMenu();
@@ -29,6 +34,7 @@ public class SaeApplication extends Application {
 
     /**
      * Méthode main de la classe SaeApplication qui permet de lancer l'application
+     * @param args
      */
     public static void main(String [] args) {
         Application.launch(args);

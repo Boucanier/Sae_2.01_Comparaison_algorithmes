@@ -41,10 +41,18 @@ public class Joueur {
         return dureeTotal;
     }
 
+    /**
+     * Méthode qui permet de récupérer le nombre de déplacement que le joueur a fait
+     * @return int
+     */
     public int getDeplacement(){
         return deplacement;
     }
 
+    /**
+     * Méthode qui permet de modifier le nombre de déplacement que le joueur a fait
+     * @param newDeplacement
+     */
     public void setDeplacement(int newDeplacement){
         deplacement += newDeplacement;
     }
@@ -60,6 +68,8 @@ public class Joueur {
     /**
      * Permet de récupérer les numéros des quêtes que le joueur a fait
      * @return ArrayList<Integer>
+     * 
+     * @see ArrayList
      */
     public ArrayList<Integer> getParcoursNum(){
         return parcoursNum;
@@ -68,6 +78,9 @@ public class Joueur {
     /**
      * Permet de récupérer les quêtes que le joueur a fait
      * @return ArrayList<Quete>
+     * 
+     * @see Quete
+     * @see ArrayList
      */
     public ArrayList<Quete> getParcoursQuete(){
         return parcoursQuete;
@@ -132,24 +145,38 @@ public class Joueur {
         return parcoursNum.toString();
     }
 
+    /**
+     * Retire de l'expérience au joueur
+     * @param nbExp
+     */
     public void removeExperience(int nbExp){
         experience -= nbExp;
     }
 
+    /**
+     * Retire la dernière quête du parcours du joueur
+     */
     public void removeDerniereQuete(){
         parcoursQuete.remove(parcoursQuete.size() - 1);
         parcoursNum.remove(parcoursNum.size() - 1);
     }
 
     /**
-     * Renvoie une chaine de caractaire contenant les positins sur lesquelles le joueur est allé
-     *
-     * @return String
+     * Renvoie la liste des positions du joueur
+     * @return ArrayList<int[]>
+     * 
+     * @see ArrayList
      */
     public ArrayList<int[]> getArrayPos(){
         return arrayPos;
     }
 
+    /**
+     * Renvoie une copie du joueur
+     * @return Joueur
+     * 
+     * @see Joueur
+     */
     public Joueur copy() {
         Joueur copy = new Joueur();
         copy.dureeTotal = this.dureeTotal;
@@ -163,11 +190,20 @@ public class Joueur {
         return copy;
     }
 
+    /**
+     * Ajoute une quête au parcours du joueur
+     * @param quete
+     * 
+     * @see Quete
+     */
     public void parcourirQuete(Quete quete) {
         parcoursNum.add(quete.getNumero());
         parcoursQuete.add(quete);
     }
 
+    /**
+     * Retire la dernière quête du parcours du joueur
+     */
     public void annulerDerniereQuete() {
         if (!parcoursNum.isEmpty()) {
             parcoursNum.remove(parcoursNum.size() - 1);
@@ -175,10 +211,18 @@ public class Joueur {
         }
     }
 
+    /**
+     * Retire des déplacements au joueur
+     * @param distanceJouerQuete
+     */
     public void removeDeplacement(int distanceJouerQuete){
         deplacement -= distanceJouerQuete;
     }
 
+    /**
+     * Retire de la durée au joueur
+     * @param dureeAEnlever
+     */
     public void removeDureeTotal(int dureeAEnlever) {
         dureeTotal -= dureeAEnlever;
     }

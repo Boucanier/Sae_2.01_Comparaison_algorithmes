@@ -18,6 +18,13 @@ public class LectureFichierTexte {
      * Lecture d'un fichier texte
      * @param fichier le fichier à lire
      * @return Scenario
+     * 
+     * @see Scenario
+     * @see File
+     * 
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws RuntimeException
      */
     public static Scenario lecture (File fichier) {
         Scenario scenario = new Scenario();

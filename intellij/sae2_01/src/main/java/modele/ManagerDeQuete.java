@@ -26,7 +26,10 @@ public class ManagerDeQuete {
     /**
      * Constructeur de la classe ManagerDeQuete
      * Prend en paramètre un scénario
+     * 
      * @param parScenario
+     * 
+     * @see Scenario
      */
     public ManagerDeQuete(Scenario parScenario){
         ArrayList<Quete> listeQuetesRecup = parScenario.getListeQuetes();
@@ -39,9 +42,14 @@ public class ManagerDeQuete {
 
     /**
      * Retourne l'indice de la quête dans la liste possédant le numéro de quête donné en paramètre
+     * 
      * @param liste
      * @param numQuete
+     * 
      * @return int
+     * 
+     * @see Quete
+     * @see ArrayList
      */
     private int trouverIndiceListeQuete(ArrayList<Quete> liste, int numQuete) {
         for (int i = 0; i < liste.size(); i++) {
@@ -56,9 +64,14 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Renvoie une liste d'entier contenant les numéro des quetes les plus proches possibles pour le joueur
+     * Renvoie une liste d'entiers contenant les numéros des quêtes les plus proches possibles pour le joueur
+     * 
      * @param joueur
+     * 
      * @return ArrayList<Integer>
+     * 
+     * @see Joueur
+     * @see ArrayList
      */
     public ArrayList<Integer> trouverQueteProche(Joueur joueur){
         TreeMap<Integer, Integer> dicoQueteProhe = new TreeMap<>(); // clé : une quete atteignable, valeur distance de la pos du joueur a la quete
@@ -94,9 +107,11 @@ public class ManagerDeQuete {
 
 
     /**
-     * Renvoie le nombre de déplacement nécessaire à la réalisation du déplacement d'un joueur d'une position 1 à une position 2
+     * Renvoie le nombre de déplacements nécessaires à la réalisation du déplacement d'un joueur d'une position 1 à une position 2
+     * 
      * @param startPos : position de départ
      * @param endPos : position d'arrivée
+     * 
      * @return int
      */
     protected int distanceEntrePos(int[] startPos, int[] endPos){
@@ -108,10 +123,14 @@ public class ManagerDeQuete {
 
 
     /**
-     * Renvoie true si le joueur à les préconditions pour commencer une certaine quête, false sinon
+     * Renvoie true si le joueur possède les préconditions pour commencer une certaine quête, false sinon
+     * 
      * @param parcoursDuJoueur
      * @param parPrecond
+     * 
      * @return boolean
+     * 
+     * @see List
      */
     protected boolean peutCommencerQuete(List<Integer> parcoursDuJoueur, int[] parPrecond){
         int peutCommencer = 0;
@@ -174,10 +193,16 @@ public class ManagerDeQuete {
 
 
     /**
-     * Renvoie le numéro de la quete la plus proche en fonction de si l'on souhaite une solution efficace ou exhausistive
+     * Renvoie le numéro de la quête la plus proche en fonction de si l'on souhaite une solution efficace ou exhaustive
+     * 
+     * @param joueur
      * @param queteProche
      * @param typeSolution
+     * 
      * @return int
+     * 
+     * @see ArrayList
+     * @see Joueur
      */
     private int choisirQueteDansQuetesProches(Joueur joueur, ArrayList<Integer> queteProche, String typeSolution){
         int queteChoisie;
@@ -217,8 +242,11 @@ public class ManagerDeQuete {
 
     /**
      * Effectue la solution efficace ou exhaustive en fonction du type de solution donné en paramètre
+     * 
      * @param joueur
      * @param solution
+     * 
+     * @see Joueur
      */
     public void efficaceOuExhaustif(Joueur joueur, String solution){
         while (! joueur.getParcoursNum().contains(0)){
@@ -268,8 +296,12 @@ public class ManagerDeQuete {
 
     /**
      * Renvoie le joueur avec la solution efficace ou exhaustive en fonction du type de solution donné en paramètre
+     * 
      * @param choixSolution
+     * 
      * @return Joueur
+     * 
+     * @see Joueur
      */
     public Joueur niveau1(String choixSolution){
         Joueur joueur = new Joueur();
@@ -287,10 +319,14 @@ public class ManagerDeQuete {
     // ##################################################
 
     /**
-     * Mettre a jour les info du joueur info de connaitre les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
+     * Met a jour les informations du joueur afin de connaître les caractéristiques d'un joueur et donc de savoir si une solution est mieux qu'une autre (les comparer)
      * 
      * @param joueur
      * @param uneListeDeQuetes
+     * 
+     * @see Joueur
+     * @see Quete
+     * @see ArrayList
      */
     private void mettreInfoJoueur(Joueur joueur, ArrayList<Quete> uneListeDeQuetes){
         for (Quete uneQuete : uneListeDeQuetes){
@@ -311,10 +347,13 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Met a jour les caractéristiques essentielles d'une joueur en ajoutant la quete en parametre
+     * Met a jour les caractéristiques essentielles d'une joueur en ajoutant la quête en paramètre
      * 
      * @param joueur
      * @param parQuete
+     * 
+     * @see Joueur
+     * @see Quete
      */
     private void ajoutCaracteristiqueQueteToJoueur(Joueur joueur, Quete parQuete){
         if (parQuete.getNumero() != 0){
@@ -326,9 +365,11 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Met a jour les caractéristique essentielles d'une joueur en supprimant sa derniere quete
+     * Met a jour les caractéristique essentielles d'une joueur en supprimant sa derniere quête
      * 
      * @param joueur
+     * 
+     * @see Joueur
      */
     private void retireCaracteristiqueQueteToJoueur(Joueur joueur){
         ArrayList<Quete> listeQueteRealisee = joueur.getParcoursQuete();
@@ -342,10 +383,13 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Trouve la quete en fonction du numéro de celle-ci en parametre
+     * Trouve la quête en fonction du numéro donné en paramètre
      * 
      * @param numQuete
+     * 
      * @return Quete
+     * 
+     * @see Quete
      */
     private Quete trouverQueteParNumero(int numQuete){
         for (Quete quete : listeQuetes){
@@ -356,9 +400,12 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Donne la liste de toutes les sources du scénario (les quetes qu'y n'ont pas de préconditions)
+     * Donne la liste de toutes les sources du scénario (les quêtes qui n'ont pas de préconditions)
      *
-     * @return ArrayList<Integer>
+     * @return ArrayList<Quete>
+     * 
+     * @see Quete
+     * @see ArrayList
      */
     private ArrayList<Quete> trouverListeSource(){
         ArrayList<Quete> listeSource = new ArrayList<>();
@@ -370,11 +417,14 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Trouve la meilleur solution en fonction du parametre étudié "objectEtudiee"
+     * Trouve la meilleure solution en fonction du paramètre étudié "objectEtudiee"
      * 
      * @param solutions
      * @param objectEtudiee
+     * 
      * @return int
+     * 
+     * @see Joueur
      */
     private int indiceTrouverMeilleur(Joueur[] solutions, String objectEtudiee){
         int meilleurSolution = getChamp(solutions[0], objectEtudiee);
@@ -390,11 +440,14 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Renvoie l'indice du pire élément d'une liste de solutions contenant directment les joueurs
+     * Renvoie l'indice du pire élément d'une liste de solutions contenant directement les joueurs
      * 
      * @param solutions
      * @param objectEtudiee
-     * @return
+     * 
+     * @return int
+     * 
+     * @see Joueur
      */
     private int indiceTrouverPire(Joueur[] solutions, String objectEtudiee){
         int pireSolution = getChamp(solutions[0], objectEtudiee);
@@ -410,13 +463,15 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Met la solutions dans la liste, en fonction du parametre étudié et si on cherche la pire ou la meilleur solution
+     * Met la solution dans la liste, en fonction du paramètre étudié et si on cherche la pire ou la meilleure solution
      * 
      * @param solutions
      * @param joueur
      * @param objectEtudiee
      * @param typeSolution
      * @param meilleurPire
+     * 
+     * @see Joueur
      */
     private void metSolutionDansListe(Joueur[] solutions, Joueur joueur, String objectEtudiee, String typeSolution, String meilleurPire){
         int longeurListe = solutions.length;
@@ -450,11 +505,11 @@ public class ManagerDeQuete {
     }
 
     /**
-     * 
-     * Renvoie true si c'est une solutions efficace qui est demandée
+     * Renvoie true si c'est une solution efficace qui est demandée
      * 
      * @param typeSolution
-     * @return
+     * 
+     * @return boolean
      */
     private boolean solutionIsEfficace(String typeSolution){
         return typeSolution.equals("efficace");
@@ -462,10 +517,11 @@ public class ManagerDeQuete {
 
     /**
      * 
-     * Renvoie true si c'est une solutions exhaustive qui est demandée
+     * Renvoie true si c'est une solution exhaustive qui est demandée
      * 
      * @param typeSolution
-     * @return
+     * 
+     * @return boolean
      */
     private boolean solutionIsExhaustif(String typeSolution){
         return typeSolution.equals("exhaustif");
@@ -477,6 +533,11 @@ public class ManagerDeQuete {
      * @param solutions
      * @param numQuete
      * @param joueur
+     * @param objectEtudiee
+     * @param typeSolution
+     * @param meilleurPire
+     * 
+     * @see Joueur
      */
     private void trouveSolutionsRecursivement(Joueur[] solutions, int numQuete, Joueur joueur, String objectEtudiee, String typeSolution, String meilleurPire){
         ajoutCaracteristiqueQueteToJoueur(joueur, trouverQueteParNumero(numQuete));
@@ -528,9 +589,13 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Pour toutes les sources on va chercher les solutions que l'on ajoute dans la liste de liste finale que l'on renvoie
+     * Pour toutes les sources, on va chercher les solutions que l'on ajoute dans la liste de listes finale que l'on renvoie
      * 
-     * @return ArrayList<ArrayList<Quete>>
+     * @param solutionsReellees
+     * @param nbSolutions
+     * @param objectEtudiee
+     * @param typeSolution
+     * @param meilleurPire
      */
     public void trouverSolutions(Joueur[] solutionsReellees, int nbSolutions, String objectEtudiee, String typeSolution, String meilleurPire){
         //on cherche toutes les sources possibles
@@ -548,7 +613,10 @@ public class ManagerDeQuete {
      * 
      * @param quete
      * @param fieldName
+     * 
      * @return int
+     * 
+     * @see Joueur
      */
     private static int getChamp(Joueur joueur, String nomDuCHamp) {
         if (nomDuCHamp.equals("deplacement")) {
@@ -572,12 +640,16 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Trie une liste de joueur en fonction de ses champs (experience, nombre de quetes réalisées ...)
+     * Trie une liste de joueur en fonction de ses champs (expérience, nombre de quetes réalisées ...)
      * 
      * @param listeQuetes
      * @param fieldName
+     * @param meilleurPire
+     * 
+     * @see Joueur
+     * @see ArrayList
      */
-    public static void trierLesJoueurs(ArrayList<Joueur> listeJoueurs, final String nomDuChamp, String meilleurPire) {
+    public static void trierLesJoueurs(ArrayList<Joueur> listeJoueurs, String nomDuChamp, String meilleurPire) {
         Collections.sort(listeJoueurs, new Comparator<Joueur>() {
             @Override
             public int compare(Joueur joueur1, Joueur joueur2) {
@@ -599,10 +671,14 @@ public class ManagerDeQuete {
 
     /**
      * Redimentionne une liste de joueur, la liste peut contenir des joueur qui n'ont pas fait de parcours 
-     * (si le user choise un nombre de solutions trop important par rapport au nombre possible)
+     * (si l'utilisateur choisit un nombre de solutions trop important par rapport au nombre possible)
      * 
      * @param listeDeJoueurs
-     * @return
+     * 
+     * @return ArrayList<Joueur>
+     * 
+     * @see Joueur
+     * @see ArrayList
      */
     private ArrayList<Joueur> redimentionnerListeSolution(Joueur[] listeDeJoueurs){
         ArrayList<Joueur> newListe = new ArrayList<>();
@@ -616,9 +692,17 @@ public class ManagerDeQuete {
     }
 
     /**
-     * Renvoie une array list de joueur répondant au type de solution demandée, on peut donc travaillé avec afin de connaitre toutes les caractéristiques du joueur
+     * Renvoie une arrayList de joueur répondant au type de solution demandée, on peut donc travailler avec afin de connaître toutes les caractéristiques du joueur
+     * 
+     * @param nbSolutions
+     * @param typeSolution
+     * @param objectEtudiee
+     * @param meilleurPire
      * 
      * @return ArrayList<ArrayList<Quete>>
+     * 
+     * @see Joueur
+     * @see ArrayList
      */
     public ArrayList<Joueur> niveau2(int nbSolutions, String typeSolution, String objectEtudiee, String meilleurPire){
         // toutes les solutions

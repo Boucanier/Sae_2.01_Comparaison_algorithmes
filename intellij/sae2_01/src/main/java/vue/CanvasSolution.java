@@ -13,7 +13,8 @@ import modele.Quete;
 import modele.Scenario;
 
 /**
- * Classe CanvasSolution qui permet de dessiner le parcours du joueur
+ * Classe CanvasSolution qui permet de dessiner un scénario et le parcours d'un joueur
+ * Hérite de la classe Canvas
  * 
  * @see Canvas
  */
@@ -33,6 +34,9 @@ public class CanvasSolution extends Canvas {
      * @param parScenario
      * @param parJoueur
      * @throws InterruptedException
+     * 
+     * @see Scenario
+     * @see Joueur
      */
     public void draw(Scenario parScenario, Joueur parJoueur) throws InterruptedException {
         GraphicsContext gc = getGraphicsContext2D();

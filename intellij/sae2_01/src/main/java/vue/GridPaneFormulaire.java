@@ -14,6 +14,9 @@ import modele.ConstantesSolutions;
  * Contient le formulaire pour le choix des critères de la solution
  * Hérite de la classe GridPane
  * Implémente l'interface ConstantesSolutions
+ * 
+ * @see GridPane
+ * @see ConstantesSolutions
  */
 public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
     public static ComboBox<String> comboBoxSolution;
