@@ -46,7 +46,7 @@ public class Controleur implements EventHandler<ActionEvent> {
                         for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
                             String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
                             if (userData.equals("canvas")) {
-                                ((CanvasSolution) VBoxSolution.getStackPaneSolution().getChildren().get(i)).draw(scenario2);
+                                ((CanvasSolution) VBoxSolution.getStackPaneSolution().getChildren().get(i)).draw(scenario2, joueurSelect);
                                 VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
                                 break;
                             }

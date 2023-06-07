@@ -1,8 +1,11 @@
 package vue;
 
+import java.util.ArrayList;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import modele.Joueur;
 import modele.Quete;
 import modele.Scenario;
 
@@ -12,8 +15,9 @@ public class CanvasSolution extends Canvas {
         super(parWidth, parHeight);
     }
 
-    public void draw(Scenario parScenario) {
+    public void draw(Scenario parScenario, Joueur parJoueur) {
         GraphicsContext gc = getGraphicsContext2D();
+        ArrayList<Quete> parcours = parJoueur.getParcoursQuete();
 
         gc.clearRect(0, 0, this.getWidth(), this.getHeight());
 
@@ -38,6 +42,12 @@ public class CanvasSolution extends Canvas {
             gc.setFill(Color.BLUE);
             gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
             gc.strokeText(String.valueOf(quete.getNumero()), origine[0] + (pos[0] * echelleX) + 1, (pos[1] * echelleY));
+        }
+
+        for (Quete quete : parcours){
+            int[] pos = quete.getPos();
+            gc.setFill(Color.GREEN);
+            gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
         }
     }
 }
