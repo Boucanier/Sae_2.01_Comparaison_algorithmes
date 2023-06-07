@@ -30,8 +30,6 @@ public class CanvasSolution extends Canvas {
         
         int[] dimensionsMax = parScenario.dimensionsMax();
 
-        System.out.println(dimensionsMax[0] + " " + dimensionsMax[1]);
-
         double echelleX = 858 / dimensionsMax[0];
         double echelleY = 408 / dimensionsMax[1];
 

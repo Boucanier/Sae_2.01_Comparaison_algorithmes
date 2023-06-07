@@ -24,6 +24,7 @@ import vue.VBoxTable;
  */
 public class Controleur implements EventHandler<ActionEvent> {
     public static ArrayList<String> listeScenario = VBoxSolution.getListeScenario();
+    String nomScenario;
 
     /**
      * Méthode handle de la classe Controleur qui gère les événements
@@ -35,11 +36,11 @@ public class Controleur implements EventHandler<ActionEvent> {
             switch ((((Button) event.getSource()).getAccessibleText())){
                 
                 case "simuler" :
-                    String nomScenario2 = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
-                    if (nomScenario2.equals("canvas")) {
-                        nomScenario2 = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
+                    nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
+                    if (nomScenario.equals("canvas")) {
+                        nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
                     }
-                    Scenario scenario2 = LectureFichierTexte.lecture(new File("scenarios" + File.separator + nomScenario2));
+                    Scenario scenario2 = LectureFichierTexte.lecture(new File("scenarios" + File.separator + nomScenario));
                     for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
                         String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
                         if (userData.equals("canvas")) {
@@ -51,11 +52,11 @@ public class Controleur implements EventHandler<ActionEvent> {
                     break;
 
                 case "valider" :
-                    String nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
+                    nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
 
                     if (nomScenario.equals("canvas")) {
                         nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
-                        
+
                         for (int i = 0; i < listeScenario.size(); i++) {
                             String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
                             if (scenario.equals(nomScenario)) {
@@ -81,6 +82,19 @@ public class Controleur implements EventHandler<ActionEvent> {
                 
                 case "annuler" :
                     GridPaneFormulaire.resetFormulaire();
+                    nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
+
+                    if (nomScenario.equals("canvas")) {
+                        nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
+                        
+                        for (int i = 0; i < listeScenario.size(); i++) {
+                            String scenario3 = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
+                            if (scenario3.equals(nomScenario)) {
+                                VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                                break;
+                            }
+                        }
+                    }
                     break;
             }
         }
