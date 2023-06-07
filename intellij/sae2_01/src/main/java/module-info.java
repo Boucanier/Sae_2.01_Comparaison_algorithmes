@@ -5,4 +5,5 @@ module sae201 {
     exports vue;
     exports modele;
     exports controleur;
+    exports lectureEcritureFichier;
 }
