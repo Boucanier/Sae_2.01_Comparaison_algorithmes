@@ -166,7 +166,7 @@ __Données d'entrée__
 __Données d'entrée__
 
 | Classe | Scénario | TypeSolution  | pire ou meilleur  | Object observé  | Résultat attendu | Résultat observé |  Résultat test  |
-|:------:|:--------:|:-------------:|:-----------------:|:---------------:|:----------------:|:----------------:|-----------------|
+|:------:|:--------:|:-------------:|:-----------------:|:---------------:|:----------------:|:----------------:|:---------------:|
 |   P1   |    0     |   efficace    |     meilleur      |   dureeTotal    |        27        |        27        |        OK       |
 |   P2   |    0     |   efficace    |       pire        |   dureeTotal    |        30        |       30         |        OK       |
 |   P3   |    0     |  exhaustive   |     meilleur      |   dureeTotal    |        36        |       36         |        OK       |
