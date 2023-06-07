@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"sae201","l":"client"},{"m":"sae201","l":"controleur"},{"m":"sae201","l":"lectureEcritureFichier"},{"m":"sae201","l":"modele"},{"m":"sae201","l":"vue"}];updateSearchResults();
