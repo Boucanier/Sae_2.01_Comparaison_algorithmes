@@ -2,7 +2,7 @@
 
 | Exploration algorithmique                  | Version : 0             |
 |--------------------------------------------|-------------------------|
-| Document : Dossier de tests                | Date : 23/05/2023       |
+| Document : Dossier de tests                | Date : 06/06/2023       |
 | Responsable de la rédaction : Jules CHIRON |                         |
 
 ## 1. Introduction
@@ -21,14 +21,14 @@ Nous comparerons ensuite les résultats obtenus avec les résultats attendus.
 
 ### 1. Campagne de test
 
-| Produit testé : classe _ManagerDeQuete_                      |
-|--------------------------------------------------------------|
-| Configuration logicielle : Java 18, IntelliJ, JUnit 5        |
-| Configuration matérielle : Ubuntu 22.04, Windows 11          |
-| Date de début : 11/05/2023                                   |
-| Date de finalisation : 23/05/2023                            |
-| Tests à appliquer : _distanceEntrePos_, _peutCommencerQuete_ |
-| Responsable de la campagne de test : Jules CHIRON            |
+| Produit testé : classe _ManagerDeQuete_                                 |
+|-------------------------------------------------------------------------|
+| Configuration logicielle : Java 18, IntelliJ, JUnit 5                   |
+| Configuration matérielle : Ubuntu 22.04, Windows 11                     |
+| Date de début : 11/05/2023                                              |
+| Date de finalisation : 06/05/2023                                       |
+| Tests à appliquer : _distanceEntrePos_, _peutCommencerQuete_, _niveau2_ |
+| Responsable de la campagne de test : Jules CHIRON                       |
 
 ### 2. Tests
 
@@ -129,7 +129,7 @@ __Données d'entrée__
 
 ---
 
-| Référence du test appliqué : 2             |
+| Référence du test appliqué : 1             |
 |--------------------------------------------|
 | Responsable : Jules CHIRON                 |
 | Date de l'application du test : 23/05/2023 |
@@ -156,97 +156,97 @@ __Données d'entrée__
 
 ---
 
-| Référence du test appliqué : 2   |
-|----------------------------------|
-| Responsable : Matis RODIER       |
-| Date de l'application du test :  |
-| Résultat du test :               |
-| Occurrence des résultats :       |
+| Référence du test appliqué : 2             |
+|--------------------------------------------|
+| Responsable : Matis RODIER                 |
+| Date de l'application du test : 06/06/2023 |
+| Résultat du test : Ok                      |
+| Occurrence des résultats :  systématique   |
 
 __Données d'entrée__
 
-| Classe | Scénario | TypeSolution  | pire ou meilleur  | Object observé  | Résultat attendu | Résultat observé | Résultat test |
-|:------:|:--------:|:-------------:|:-----------------:|:---------------:|:----------------:|:----------------:|---------------|
-|   P1   |    0     |   efficace    |     meilleur      |   dureeTotal    |        27        |                  |               |
-|   P2   |    0     |   efficace    |       pire        |   dureeTotal    |        30        |                  |               |
-|   P3   |    0     |  exhaustive   |     meilleur      |   dureeTotal    |        36        |                  |               |
-|   P4   |    0     |  exhaustive   |       pire        |   dureeTotal    |        40        |                  |               |
-|   P5   |    0     |   efficace    |     meilleur      |   experience    |       350        |                  |               |
-|   P6   |    0     |   efficace    |       pire        |   experience    |       450        |                  |               |
-|   P7   |    0     |  exhaustive   |     meilleur      |   experience    |       550        |                  |               |
-|   P8   |    0     |  exhaustive   |       pire        |   experience    |       550        |                  |               |
-|   P9   |    0     |   efficace    |     meilleur      |   deplacement   |        14        |                  |               |
-|  P10   |    0     |   efficace    |       pire        |   deplacement   |        20        |                  |               |
-|  P11   |    0     |  exhaustive   |     meilleur      |   deplacement   |        20        |                  |               |
-|  P12   |    0     |  exhaustive   |       pire        |   deplacement   |        24        |                  |               |
-|  P13   |    0     |   efficace    |     meilleur      |   parcoursNum   |        4         |                  |               |
-|  P14   |    0     |   efficace    |       pire        |   parcoursNum   |        4         |                  |               |
-|  P15   |    0     |  exhaustive   |     meilleur      |   parcoursNum   |        5         |                  |               |
-|  P16   |    0     |  exhaustive   |       pire        |   parcoursNum   |        5         |                  |               |
-|  P17   |    1     |   efficace    |     meilleur      |   dureeTotal    |        34        |                  |               |
-|  P18   |    1     |   efficace    |       pire        |   dureeTotal    |        40        |                  |               |
-|  P19   |    1     |  exhaustive   |     meilleur      |   dureeTotal    |        34        |                  |               |
-|  P20   |    1     |  exhaustive   |       pire        |   dureeTotal    |        40        |                  |               |
-|  P21   |    1     |   efficace    |     meilleur      |   experience    |       450        |                  |               |
-|  P22   |    1     |   efficace    |       pire        |   experience    |       500        |                  |               |
-|  P23   |    1     |  exhaustive   |     meilleur      |   experience    |       500        |                  |               |
-|  P24   |    1     |  exhaustive   |       pire        |   experience    |       500        |                  |               |
-|  P25   |    1     |   efficace    |     meilleur      |   deplacement   |        17        |                  |               |
-|  P26   |    1     |   efficace    |       pire        |   deplacement   |        23        |                  |               |
-|  P27   |    1     |  exhaustive   |     meilleur      |   deplacement   |        17        |                  |               |
-|  P28   |    1     |  exhaustive   |       pire        |   deplacement   |        23        |                  |               |
-|  P29   |    1     |   efficace    |     meilleur      |   parcoursNum   |        5         |                  |               |
-|  P30   |    1     |   efficace    |       pire        |   parcoursNum   |        6         |                  |               |
-|  P31   |    1     |  exhaustive   |     meilleur      |   parcoursNum   |        6         |                  |               |
-|  P32   |    1     |  exhaustive   |       pire        |   parcoursNum   |        6         |                  |               |
-|  P33   |    2     |   efficace    |     meilleur      |   dureeTotal    |        80        |                  |               |
-|  P34   |    2     |   efficace    |       pire        |   dureeTotal    |       106        |                  |               |
-|  P35   |    2     |  exhaustive   |     meilleur      |   dureeTotal    |        91        |                  |               |
-|  P36   |    2     |  exhaustive   |       pire        |   dureeTotal    |       117        |                  |               |
-|  P37   |    2     |   efficace    |     meilleur      |   experience    |       1000       |                  |               |
-|  P38   |    2     |   efficace    |       pire        |   experience    |       1050       |                  |               |
-|  P39   |    2     |  exhaustive   |     meilleur      |   experience    |       1200       |                  |               |
-|  P40   |    2     |  exhaustive   |       pire        |   experience    |       1200       |                  |               |
-|  P41   |    2     |   efficace    |     meilleur      |   deplacement   |        35        |                  |               |
-|  P42   |    2     |   efficace    |       pire        |   deplacement   |        57        |                  |               |
-|  P43   |    2     |  exhaustive   |     meilleur      |   deplacement   |        39        |                  |               |
-|  P44   |    2     |  exhaustive   |       pire        |   deplacement   |        65        |                  |               |
-|  P45   |    2     |   efficace    |     meilleur      |   parcoursNum   |        9         |                  |               |
-|  P46   |    2     |   efficace    |       pire        |   parcoursNum   |        9         |                  |               |
-|  P47   |    2     |  exhaustive   |     meilleur      |   parcoursNum   |        10        |                  |               |
-|  P48   |    2     |  exhaustive   |       pire        |   parcoursNum   |        10        |                  |               |
-|  P49   |    3     |   efficace    |     meilleur      |   dureeTotal    |        53        |                  |               |
-|  P50   |    3     |   efficace    |       pire        |   dureeTotal    |        72        |                  |               |
-|  P51   |    3     |  exhaustive   |     meilleur      |   dureeTotal    |        64        |                  |               |
-|  P52   |    3     |  exhaustive   |       pire        |   dureeTotal    |        74        |                  |               |
-|  P53   |    3     |   efficace    |     meilleur      |   experience    |       650        |                  |               |
-|  P54   |    3     |   efficace    |       pire        |   experience    |       950        |                  |               |
-|  P55   |    3     |  exhaustive   |     meilleur      |   experience    |       950        |                  |               |
-|  P56   |    3     |  exhaustive   |       pire        |   experience    |       950        |                  |               |
-|  P57   |    3     |   efficace    |     meilleur      |   deplacement   |        26        |                  |               |
-|  P58   |    3     |   efficace    |       pire        |   deplacement   |        36        |                  |               |
-|  P59   |    3     |  exhaustive   |     meilleur      |   deplacement   |        28        |                  |               |
-|  P60   |    3     |  exhaustive   |       pire        |   deplacement   |        38        |                  |               |
-|  P61   |    3     |   efficace    |     meilleur      |   parcoursNum   |        6         |                  |               |
-|  P62   |    3     |   efficace    |       pire        |   parcoursNum   |        8         |                  |               |
-|  P63   |    3     |  exhaustive   |     meilleur      |   parcoursNum   |        8         |                  |               |
-|  P64   |    3     |  exhaustive   |       pire        |   parcoursNum   |        8         |                  |               |
-|  P65   |    4     |   efficace    |     meilleur      |   dureeTotal    |        95        |                  |               |
-|  P66   |    4     |   efficace    |       pire        |   dureeTotal    |       167        |                  |               |
-|  P67   |    4     |  exhaustive   |     meilleur      |   dureeTotal    |       115        |                  |               |
-|  P68   |    4     |  exhaustive   |       pire        |   dureeTotal    |       171        |                  |               |
-|  P69   |    4     |   efficace    |     meilleur      |   experience    |       900        |                  |               |
-|  P70   |    4     |   efficace    |       pire        |   experience    |       1100       |                  |               |
-|  P71   |    4     |  exhaustive   |     meilleur      |   experience    |       1100       |                  |               |
-|  P72   |    4     |  exhaustive   |       pire        |   experience    |       1100       |                  |               |
-|  P73   |    4     |   efficace    |     meilleur      |   deplacement   |        49        |                  |               |
-|  P74   |    4     |   efficace    |       pire        |   deplacement   |       107        |                  |               |
-|  P75   |    4     |  exhaustive   |     meilleur      |   deplacement   |        55        |                  |               |
-|  P76   |    4     |  exhaustive   |       pire        |   deplacement   |       111        |                  |               |
-|  P77   |    4     |   efficace    |     meilleur      |   parcoursNum   |        7         |                  |               |
-|  P78   |    4     |   efficace    |       pire        |   parcoursNum   |        10        |                  |               |
-|  P79   |    4     |  exhaustive   |     meilleur      |   parcoursNum   |        10        |                  |               |
-|  P80   |    4     |  exhaustive   |       pire        |   parcoursNum   |        10        |                  |               |
+| Classe | Scénario | TypeSolution  | pire ou meilleur  | Object observé  | Résultat attendu | Résultat observé |  Résultat test  |
+|:------:|:--------:|:-------------:|:-----------------:|:---------------:|:----------------:|:----------------:|-----------------|
+|   P1   |    0     |   efficace    |     meilleur      |   dureeTotal    |        27        |        27        |        OK       |
+|   P2   |    0     |   efficace    |       pire        |   dureeTotal    |        30        |       30         |        OK       |
+|   P3   |    0     |  exhaustive   |     meilleur      |   dureeTotal    |        36        |       36         |        OK       |
+|   P4   |    0     |  exhaustive   |       pire        |   dureeTotal    |        40        |       40         |        OK       |
+|   P5   |    0     |   efficace    |     meilleur      |   experience    |       350        |       350        |        OK       |
+|   P6   |    0     |   efficace    |       pire        |   experience    |       450        |       450        |        OK       |
+|   P7   |    0     |  exhaustive   |     meilleur      |   experience    |       550        |       550        |        OK       |
+|   P8   |    0     |  exhaustive   |       pire        |   experience    |       550        |       550        |        OK       |
+|   P9   |    0     |   efficace    |     meilleur      |   deplacement   |        14        |        14        |        OK       |
+|  P10   |    0     |   efficace    |       pire        |   deplacement   |        20        |        20        |        OK       |
+|  P11   |    0     |  exhaustive   |     meilleur      |   deplacement   |        20        |        20        |        OK       |
+|  P12   |    0     |  exhaustive   |       pire        |   deplacement   |        24        |        24        |        OK       |
+|  P13   |    0     |   efficace    |     meilleur      |   parcoursNum   |        4         |         4        |        OK       |
+|  P14   |    0     |   efficace    |       pire        |   parcoursNum   |        4         |         4        |        OK       |
+|  P15   |    0     |  exhaustive   |     meilleur      |   parcoursNum   |        5         |         5        |        OK       |
+|  P16   |    0     |  exhaustive   |       pire        |   parcoursNum   |        5         |         5        |        OK       |
+|  P17   |    1     |   efficace    |     meilleur      |   dureeTotal    |        34        |        34        |        OK       |
+|  P18   |    1     |   efficace    |       pire        |   dureeTotal    |        40        |        40        |        OK       |
+|  P19   |    1     |  exhaustive   |     meilleur      |   dureeTotal    |        34        |        34        |        OK       |
+|  P20   |    1     |  exhaustive   |       pire        |   dureeTotal    |        40        |        40        |        OK       |
+|  P21   |    1     |   efficace    |     meilleur      |   experience    |       450        |       450        |        OK       |
+|  P22   |    1     |   efficace    |       pire        |   experience    |       500        |       500        |        OK       |
+|  P23   |    1     |  exhaustive   |     meilleur      |   experience    |       500        |       500        |        OK       |
+|  P24   |    1     |  exhaustive   |       pire        |   experience    |       500        |       500        |        OK       |
+|  P25   |    1     |   efficace    |     meilleur      |   deplacement   |        17        |        17        |        OK       |
+|  P26   |    1     |   efficace    |       pire        |   deplacement   |        23        |        23        |        OK       |
+|  P27   |    1     |  exhaustive   |     meilleur      |   deplacement   |        17        |        17        |        OK       |
+|  P28   |    1     |  exhaustive   |       pire        |   deplacement   |        23        |        23        |        OK       |
+|  P29   |    1     |   efficace    |     meilleur      |   parcoursNum   |        5         |         5        |        OK       |
+|  P30   |    1     |   efficace    |       pire        |   parcoursNum   |        6         |         6        |        OK       |
+|  P31   |    1     |  exhaustive   |     meilleur      |   parcoursNum   |        6         |         6        |        OK       |
+|  P32   |    1     |  exhaustive   |       pire        |   parcoursNum   |        6         |         6        |        OK       |
+|  P33   |    2     |   efficace    |     meilleur      |   dureeTotal    |        80        |        80        |        OK       |
+|  P34   |    2     |   efficace    |       pire        |   dureeTotal    |       106        |       106        |        OK       |
+|  P35   |    2     |  exhaustive   |     meilleur      |   dureeTotal    |        91        |        91        |        OK       |
+|  P36   |    2     |  exhaustive   |       pire        |   dureeTotal    |       117        |       117        |        OK       |
+|  P37   |    2     |   efficace    |     meilleur      |   experience    |       1000       |      1000        |        OK       |
+|  P38   |    2     |   efficace    |       pire        |   experience    |       1050       |      1050        |        OK       |
+|  P39   |    2     |  exhaustive   |     meilleur      |   experience    |       1200       |      1200        |        OK       |
+|  P40   |    2     |  exhaustive   |       pire        |   experience    |       1200       |      1200        |        OK       |
+|  P41   |    2     |   efficace    |     meilleur      |   deplacement   |        35        |        35        |        OK       |
+|  P42   |    2     |   efficace    |       pire        |   deplacement   |        57        |        57        |        OK       |
+|  P43   |    2     |  exhaustive   |     meilleur      |   deplacement   |        39        |        39        |        OK       |
+|  P44   |    2     |  exhaustive   |       pire        |   deplacement   |        65        |        65        |        OK       |
+|  P45   |    2     |   efficace    |     meilleur      |   parcoursNum   |        9         |         9        |        OK       |
+|  P46   |    2     |   efficace    |       pire        |   parcoursNum   |        9         |         9        |        OK       |
+|  P47   |    2     |  exhaustive   |     meilleur      |   parcoursNum   |        10        |        10        |        OK       |
+|  P48   |    2     |  exhaustive   |       pire        |   parcoursNum   |        10        |        10        |        OK       |
+|  P49   |    3     |   efficace    |     meilleur      |   dureeTotal    |        53        |        53        |        OK       |
+|  P50   |    3     |   efficace    |       pire        |   dureeTotal    |        72        |        72        |        OK       |
+|  P51   |    3     |  exhaustive   |     meilleur      |   dureeTotal    |        64        |        64        |        OK       |
+|  P52   |    3     |  exhaustive   |       pire        |   dureeTotal    |        74        |        74        |        OK       |
+|  P53   |    3     |   efficace    |     meilleur      |   experience    |       650        |       650        |        OK       |
+|  P54   |    3     |   efficace    |       pire        |   experience    |       950        |       950        |        OK       |
+|  P55   |    3     |  exhaustive   |     meilleur      |   experience    |       950        |       950        |        OK       |
+|  P56   |    3     |  exhaustive   |       pire        |   experience    |       950        |       950        |        OK       |
+|  P57   |    3     |   efficace    |     meilleur      |   deplacement   |        26        |        26        |        OK       |
+|  P58   |    3     |   efficace    |       pire        |   deplacement   |        36        |        36        |        OK       |
+|  P59   |    3     |  exhaustive   |     meilleur      |   deplacement   |        28        |        28        |        OK       |
+|  P60   |    3     |  exhaustive   |       pire        |   deplacement   |        38        |        38        |        OK       |
+|  P61   |    3     |   efficace    |     meilleur      |   parcoursNum   |        6         |         6        |        OK       |
+|  P62   |    3     |   efficace    |       pire        |   parcoursNum   |        8         |         8        |        OK       |
+|  P63   |    3     |  exhaustive   |     meilleur      |   parcoursNum   |        8         |         8        |        OK       |
+|  P64   |    3     |  exhaustive   |       pire        |   parcoursNum   |        8         |         8        |        OK       |
+|  P65   |    4     |   efficace    |     meilleur      |   dureeTotal    |        95        |        95        |        OK       |
+|  P66   |    4     |   efficace    |       pire        |   dureeTotal    |       167        |       167        |        OK       |
+|  P67   |    4     |  exhaustive   |     meilleur      |   dureeTotal    |       115        |       115        |        OK       |
+|  P68   |    4     |  exhaustive   |       pire        |   dureeTotal    |       171        |       171        |        OK       |
+|  P69   |    4     |   efficace    |     meilleur      |   experience    |       900        |       900        |        OK       |
+|  P70   |    4     |   efficace    |       pire        |   experience    |       1100       |      1100        |        OK       |
+|  P71   |    4     |  exhaustive   |     meilleur      |   experience    |       1100       |      1100        |        OK       |
+|  P72   |    4     |  exhaustive   |       pire        |   experience    |       1100       |      1100        |        OK       |
+|  P73   |    4     |   efficace    |     meilleur      |   deplacement   |        49        |        49        |        OK       |
+|  P74   |    4     |   efficace    |       pire        |   deplacement   |       107        |       107        |        OK       |
+|  P75   |    4     |  exhaustive   |     meilleur      |   deplacement   |        55        |        55        |        OK       |
+|  P76   |    4     |  exhaustive   |       pire        |   deplacement   |       111        |       111        |        OK       |
+|  P77   |    4     |   efficace    |     meilleur      |   parcoursNum   |        7         |         7        |        OK       |
+|  P78   |    4     |   efficace    |       pire        |   parcoursNum   |        10        |        10        |        OK       |
+|  P79   |    4     |  exhaustive   |     meilleur      |   parcoursNum   |        10        |        10        |        OK       |
+|  P80   |    4     |  exhaustive   |       pire        |   parcoursNum   |        10        |        10        |        OK       |
 
 ## 4. Conclusion
 
