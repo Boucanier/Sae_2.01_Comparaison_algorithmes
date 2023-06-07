@@ -22,20 +22,21 @@ public class CanvasSolution extends Canvas {
         gc.setFill(Color.WHITE);
         gc.fillRect(25, 5, 870, 420);
 
-        int [] origine = {19, 0};
+        int [] origine = {25, 5};
 
         gc.setFill(Color.RED);
         gc.fillOval(origine[0], origine[1], 12, 12);
         
         int[] dimensionsMax = parScenario.dimensionsMax();
 
-        double echelleX = 870 / dimensionsMax[0];
-        double echelleY = 420 / dimensionsMax[1];
+        double echelleX = 858 / dimensionsMax[0];
+        double echelleY = 408 / dimensionsMax[1];
 
         for (Quete quete : parScenario.getListeQuetes()){
             int[] pos = quete.getPos();
             gc.setFill(Color.BLUE);
             gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
+            gc.strokeText(String.valueOf(quete.getNumero()), origine[0] + (pos[0] * echelleX) + 1, (pos[1] * echelleY));
         }
     }
 }
