@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import modele.Joueur;
 import modele.Quete;
@@ -44,18 +45,24 @@ public class CanvasSolution extends Canvas {
             int[] pos = quete.getPos();
             gc.setFill(Color.BLUE);
             gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
+            gc.setStroke(Color.BLACK);
             gc.strokeText(String.valueOf(quete.getNumero()), origine[0] + (pos[0] * echelleX) + 1, (pos[1] * echelleY));
         }
 
 
         Timeline timeline = new Timeline();
+        int[] oldPos = {origine[0], origine[1]};
 
         for (int i = 0; i < parcours.size(); i++){
             int[] pos = parcours.get(i).getPos();
 
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(i + 1), event ->{
+            gc.setStroke(Color.GREEN);
+            gc.strokeLine(oldPos[0] + 6, oldPos[1] + 6, origine[0] + (pos[0] * echelleX) + 6, origine[1] + (pos[1] * echelleY) + 6);
             gc.setFill(Color.GREEN);
             gc.fillOval(origine[0] + (pos[0] * echelleX), origine[1] + (pos[1] * echelleY), 12, 12);
+            oldPos[0] = origine[0] + (pos[0] * (int) echelleX);
+            oldPos[1] = origine[1] + (pos[1] * (int) echelleY);
             });
             timeline.getKeyFrames().add(keyFrame);
         }
