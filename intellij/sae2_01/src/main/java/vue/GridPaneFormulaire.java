@@ -23,6 +23,7 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
     public static TextField nombreField;
     public static Controleur controleur = new Controleur();
     public static Button boutonValider;
+    public static Button boutonSimuler;
     
     public static Button getBoutonValider() {
         return boutonValider;
@@ -66,9 +67,14 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         Button boutonAnnuler = new Button("_Annuler");
         boutonAnnuler.setAccessibleText("annuler");
         boutonAnnuler.setOnAction(controleur);
+
         boutonValider = new Button("_Valider");
         boutonValider.setAccessibleText("valider");
         boutonValider.setOnAction(controleur);
+        
+        boutonSimuler = new Button("_Simuler");
+        boutonSimuler.setAccessibleText("simuler");
+        boutonSimuler.setOnAction(controleur);
         
         this.setPadding(new Insets(10));
         this.add(choixCritere, 0, 1, 2, 1);
@@ -81,6 +87,7 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         this.add(comboBoxTri, 2, 4, 2, 1);
         this.add(boutonAnnuler, 1, 5, 1, 1);
         this.add(boutonValider, 2, 5, 1, 1);
+        this.add(boutonSimuler, 3, 5, 1, 1);
 
         this.setAlignment(Pos.CENTER);
         this.setId("formulaire");
