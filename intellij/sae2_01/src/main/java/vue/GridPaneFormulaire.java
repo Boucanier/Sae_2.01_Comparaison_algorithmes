@@ -22,7 +22,12 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
     public static ComboBox<String> comboBoxTri;
     public static TextField nombreField;
     public static Controleur controleur = new Controleur();
+    public static Button boutonValider;
     
+    public static Button getBoutonValider() {
+        return boutonValider;
+    }
+
     public static Controleur getControleur() {
         return controleur;
     }
@@ -61,7 +66,7 @@ public class GridPaneFormulaire extends GridPane implements ConstantesSolutions{
         Button boutonAnnuler = new Button("_Annuler");
         boutonAnnuler.setAccessibleText("annuler");
         boutonAnnuler.setOnAction(controleur);
-        Button boutonValider = new Button("_Valider");
+        boutonValider = new Button("_Valider");
         boutonValider.setAccessibleText("valider");
         boutonValider.setOnAction(controleur);
         

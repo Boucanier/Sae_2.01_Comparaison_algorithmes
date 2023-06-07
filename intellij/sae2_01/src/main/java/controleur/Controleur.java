@@ -62,6 +62,13 @@ public class Controleur implements EventHandler<ActionEvent> {
                     break;
                 }
             }
+
+            if (choix.equals("scenario_10.txt")) {
+                GridPaneFormulaire.getBoutonValider().setDisable(true);
+            }
+            else {
+                GridPaneFormulaire.getBoutonValider().setDisable(false);
+            }
         }
     }
 }
