@@ -80,7 +80,7 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
         tableJoueur.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         tableJoueur.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 1) {
+            if (event.getClickCount() == 1 && selectionModel.getSelectedIndices().size() > 0) {
                 ObservableList<Joueur> selectedItems = selectionModel.getSelectedItems();
                 if (selectedItems != null) {
                     controleur.setJoueur(selectedItems.get(0));
