@@ -24,7 +24,8 @@ import vue.VBoxTable;
  */
 public class Controleur implements EventHandler<ActionEvent> {
     public static ArrayList<String> listeScenario = VBoxSolution.getListeScenario();
-    String nomScenario;
+    private String nomScenario;
+    private Joueur joueurSelect;
 
     /**
      * Méthode handle de la classe Controleur qui gère les événements
@@ -36,19 +37,22 @@ public class Controleur implements EventHandler<ActionEvent> {
             switch ((((Button) event.getSource()).getAccessibleText())){
                 
                 case "simuler" :
-                    nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
-                    if (nomScenario.equals("canvas")) {
-                        nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
-                    }
-                    Scenario scenario2 = LectureFichierTexte.lecture(new File("scenarios" + File.separator + nomScenario));
-                    for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
-                        String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
-                        if (userData.equals("canvas")) {
-                            ((CanvasSolution) VBoxSolution.getStackPaneSolution().getChildren().get(i)).draw(scenario2);
-                            VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
-                            break;
+                    if (joueurSelect != null) {
+                        nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size()).getUserData().toString();
+                        if (nomScenario.equals("canvas")) {
+                            nomScenario = VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size() - 1).getUserData().toString();
+                        }
+                        Scenario scenario2 = LectureFichierTexte.lecture(new File("scenarios" + File.separator + nomScenario));
+                        for (int i = 0; i < VBoxSolution.getStackPaneSolution().getChildren().size(); i++) {
+                            String userData = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
+                            if (userData.equals("canvas")) {
+                                ((CanvasSolution) VBoxSolution.getStackPaneSolution().getChildren().get(i)).draw(scenario2);
+                                VBoxSolution.getStackPaneSolution().getChildren().get(i).toFront();
+                                break;
+                            }
                         }
                     }
+                    joueurSelect = null;
                     break;
 
                 case "valider" :
@@ -78,6 +82,7 @@ public class Controleur implements EventHandler<ActionEvent> {
                     ArrayList<Joueur> listeJoueur = managerDeQuete.niveau2(nombre, solution, critere, ordre);
                     VBoxTable vBoxTable = (VBoxTable) VBoxSolution.getStackPaneSolution().getChildren().get(listeScenario.size());
                     vBoxTable.update(listeJoueur);
+                    joueurSelect = null;
                     break;
                 
                 case "annuler" :
@@ -95,12 +100,14 @@ public class Controleur implements EventHandler<ActionEvent> {
                             }
                         }
                     }
+                    joueurSelect = null;
                     break;
             }
         }
         if (event.getSource() instanceof RadioMenuItem){
             RadioMenuItem radioMenuItem = (RadioMenuItem) event.getSource();
             String choix = radioMenuItem.getUserData().toString();
+            joueurSelect = null;
 
             for (int i = 0; i < listeScenario.size(); i++) {
                 String scenario = VBoxSolution.getStackPaneSolution().getChildren().get(i).getUserData().toString();
@@ -117,5 +124,9 @@ public class Controleur implements EventHandler<ActionEvent> {
                 GridPaneFormulaire.getBoutonValider().setDisable(false);
             }
         }
+    }
+
+    public void setJoueur(Joueur parJoueur) {
+        joueurSelect = parJoueur;
     }
 }

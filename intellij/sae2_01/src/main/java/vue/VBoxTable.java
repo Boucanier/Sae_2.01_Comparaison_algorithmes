@@ -2,10 +2,14 @@ package vue;
 
 import java.util.ArrayList;
 
+import controleur.Controleur;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -28,6 +32,7 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
     public VBoxTable(Joueur joueur, String parScenario) {
         super(20);
         VBox vbox = new VBox(20);
+        Controleur controleur = GridPaneFormulaire.getControleur();
 
         Label labelScenario = new Label("Scenario " + parScenario);
         labelScenario.setId("titre");
@@ -69,6 +74,19 @@ public class VBoxTable extends VBox implements ConstantesSolutions {
 
         tableJoueur.setFixedCellSize(25);
         tableJoueur.setId("tableau");
+
+
+        TableViewSelectionModel<Joueur> selectionModel = tableJoueur.getSelectionModel();
+        tableJoueur.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        tableJoueur.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                ObservableList<Joueur> selectedItems = selectionModel.getSelectedItems();
+                if (selectedItems != null) {
+                    controleur.setJoueur(selectedItems.get(0));
+                }
+            }
+        });
 
         hBox.setAlignment(Pos.CENTER);
 
