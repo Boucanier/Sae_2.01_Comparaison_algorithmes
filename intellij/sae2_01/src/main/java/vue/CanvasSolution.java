@@ -12,12 +12,28 @@ import modele.Joueur;
 import modele.Quete;
 import modele.Scenario;
 
+/**
+ * Classe CanvasSolution qui permet de dessiner le parcours du joueur
+ * 
+ * @see Canvas
+ */
 public class CanvasSolution extends Canvas {
     
+    /**
+     * Constructeur de la classe CanvasSolution
+     * @param parHeight
+     * @param parWidth
+     */
     public CanvasSolution(int parHeight, int parWidth) {
         super(parWidth, parHeight);
     }
 
+    /**
+     * Méthode draw qui dessine le scenario et le parcours du joueur donné en paramètre
+     * @param parScenario
+     * @param parJoueur
+     * @throws InterruptedException
+     */
     public void draw(Scenario parScenario, Joueur parJoueur) throws InterruptedException {
         GraphicsContext gc = getGraphicsContext2D();
         ArrayList<Quete> parcours = parJoueur.getParcoursQuete();
