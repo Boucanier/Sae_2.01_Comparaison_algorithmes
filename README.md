@@ -7,6 +7,8 @@ SAÉ 2.01.02 : Développement d’une application, Exploration algorithmique d'u
 
 ## Lancement du programme
 
+Attention : Le projet se trouve dans le répertoire _intellij/sae2_01_, c'est ce dossier qu'il faut ouvrir avec un IDE.
+
 Version graphique :
     Pour lancer la version graphique, il faut lancer la classe _vue.SaeApplication.java_
     
