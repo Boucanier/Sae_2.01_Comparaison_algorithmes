@@ -45,8 +45,6 @@ public class VBoxSolution extends VBox implements ConstantesSolutions {
         for (File item : fichiers){
             Scenario scenario = LectureFichierTexte.lecture(item);
             ManagerDeQuete managerDeQuete = new ManagerDeQuete(scenario);
-            Label labelSolution = new Label("Scenario " + item.getName().substring(9, item.getName().length() - 4));
-            labelSolution.setId("titre");
             VBoxTable vBoxTable = new VBoxTable(managerDeQuete.niveau1("efficace"), item.getName().substring(9, item.getName().length() - 4));
             vBoxTable.setUserData(item.getName());
             stackPaneSolution.getChildren().addAll(vBoxTable);
