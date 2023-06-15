@@ -1,6 +1,9 @@
 package vue;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -54,12 +57,35 @@ public class VBoxRootMenu extends VBox implements ConstantesSolutions {
             }
         });
 
+        //prend liste des scénarios
         ArrayList<String> listeScenario = VBoxSolution.getListeScenario();
         
+        // on supprime tous ce qui n'est pas des str
+        ArrayList<String> nouvelleListe = new ArrayList<>();
+        for (String item : listeScenario) {
+            String itemSansCaracteresNonIntegers = item.replaceAll("\\D", "");
+            nouvelleListe.add(itemSansCaracteresNonIntegers);
+        }
+
+        //on trie la liste dans l'ordre croissant
+        ArrayList<Integer> listeTriee = new ArrayList<>();
+        for (String item : nouvelleListe) {
+            int nombre = Integer.parseInt(item);
+            listeTriee.add(nombre);
+        }
+        Collections.sort(listeTriee);
+
+        //mettre toute la liste sous forme de scénario scenario_X.txt
+        ArrayList<String> listeScenarioTriee = new ArrayList<>();
+        for (Integer numScenario : listeTriee) {
+            String vraiScenario = "scenario_" + numScenario + ".txt";
+            listeScenarioTriee.add(vraiScenario);
+        }
+        
         ToggleGroup toggleGroup = new ToggleGroup();
-        for (String item : listeScenario){
-            RadioMenuItem radioMenuItem = new RadioMenuItem("Scenario " + item.substring(9, item.length() - 4));
-            radioMenuItem.setUserData(item);
+        for (int i= 0; i < listeTriee.size(); i++){
+            RadioMenuItem radioMenuItem = new RadioMenuItem("Scenario " + listeTriee.get(i));
+            radioMenuItem.setUserData(listeScenarioTriee.get(i));
             radioMenuItem.setMnemonicParsing(true);
             radioMenuItem.setId("menuItem");
             radioMenuItem.setToggleGroup(toggleGroup);
