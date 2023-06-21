@@ -1,7 +1,7 @@
 # SAÉ S2.01.02
 
-<a href="https://www.java.com/en/" target=blank><img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)"></a>
-<a href="https://openjfx.io/" target=blank><img src="https://img.shields.io/badge/JavaFX-1572B6?style=for-the-badge&logo=css3&logoColor=white"></a>
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![JavaFX](https://img.shields.io/badge/JavaFX-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 SAÉ 2.01.02 : Développement d’une application, Exploration algorithmique d'un problème
 
