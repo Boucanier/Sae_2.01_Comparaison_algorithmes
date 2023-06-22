@@ -1,4 +1,4 @@
-# SAÉ S2.01.02
+# Étude de la durée de vie d'un RPG
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![JavaFX](https://img.shields.io/badge/JavaFX-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -36,3 +36,14 @@ Les classes de tests se trouvent dans le dossier _intellij/sae2_01/src/test/java
 ## BONUS
 
 La fonctionnalité _simuler_ permet de visualiser une solution.
+
+## Crédits
+Projet réalisé par :
+- [Matis RODIER](https://github.com/matisrod)
+- [Jules CHIRON](https://github.com/Boucanier)
+
+---
+
+Projet réalisé dans le cadre des SAÉ 2.01 et 2.02 du deuxième semestre de BUT informatique à l'IUT de Vélizy
+
+Juin 2023
